@@ -26,7 +26,7 @@ export default function ContactPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#235730]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#523A28]/80 to-transparent" />
           <div className="absolute inset-0 flex items-center">
             <div className="container mx-auto px-6">
               <h1 className="text-white text-4xl md:text-6xl" style={{ fontFamily: 'var(--font-caveat)' }}>
@@ -48,7 +48,7 @@ export default function ContactPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-[#235730] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '36px' }}>
+              <h2 className="text-[#523A28] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '36px' }}>
                 {t('form.title')}
               </h2>
               <form className="space-y-6">
@@ -58,7 +58,7 @@ export default function ContactPage() {
                     <Input
                       id="firstName"
                       placeholder={t('form.placeholder_first_name')}
-                      className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                      className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                     />
                   </div>
                   <div>
@@ -66,7 +66,7 @@ export default function ContactPage() {
                     <Input
                       id="lastName"
                       placeholder={t('form.placeholder_last_name')}
-                      className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                      className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                     />
                   </div>
                 </div>
@@ -76,7 +76,7 @@ export default function ContactPage() {
                     id="email"
                     type="email"
                     placeholder={t('form.placeholder_email')}
-                    className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                    className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                   />
                 </div>
                 <div>
@@ -84,7 +84,7 @@ export default function ContactPage() {
                   <Input
                     id="subject"
                     placeholder={t('form.placeholder_subject')}
-                    className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                    className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                   />
                 </div>
                 <div>
@@ -93,10 +93,10 @@ export default function ContactPage() {
                     id="message"
                     placeholder={t('form.placeholder_message')}
                     rows={5}
-                    className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                    className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                   />
                 </div>
-                <Button className="bg-[#235730] hover:bg-[#1d4626] text-white rounded-sm px-8">
+                <Button className="bg-[#523A28] hover:bg-[#3A2819] text-white rounded-sm px-8">
                   <Send className="w-4 h-4 mr-2" />
                   {t('form.btn_send')}
                 </Button>
@@ -104,25 +104,25 @@ export default function ContactPage() {
             </div>
 
             <div className="space-y-8">
-              <h2 className="text-[#235730] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '36px' }}>
+              <h2 className="text-[#523A28] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '36px' }}>
                 {t('info.title')}
               </h2>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#235730]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-[#235730]" />
+                  <div className="w-12 h-12 bg-[#523A28]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-5 h-5 text-[#523A28]" />
                   </div>
                   <div>
                     <h3 className="font-medium text-[#2d2d2d] mb-1">{t('info.email')}</h3>
-                    <p className="text-gray-600">contact@mishki.fr</p>
-                    <p className="text-gray-600">support@mishki.fr</p>
+                    <p className="text-gray-600">contact@meybeauty.fr</p>
+                    <p className="text-gray-600">support@meybeauty.fr</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#235730]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 text-[#235730]" />
+                  <div className="w-12 h-12 bg-[#523A28]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-5 h-5 text-[#523A28]" />
                   </div>
                   <div>
                     <h3 className="font-medium text-[#2d2d2d] mb-1">{t('info.phone')}</h3>
@@ -131,8 +131,8 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#235730]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-[#235730]" />
+                  <div className="w-12 h-12 bg-[#523A28]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 text-[#523A28]" />
                   </div>
                   <div>
                     <h3 className="font-medium text-[#2d2d2d] mb-1">{t('info.address')}</h3>
@@ -142,8 +142,8 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#235730]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-5 h-5 text-[#235730]" />
+                  <div className="w-12 h-12 bg-[#523A28]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-5 h-5 text-[#523A28]" />
                   </div>
                   <div>
                     <h3 className="font-medium text-[#2d2d2d] mb-1">{t('info.hours.title')}</h3>
@@ -153,7 +153,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="bg-[#235730]/5 rounded-lg p-6 mt-8">
+              <div className="bg-[#523A28]/5 rounded-lg p-6 mt-8">
                 <h3 className="font-medium text-[#2d2d2d] mb-2">{t('service.title')}</h3>
                 <p className="text-gray-600 text-sm">
                   {t('service.desc')}

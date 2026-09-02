@@ -30,8 +30,8 @@ export function LoginForm({
   title,
   subtitle,
   showB2BInfo = false,
-  primaryColor = "#235730",
-  backgroundColor = "#F7F0E0",
+  primaryColor = "#523A28",
+  backgroundColor = "#F5EDE4",
   labels = {},
 }: LoginFormProps) {
   const router = useRouter();
@@ -70,9 +70,9 @@ export function LoginForm({
     >
       <div className="w-full max-w-md rounded-2xl bg-white shadow-xl p-8 space-y-6">
         <div className="flex flex-col items-center gap-3 text-center">
-          <img src={logoSrc} alt="Mishki" className="h-14 object-contain" />
+          <img src={logoSrc} alt="Mey Beauty" className="h-14 object-contain" />
           <div>
-            <h1 className="text-2xl font-semibold text-[#1d2a1f]">{title}</h1>
+            <h1 className="text-2xl font-semibold text-[#3A2819]">{title}</h1>
             {subtitle && (
               <p className="text-sm text-[#4b5563] mt-1">{subtitle}</p>
             )}
@@ -139,7 +139,7 @@ export function LoginForm({
           <div className="text-sm text-[#374151] bg-[#f8fafc] border border-[#e5e7eb] rounded-lg p-4 space-y-2">
             <p className="font-semibold text-[#1f2937]">{labels.b2bInfoTitle || "Espace Professionnel"}</p>
             <p>
-              {labels.b2bInfoDesc || "Accédez aux tarifs pros, commandes rapides et protocoles dédiés aux partenaires Mishki."}
+              {labels.b2bInfoDesc || "Accédez aux tarifs pros, commandes rapides et protocoles dédiés aux partenaires Mey Beauty."}
             </p>
           </div>
         )}

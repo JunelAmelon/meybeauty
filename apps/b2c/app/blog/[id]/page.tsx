@@ -50,10 +50,10 @@ export default function BlogDetailPage({ params }: { params: Promise<{ id: strin
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
           <div className="absolute inset-0 flex items-end">
             <div className="container mx-auto px-6 pb-12">
-              <span className="inline-block bg-[#235730] text-white text-xs px-3 py-1 rounded-full mb-4">
+              <span className="inline-block bg-[#523A28] text-white text-xs px-3 py-1 rounded-full mb-4">
                 {post.category}
               </span>
-              <h1 className="text-white text-3xl md:text-5xl font-semibold max-w-3xl leading-tight">
+              <h1 className="text-white text-3xl md:text-5xl font-semibold max-w-3xl leading-tight" style={{ fontFamily: 'var(--font-caveat)' }}>
                 {post.title}
               </h1>
               <div className="flex items-center gap-6 mt-4 text-white/80">
@@ -72,7 +72,7 @@ export default function BlogDetailPage({ params }: { params: Promise<{ id: strin
 
         <div className="container mx-auto px-6 py-12 md:py-16">
           <div className="mb-8">
-            <Link href="/blog" className="inline-flex items-center gap-2 text-[#235730] hover:opacity-80 transition-opacity">
+            <Link href="/blog" className="inline-flex items-center gap-2 text-[#523A28] hover:opacity-80 transition-opacity">
               <ArrowLeft className="w-5 h-5" />
               {t('back_to_articles')}
             </Link>
@@ -81,7 +81,7 @@ export default function BlogDetailPage({ params }: { params: Promise<{ id: strin
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
               <div className="flex items-center gap-4 mb-8 pb-8 border-b border-gray-200">
-                <div className="w-12 h-12 bg-[#235730] text-white rounded-full flex items-center justify-center font-semibold">
+                <div className="w-12 h-12 bg-[#523A28] text-white rounded-full flex items-center justify-center font-semibold">
                   {post.author?.avatar || (post.author?.name?.[0] ?? '').toUpperCase()}
                 </div>
                 <div>
@@ -102,16 +102,16 @@ export default function BlogDetailPage({ params }: { params: Promise<{ id: strin
                 <div className="flex items-center justify-between">
                   <span className="text-gray-500">{t('share_article')}</span>
                   <div className="flex items-center gap-4">
-                    <button className="w-10 h-10 bg-[#235730]/10 rounded-full flex items-center justify-center hover:bg-[#235730] hover:text-white transition-colors text-[#235730]">
+                    <button className="w-10 h-10 bg-[#523A28]/10 rounded-full flex items-center justify-center hover:bg-[#523A28] hover:text-white transition-colors text-[#523A28]">
                       <Facebook className="w-5 h-5" />
                     </button>
-                    <button className="w-10 h-10 bg-[#235730]/10 rounded-full flex items-center justify-center hover:bg-[#235730] hover:text-white transition-colors text-[#235730]">
+                    <button className="w-10 h-10 bg-[#523A28]/10 rounded-full flex items-center justify-center hover:bg-[#523A28] hover:text-white transition-colors text-[#523A28]">
                       <Twitter className="w-5 h-5" />
                     </button>
-                    <button className="w-10 h-10 bg-[#235730]/10 rounded-full flex items-center justify-center hover:bg-[#235730] hover:text-white transition-colors text-[#235730]">
+                    <button className="w-10 h-10 bg-[#523A28]/10 rounded-full flex items-center justify-center hover:bg-[#523A28] hover:text-white transition-colors text-[#523A28]">
                       <Linkedin className="w-5 h-5" />
                     </button>
-                    <button className="w-10 h-10 bg-[#235730]/10 rounded-full flex items-center justify-center hover:bg-[#235730] hover:text-white transition-colors text-[#235730]">
+                    <button className="w-10 h-10 bg-[#523A28]/10 rounded-full flex items-center justify-center hover:bg-[#523A28] hover:text-white transition-colors text-[#523A28]">
                       <Share2 className="w-5 h-5" />
                     </button>
                   </div>
@@ -122,7 +122,7 @@ export default function BlogDetailPage({ params }: { params: Promise<{ id: strin
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-8">
                 <div className="bg-white rounded-lg p-6 shadow-sm">
-                  <h3 className="text-[#235730] mb-4" style={{ fontFamily: 'var(--font-caveat)', fontSize: '24px' }}>
+                  <h3 className="text-[#523A28] mb-4" style={{ fontFamily: 'var(--font-caveat)', fontSize: '24px' }}>
                     {t('similar_articles')}
                   </h3>
                   <div className="space-y-3">
@@ -134,7 +134,7 @@ export default function BlogDetailPage({ params }: { params: Promise<{ id: strin
                       return (
                         <Link key={slug} href={`/blog/${slug}`}>
                           <div className="flex gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
-                            <div className="w-10 h-10 bg-[#235730]/10 rounded flex items-center justify-center text-sm text-[#235730] font-semibold uppercase">
+                            <div className="w-10 h-10 bg-[#523A28]/10 rounded flex items-center justify-center text-sm text-[#523A28] font-semibold uppercase">
                               {relatedPost ? relatedPost.title.slice(0, 2) : String(slug).slice(0, 2)}
                             </div>
                             <div className="flex-1">
@@ -149,17 +149,15 @@ export default function BlogDetailPage({ params }: { params: Promise<{ id: strin
                   </div>
                 </div>
 
-                <div className="bg-[#235730] rounded-lg p-6 text-white">
+                <div className="bg-[#523A28] rounded-lg p-6 text-white">
                   <h3 className="text-xl mb-3" style={{ fontFamily: 'var(--font-caveat)' }}>
                     {t('newsletter_title')}
                   </h3>
                   <p className="text-sm text-white/80 mb-4">
                     {t('newsletter_desc')}
                   </p>
-                  <Link href="#newsletter">
-                    <button className="w-full bg-white text-[#235730] px-4 py-2 rounded-sm font-medium hover:bg-white/90 transition-colors">
-                      {t('subscribe')}
-                    </button>
+                  <Link href="#newsletter" className="block w-full bg-white text-[#523A28] px-4 py-2 rounded-sm font-medium hover:bg-white/90 transition-colors text-center">
+                    {t('subscribe')}
                   </Link>
                 </div>
               </div>

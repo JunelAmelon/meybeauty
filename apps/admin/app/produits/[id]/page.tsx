@@ -39,7 +39,7 @@ export default function ProductDetail() {
     if (productLoading) {
         return (
             <div className="flex items-center justify-center min-h-[400px]">
-                <Loader2 className="w-8 h-8 text-[#235730] animate-spin" />
+                <Loader2 className="w-8 h-8 text-[#523A28] animate-spin" />
             </div>
         );
     }
@@ -65,7 +65,7 @@ export default function ProductDetail() {
                 <div className="flex gap-2">
                     <button
                         onClick={() => router.push(`/admin/produits?edit=${product.id}`)}
-                        className="flex items-center gap-2 px-4 py-2 bg-[#235730] text-white rounded-lg hover:bg-[#1a4023] transition-all shadow-sm hover:shadow-md"
+                        className="flex items-center gap-2 px-4 py-2 bg-[#523A28] text-white rounded-lg hover:bg-[#3A2819] transition-all shadow-sm hover:shadow-md"
                     >
                         <Edit className="w-4 h-4" />
                         Modifier
@@ -96,7 +96,7 @@ export default function ProductDetail() {
                             </div>
                             <div className="flex-grow pt-2">
                                 <div className="flex flex-wrap items-center gap-3 mb-4">
-                                    <span className="px-3 py-1 bg-[#f0f4f1] text-[#235730] text-xs font-bold rounded-full uppercase tracking-wider">
+                                    <span className="px-3 py-1 bg-[#f0f4f1] text-[#523A28] text-xs font-bold rounded-full uppercase tracking-wider">
                                         {product.categoryLabel}
                                     </span>
                                     <span
@@ -119,7 +119,7 @@ export default function ProductDetail() {
                                 <div className="grid grid-cols-2 gap-6">
                                     <div className="p-4 bg-gray-50 rounded-xl border border-gray-100">
                                         <p className="text-[10px] text-gray-400 uppercase font-black mb-1 tracking-widest">Prix de vente</p>
-                                        <p className="text-2xl font-black text-[#235730]">{product.price.toFixed(2)} €</p>
+                                        <p className="text-2xl font-black text-[#523A28]">{product.price.toFixed(2)} €</p>
                                     </div>
                                     <div className="p-4 bg-gray-50 rounded-xl border border-gray-100">
                                         <p className="text-[10px] text-gray-400 uppercase font-black mb-1 tracking-widest">Unités en stock</p>
@@ -135,7 +135,7 @@ export default function ProductDetail() {
                     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
                         <div className="p-6 bg-gray-50/50 border-b border-gray-100 flex items-center justify-between">
                             <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-                                <Globe className="w-5 h-5 text-[#235730]" />
+                                <Globe className="w-5 h-5 text-[#523A28]" />
                                 {t('detail.title') || 'Détails & Traductions'}
                             </h2>
                         </div>
@@ -154,7 +154,7 @@ export default function ProductDetail() {
                                     return (
                                         <TabsContent key={l.id} value={l.id} className="space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
                                             <div className="space-y-4">
-                                                <h3 className="text-sm font-black uppercase tracking-widest text-[#235730] flex items-center gap-2">
+                                                <h3 className="text-sm font-black uppercase tracking-widest text-[#523A28] flex items-center gap-2">
                                                     <Info className="w-4 h-4" />
                                                     {t('detail.presentation') || 'Présentation'}
                                                 </h3>
@@ -170,12 +170,12 @@ export default function ProductDetail() {
                                                 </div>
                                                 <div className="pt-4 space-y-2">
                                                     <p className="text-xs font-bold text-gray-400">Description courte</p>
-                                                    <p className="text-gray-600 leading-relaxed italic border-l-4 border-[#235730]/20 pl-4">{tr.desc || '---'}</p>
+                                                    <p className="text-gray-600 leading-relaxed italic border-l-4 border-[#523A28]/20 pl-4">{tr.desc || '---'}</p>
                                                 </div>
                                             </div>
 
                                             <div className="pt-6 border-t border-gray-50 space-y-4">
-                                                <h3 className="text-sm font-black uppercase tracking-widest text-[#235730] flex items-center gap-2">
+                                                <h3 className="text-sm font-black uppercase tracking-widest text-[#523A28] flex items-center gap-2">
                                                     <BookOpen className="w-4 h-4" />
                                                     {t('form.longDescLabel') || 'Description Détaillée'}
                                                 </h3>
@@ -186,7 +186,7 @@ export default function ProductDetail() {
 
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-gray-50">
                                                 <div className="space-y-4">
-                                                    <h3 className="text-sm font-black uppercase tracking-widest text-[#235730] flex items-center gap-2">
+                                                    <h3 className="text-sm font-black uppercase tracking-widest text-[#523A28] flex items-center gap-2">
                                                         <Sparkles className="w-4 h-4" />
                                                         {t('form.usageLabel') || 'Conseils d\'utilisation'}
                                                     </h3>
@@ -195,7 +195,7 @@ export default function ProductDetail() {
                                                     </p>
                                                 </div>
                                                 <div className="space-y-4">
-                                                    <h3 className="text-sm font-black uppercase tracking-widest text-[#235730] flex items-center gap-2">
+                                                    <h3 className="text-sm font-black uppercase tracking-widest text-[#523A28] flex items-center gap-2">
                                                         <Tag className="w-4 h-4" />
                                                         {t('form.ingredientLabel') || 'Ingrédient de base'}
                                                     </h3>
@@ -218,14 +218,14 @@ export default function ProductDetail() {
                         <h2 className="text-lg font-bold text-gray-900 mb-6 font-black uppercase tracking-tight">{t('detail.characteristics') || 'Caractéristiques'}</h2>
                         <div className="space-y-6">
                             <div className="flex items-center justify-between group">
-                                <div className="flex items-center gap-3 text-gray-400 group-hover:text-[#235730] transition-colors">
+                                <div className="flex items-center gap-3 text-gray-400 group-hover:text-[#523A28] transition-colors">
                                     <Package className="w-5 h-5" />
                                     <span className="text-xs font-bold uppercase tracking-wider">{t('form.volumeLabel')?.split(' (')[0] || 'Volume'}</span>
                                 </div>
                                 <span className="text-sm font-black text-gray-900">{product.volume || 'N/A'}</span>
                             </div>
                             <div className="flex items-center justify-between group">
-                                <div className="flex items-center gap-3 text-gray-400 group-hover:text-[#235730] transition-colors">
+                                <div className="flex items-center gap-3 text-gray-400 group-hover:text-[#523A28] transition-colors">
                                     <Tag className="w-5 h-5" />
                                     <span className="text-xs font-bold uppercase tracking-wider">Slug ID</span>
                                 </div>
@@ -247,7 +247,7 @@ export default function ProductDetail() {
                         </div>
                     </div>
 
-                    <div className="bg-[#235730] rounded-2xl p-8 text-white shadow-xl shadow-[#235730]/20 relative overflow-hidden group">
+                    <div className="bg-[#523A28] rounded-2xl p-8 text-white shadow-xl shadow-[#523A28]/20 relative overflow-hidden group">
                         <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform duration-700">
                             <Package className="w-32 h-32" />
                         </div>

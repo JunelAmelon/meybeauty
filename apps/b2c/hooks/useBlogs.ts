@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
-import { db, collection, fsDoc as doc, getDoc, getDocs } from '@mishki/firebase';
+import { db, collection, fsDoc as doc, getDoc, getDocs } from '@meybeauty/firebase';
 
 export type BlogDoc = {
   id: string;

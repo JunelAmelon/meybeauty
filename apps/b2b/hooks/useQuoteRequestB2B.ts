@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useCallback, useMemo } from 'react';
-import { uploadToCloudinary } from '@mishki/cloudinary';
-import { addDoc, collection, db } from '@mishki/firebase';
+import { uploadToCloudinary } from '@meybeauty/cloudinary';
+import { addDoc, collection, db } from '@meybeauty/firebase';
 import { useProductsB2B, type ProductB2B } from './useProductsB2B';
 
 export type QuoteForm = {

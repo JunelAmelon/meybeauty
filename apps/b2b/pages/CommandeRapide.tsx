@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { Zap, Plus, Trash2, ShoppingCart, Minus } from 'lucide-react';
-import { collection, db, getDocs, query, where, doc, getDoc } from '@mishki/firebase';
+import { collection, db, getDocs, query, where, doc, getDoc } from '@meybeauty/firebase';
 import { useProductsB2B, type ProductB2B } from '../hooks/useProductsB2B';
 import { useAuth } from '../context/AuthContext';
 
@@ -483,7 +483,7 @@ export default function CommandeRapide() {
         <div className="flex items-start justify-between">
           <div>
             <h1 className="text-gray-900 mb-2 flex items-center gap-2">
-              <Zap className="w-7 h-7" style={{ color: '#235730' }} />
+              <Zap className="w-7 h-7" style={{ color: '#523A28' }} />
               {t('title')}
             </h1>
             <p className="text-gray-600">
@@ -504,7 +504,7 @@ export default function CommandeRapide() {
         )}
 
         {/* References Table */}
-        <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-4 md:p-6 border border-blue-200">
+        <div className="bg-gradient-to-br from-[#F5EDE4] to-[#EDE0D3] rounded-xl p-4 md:p-6 border border-[#523A28]/20">
           <h3 className="text-base md:text-lg text-gray-900 mb-3">{t('common_refs')}</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 text-sm">
             {loading && <span className="text-gray-500 text-xs md:text-sm">{t('loading') || 'Chargement...'}</span>}
@@ -512,7 +512,7 @@ export default function CommandeRapide() {
             {!loading && !error && commonProducts.map((product) => (
               <div
                 key={product.id}
-                className="bg-white rounded-lg px-2 py-2 md:px-3 text-xs md:text-sm text-gray-700 hover:bg-blue-100 transition-colors cursor-pointer text-center"
+                className="bg-white rounded-lg px-2 py-2 md:px-3 text-xs md:text-sm text-gray-700 hover:bg-[#523A28]/10 transition-colors cursor-pointer text-center"
                 onClick={() => handleQuickPick(product)}
               >
                 {product.reference}
@@ -528,7 +528,7 @@ export default function CommandeRapide() {
               <h2 className="text-base md:text-lg text-gray-900">{t('form_title')}</h2>
               {remise > 0 && (
                 <span className="text-xs md:text-sm text-gray-700">
-                  Remise pro : <span className="font-semibold text-[#235730]">{remise}%</span>
+                  Remise pro : <span className="font-semibold text-[#523A28]">{remise}%</span>
                 </span>
               )}
             </div>
@@ -564,7 +564,7 @@ export default function CommandeRapide() {
                             ? 'border-red-300 focus:ring-red-500 bg-red-50'
                             : isValid
                               ? 'border-green-300 focus:ring-green-500 bg-green-50'
-                              : 'border-gray-200 focus:ring-blue-500'
+                              : 'border-gray-200 focus:ring-[#523A28]'
                             }`}
                         />
                         {hasReference && !isValid && (
@@ -616,7 +616,7 @@ export default function CommandeRapide() {
                             step={1}
                             value={line.quantite}
                             onChange={(e) => updateQuantity(line.id, parseInt(e.target.value) || MIN_QTY)}
-                            className="w-16 md:w-24 px-2 md:px-3 py-1.5 md:py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs md:text-sm text-center"
+                            className="w-16 md:w-24 px-2 md:px-3 py-1.5 md:py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] text-xs md:text-sm text-center"
                           />
                           <button
                             onClick={() => updateQuantity(line.id, line.quantite + 1)}
@@ -665,7 +665,7 @@ export default function CommandeRapide() {
             <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
               <button
                 onClick={addLine}
-                className="flex items-center justify-center md:justify-start gap-2 px-4 py-2 hover:bg-blue-50 rounded-lg transition-colors text-sm md:text-base"
+                className="flex items-center justify-center md:justify-start gap-2 px-4 py-2 hover:bg-[#F5EDE4] rounded-lg transition-colors text-sm md:text-base"
               >
                 <Plus className="w-4 h-4" />
                 {t('add_line')}
@@ -679,9 +679,9 @@ export default function CommandeRapide() {
                   onClick={goToPaymentPage}
                   disabled={validatedProducts.size === 0 || hasStockError}
                   className="flex items-center justify-center gap-2 px-4 md:px-6 py-3 text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base"
-                  style={{ backgroundColor: '#235730' }}
-                  onMouseEnter={(e) => validatedProducts.size > 0 && (e.currentTarget.style.backgroundColor = '#1a4023')}
-                  onMouseLeave={(e) => validatedProducts.size > 0 && (e.currentTarget.style.backgroundColor = '#235730')}
+                  style={{ backgroundColor: '#523A28' }}
+                  onMouseEnter={(e) => validatedProducts.size > 0 && (e.currentTarget.style.backgroundColor = '#3A2819')}
+                  onMouseLeave={(e) => validatedProducts.size > 0 && (e.currentTarget.style.backgroundColor = '#523A28')}
                 >
                   <ShoppingCart className="w-4 h-4 md:w-5 md:h-5" />
                   {t('btn_validate', { count: validatedProducts.size })}
@@ -693,7 +693,7 @@ export default function CommandeRapide() {
 
         {/* Tips */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
-          <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+          <div className="bg-[#F5EDE4] rounded-lg p-4 border border-[#523A28]/20">
             <h4 className="text-sm md:text-base text-gray-900 mb-2">{t('tips.tip1_title')}</h4>
             <p className="text-xs md:text-sm text-gray-600">
               {t('tips.tip1_desc')}

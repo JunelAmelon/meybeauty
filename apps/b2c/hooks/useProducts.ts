@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
-import { db, collection, fsDoc as doc, getDoc, getDocs } from '@mishki/firebase';
+import { db, collection, fsDoc as doc, getDoc, getDocs, query, where } from '@meybeauty/firebase';
 
 export type ProductDoc = {
   id: string;
@@ -137,15 +137,25 @@ export function useProduct(slug: string) {
       setLoading(true);
       setError(null);
       try {
-        const ref = doc(db, 'products', slug);
-        const snap = await getDoc(ref);
+        // First, try querying by slug field
+        const q = query(collection(db, 'products'), where('slug', '==', slug));
+        const snap = await getDocs(q);
         if (!mounted) return;
-        if (!snap.exists()) {
+        if (!snap.empty) {
+          const docSnap = snap.docs[0];
+          setProduct(mapProduct(docSnap.id, docSnap.data() as ProductDb, locale));
+          return;
+        }
+        // Fallback: try by document ID (in case URL uses Firebase ID directly)
+        const docRef = doc(db, 'products', slug);
+        const docSnap = await getDoc(docRef);
+        if (!mounted) return;
+        if (!docSnap.exists()) {
           setProduct(null);
           setError('Produit introuvable');
           return;
         }
-        setProduct(mapProduct(snap.id, snap.data() as ProductDb, locale));
+        setProduct(mapProduct(docSnap.id, docSnap.data() as ProductDb, locale));
       } catch (err: unknown) {
         if (!mounted) return;
         const msg = err instanceof Error ? err.message : 'Erreur de récupération du produit';

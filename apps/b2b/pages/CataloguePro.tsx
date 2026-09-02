@@ -1,11 +1,12 @@
 'use client';
 
 import Image from 'next/image';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useLocale, useTranslations } from 'next-intl';
-import { Search, Filter, Grid, List, ShoppingCart, Plus, Minus, Check } from 'lucide-react';
+import { Search, Filter, Grid, List, ShoppingCart, Plus, Minus, Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 import { useProductsB2B, type ProductB2B } from '../hooks/useProductsB2B';
 
 export default function CataloguePro() {
@@ -17,6 +18,8 @@ export default function CataloguePro() {
   const [qtyInputs, setQtyInputs] = useState<Record<string, number>>({});
   const [openQty, setOpenQty] = useState<string | null>(null);
   const [stockMessage, setStockMessage] = useState<Record<string, string>>({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const PRODUCTS_PER_PAGE = 12;
 
   const { addToCart } = useCart();
   const { user } = useAuth();
@@ -87,6 +90,20 @@ export default function CataloguePro() {
     return matchesSearch && matchesCategorie && matchesFormat;
   });
 
+  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE));
+  const paginatedProducts = filteredProducts.slice(
+    (currentPage - 1) * PRODUCTS_PER_PAGE,
+    currentPage * PRODUCTS_PER_PAGE
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedCategorie, selectedFormat]);
+
+  useEffect(() => {
+    if (currentPage > totalPages) setCurrentPage(1);
+  }, [totalPages, currentPage]);
+
   const minQty = user ? 100 : 1;
 
   const handleConfirmQty = (product: ProductB2B) => {
@@ -156,14 +173,14 @@ export default function CataloguePro() {
           {/* Search */}
           <div className="flex-1">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" style={{ color: '#235730' }} />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" style={{ color: '#523A28' }} />
               <input
                 type="text"
                 placeholder={t('search_placeholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base"
-                style={{ '--tw-ring-color': '#235730' } as React.CSSProperties}
+                style={{ '--tw-ring-color': '#523A28' } as React.CSSProperties}
               />
             </div>
           </div>
@@ -174,8 +191,8 @@ export default function CataloguePro() {
             <select
               value={selectedCategorie}
               onChange={(e) => setSelectedCategorie(e.target.value)}
-              className="px-3 md:px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base"
-              style={{ '--tw-ring-color': '#235730' } as React.CSSProperties}
+              className="px-3 md:px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base text-gray-900 bg-white"
+              style={{ '--tw-ring-color': '#523A28' } as React.CSSProperties}
             >
               {categories.map((cat) => (
                 <option key={cat.value} value={cat.value}>
@@ -188,8 +205,8 @@ export default function CataloguePro() {
             <select
               value={selectedFormat}
               onChange={(e) => setSelectedFormat(e.target.value)}
-              className="px-3 md:px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base"
-              style={{ '--tw-ring-color': '#235730' } as React.CSSProperties}
+              className="px-3 md:px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 text-sm md:text-base text-gray-900 bg-white"
+              style={{ '--tw-ring-color': '#523A28' } as React.CSSProperties}
             >
               {formats.map((format) => (
                 <option key={format} value={format}>
@@ -209,7 +226,7 @@ export default function CataloguePro() {
                 ? 'text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
-              style={viewMode === 'grid' ? { backgroundColor: '#235730' } : {}}
+              style={viewMode === 'grid' ? { backgroundColor: '#523A28' } : {}}
             >
               <Grid className="w-5 h-5" />
             </button>
@@ -219,7 +236,7 @@ export default function CataloguePro() {
                 ? 'text-white'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
-              style={viewMode === 'list' ? { backgroundColor: '#235730' } : {}}
+              style={viewMode === 'list' ? { backgroundColor: '#523A28' } : {}}
             >
               <List className="w-5 h-5" />
             </button>
@@ -231,17 +248,17 @@ export default function CataloguePro() {
           <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-200">
             <span className="text-sm text-gray-600">{t('active_filters')}</span>
             {searchTerm && (
-              <span className="px-3 py-1 rounded-full text-sm text-white" style={{ backgroundColor: '#235730' }}>
+              <span className="px-3 py-1 rounded-full text-sm text-white" style={{ backgroundColor: '#523A28' }}>
                 Recherche: &quot;{searchTerm}&quot;
               </span>
             )}
             {selectedCategorie !== 'Toutes' && (
-              <span className="px-3 py-1 rounded-full text-sm text-white" style={{ backgroundColor: '#235730' }}>
+              <span className="px-3 py-1 rounded-full text-sm text-white" style={{ backgroundColor: '#523A28' }}>
                 {selectedCategorie}
               </span>
             )}
             {selectedFormat !== 'Tous' && (
-              <span className="px-3 py-1 rounded-full text-sm text-white" style={{ backgroundColor: '#235730' }}>
+              <span className="px-3 py-1 rounded-full text-sm text-white" style={{ backgroundColor: '#523A28' }}>
                 {selectedFormat}
               </span>
             )}
@@ -269,7 +286,7 @@ export default function CataloguePro() {
       {/* Products Grid/List */}
       {viewMode === 'grid' ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProducts.map((product) => {
+          {paginatedProducts.map((product) => {
             const prixRemise = calculateRemise(product.prixHT);
             const isAdded = addedProducts.has(product.id);
 
@@ -279,6 +296,7 @@ export default function CataloguePro() {
                 className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all group flex flex-col"
                 style={{ minHeight: '580px' }}
               >
+                <Link href={`/catalogue/${product.reference}`} className="block">
                 <div className="relative h-64 bg-gray-100 overflow-hidden flex-shrink-0">
                   <Image
                     src={product.image}
@@ -291,7 +309,7 @@ export default function CataloguePro() {
                 <div className="p-4 flex flex-col flex-grow">
                   <div className="flex items-start justify-between mb-3 gap-2">
                     <div className="flex-1 min-w-0">
-                      <span className="inline-block px-2 py-1 text-xs rounded mb-2 text-white" style={{ backgroundColor: '#235730' }}>
+                      <span className="inline-block px-2 py-1 text-xs rounded mb-2 text-white" style={{ backgroundColor: '#523A28' }}>
                         {formatVolume(product.formatCabine)}
                       </span>
                       <h3 className="font-semibold text-gray-900 line-clamp-2 mb-1" style={{ minHeight: '48px' }}>{product.nom}</h3>
@@ -327,6 +345,9 @@ export default function CataloguePro() {
                         : t('stock.out') || 'Rupture'}
                     </span>
                   </div>
+                </div>
+                </Link>
+                  <div className="px-4 pb-4">
                   {openQty === product.id ? (
                     <div className="w-full space-y-2">
                       <div className="flex items-center border border-gray-200 rounded-lg">
@@ -371,7 +392,7 @@ export default function CataloguePro() {
                         <button
                           onClick={() => handleConfirmQty(product)}
                           className="px-3 py-2 rounded-lg text-white"
-                          style={{ backgroundColor: '#235730' }}
+                          style={{ backgroundColor: '#523A28' }}
                         >
                           {t('add_to_cart')}
                         </button>
@@ -391,9 +412,9 @@ export default function CataloguePro() {
                       onClick={() => handleOpenQty(product)}
                       className={`w-full py-2 rounded-lg transition-all flex items-center justify-center gap-2 text-white ${isAdded ? 'bg-green-500' : ''
                         }`}
-                      style={!isAdded ? { backgroundColor: '#235730' } : {}}
-                      onMouseEnter={(e) => !isAdded && (e.currentTarget.style.backgroundColor = '#1a4023')}
-                      onMouseLeave={(e) => !isAdded && (e.currentTarget.style.backgroundColor = '#235730')}
+                      style={!isAdded ? { backgroundColor: '#523A28' } : {}}
+                      onMouseEnter={(e) => !isAdded && (e.currentTarget.style.backgroundColor = '#3A2819')}
+                      onMouseLeave={(e) => !isAdded && (e.currentTarget.style.backgroundColor = '#523A28')}
                     >
                       {isAdded ? (
                         <>
@@ -408,8 +429,8 @@ export default function CataloguePro() {
                       )}
                     </button>
                   )}
+                  </div>
                 </div>
-              </div>
             );
           })}
         </div>
@@ -428,14 +449,14 @@ export default function CataloguePro() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {filteredProducts.map((product) => {
+                {paginatedProducts.map((product) => {
                   const prixRemise = calculateRemise(product.prixHT);
                   const isAdded = addedProducts.has(product.id);
 
                   return (
                     <tr key={product.id} className="hover:bg-gray-50">
                       <td className="px-3 md:px-6 py-4">
-                        <div className="flex items-center gap-3">
+                        <Link href={`/catalogue/${product.reference}`} className="flex items-center gap-3">
                           <Image
                             src={product.image}
                             alt={product.nom}
@@ -444,14 +465,14 @@ export default function CataloguePro() {
                             className="w-10 h-10 md:w-12 md:h-12 rounded-lg object-cover flex-shrink-0"
                           />
                           <div className="min-w-0">
-                            <p className="text-xs md:text-sm text-gray-900 truncate">{product.nom}</p>
+                            <p className="text-xs md:text-sm text-gray-900 truncate hover:text-[#523A28] transition-colors">{product.nom}</p>
                             <p className="text-xs text-gray-500 truncate hidden md:block">{product.description}</p>
                           </div>
-                        </div>
+                        </Link>
                       </td>
                       <td className="px-3 md:px-6 py-4 text-xs md:text-sm text-gray-600 hidden sm:table-cell">{product.reference}</td>
                       <td className="px-3 md:px-6 py-4">
-                        <span className="px-2 py-1 text-xs rounded text-white whitespace-nowrap" style={{ backgroundColor: '#235730' }}>
+                        <span className="px-2 py-1 text-xs rounded text-white whitespace-nowrap" style={{ backgroundColor: '#523A28' }}>
                           {formatVolume(product.formatCabine)}
                         </span>
                       </td>
@@ -517,7 +538,7 @@ export default function CataloguePro() {
                               <button
                                 onClick={() => handleConfirmQty(product)}
                                 className="w-8 h-8 md:w-9 md:h-9 rounded-lg text-white flex items-center justify-center flex-shrink-0"
-                                style={{ backgroundColor: '#235730' }}
+                                style={{ backgroundColor: '#523A28' }}
                               >
                                 <ShoppingCart className="w-4 h-4" aria-label="add" />
                               </button>
@@ -536,9 +557,9 @@ export default function CataloguePro() {
                               ? 'bg-green-100 text-green-700'
                               : 'text-white'
                               }`}
-                            style={!isAdded ? { backgroundColor: '#235730' } : {}}
-                            onMouseEnter={(e) => !isAdded && (e.currentTarget.style.backgroundColor = '#1a4023')}
-                            onMouseLeave={(e) => !isAdded && (e.currentTarget.style.backgroundColor = '#235730')}
+                            style={!isAdded ? { backgroundColor: '#523A28' } : {}}
+                            onMouseEnter={(e) => !isAdded && (e.currentTarget.style.backgroundColor = '#3A2819')}
+                            onMouseLeave={(e) => !isAdded && (e.currentTarget.style.backgroundColor = '#523A28')}
                           >
                             {isAdded ? (
                               <>
@@ -578,12 +599,57 @@ export default function CataloguePro() {
               setSelectedFormat('Tous');
             }}
             className="px-4 py-2 text-white rounded-lg transition-colors"
-            style={{ backgroundColor: '#235730' }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1a4023')}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#235730')}
+            style={{ backgroundColor: '#523A28' }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#3A2819')}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#523A28')}
           >
             {t('reset_filters')}
           </button>
+        </div>
+      )}
+
+      {/* Pagination */}
+      {filteredProducts.length > 0 && totalPages > 1 && (
+        <div className="flex items-center justify-between flex-wrap gap-4 pt-4">
+          <p className="text-sm text-gray-600">
+            {t('results_count', { count: filteredProducts.length })} — Page {currentPage} / {totalPages}
+          </p>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+              className="p-2 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            {Array.from({ length: totalPages }, (_, i) => i + 1)
+              .filter((p) => p === 1 || p === totalPages || Math.abs(p - currentPage) <= 1)
+              .map((page, idx, arr) => (
+                <span key={page} className="flex items-center">
+                  {idx > 0 && arr[idx - 1] !== page - 1 && (
+                    <span className="px-2 text-gray-400">…</span>
+                  )}
+                  <button
+                    onClick={() => setCurrentPage(page)}
+                    className={`w-9 h-9 rounded-lg text-sm transition-colors ${
+                      page === currentPage
+                        ? 'text-white'
+                        : 'border border-gray-200 text-gray-600 hover:bg-gray-50'
+                    }`}
+                    style={page === currentPage ? { backgroundColor: '#523A28' } : {}}
+                  >
+                    {page}
+                  </button>
+                </span>
+              ))}
+            <button
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+              className="p-2 rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       )}
     </div>

@@ -4,8 +4,8 @@ import { useMemo, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { signupB2C, signupB2B } from '@mishki/firebase';
-import { uploadToCloudinary } from '@mishki/cloudinary';
+import { signupB2C, signupB2B } from '@meybeauty/firebase';
+import { uploadToCloudinary } from '@meybeauty/cloudinary';
 import {
   User,
   Mail,
@@ -61,14 +61,14 @@ export default function InscriptionPro() {
       return template.split(/(\{CGV\}|\{PRIVACY\})/).map((part, index) => {
         if (part === '{CGV}') {
           return (
-            <a key={`cgv-${index}`} href="/conditions" className="hover:underline" style={{ color: '#235730' }}>
+            <a key={`cgv-${index}`} href="/conditions" className="hover:underline" style={{ color: '#523A28' }}>
               {t('cgv')}
             </a>
           );
         }
         if (part === '{PRIVACY}') {
           return (
-            <a key={`privacy-${index}`} href="/confidentialite" className="hover:underline" style={{ color: '#235730' }}>
+            <a key={`privacy-${index}`} href="/confidentialite" className="hover:underline" style={{ color: '#523A28' }}>
               {t('privacy')}
             </a>
           );
@@ -191,17 +191,17 @@ export default function InscriptionPro() {
   };
 
   return (
-    <div className="min-h-screen py-12 px-4" style={{ backgroundColor: '#F7F0E0' }}>
+    <div className="min-h-screen py-12 px-4" style={{ backgroundColor: '#F5EDE4' }}>
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center mb-2 px-6 py-4 rounded-xl" style={{ backgroundColor: '#235730' }}>
+          <div className="inline-flex items-center justify-center mb-2 px-6 py-4 rounded-xl" style={{ backgroundColor: '#523A28' }}>
             <Image
-              src="/b2b/images/logo-mishki.png"
-              alt="Mishki B2B"
+              src="/b2b/images/logo-mey-beauty.png"
+              alt="Mey Beauty B2B"
               width={140}
               height={50}
-              className="object-contain"
+              className="object-contain brightness-0 invert"
             />
           </div>
           <h1 className="text-gray-900 mb-2">
@@ -217,14 +217,14 @@ export default function InscriptionPro() {
           <button
             type="button"
             onClick={() => setActiveTab('b2c')}
-            className={`flex-1 py-3 rounded-lg border ${activeTab === 'b2c' ? 'bg-[#235730] text-white border-[#235730]' : 'bg-white text-gray-700 border-gray-200'}`}
+            className={`flex-1 py-3 rounded-lg border ${activeTab === 'b2c' ? 'bg-[#523A28] text-white border-[#523A28]' : 'bg-white text-gray-700 border-gray-200'}`}
           >
             {t('tabs.b2c')}
           </button>
           <button
             type="button"
             onClick={() => setActiveTab('b2b')}
-            className={`flex-1 py-3 rounded-lg border ${activeTab === 'b2b' ? 'bg-[#235730] text-white border-[#235730]' : 'bg-white text-gray-700 border-gray-200'}`}
+            className={`flex-1 py-3 rounded-lg border ${activeTab === 'b2b' ? 'bg-[#523A28] text-white border-[#523A28]' : 'bg-white text-gray-700 border-gray-200'}`}
           >
             {t('tabs.b2b')}
           </button>
@@ -238,7 +238,7 @@ export default function InscriptionPro() {
                 {/* B2C: informations personnelles */}
                 <div>
                   <h3 className="text-gray-900 mb-4 flex items-center gap-2">
-                    <User className="w-5 h-5" style={{ color: '#235730' }} />
+                    <User className="w-5 h-5" style={{ color: '#523A28' }} />
                     {t('sections.personal')}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -250,7 +250,7 @@ export default function InscriptionPro() {
                         value={formB2C.prenom}
                         onChange={handleChangeB2C}
                         placeholder={t('placeholders.first_name')}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                         required
                       />
                     </div>
@@ -262,7 +262,7 @@ export default function InscriptionPro() {
                         value={formB2C.nom}
                         onChange={handleChangeB2C}
                         placeholder={t('placeholders.last_name')}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                         required
                       />
                     </div>
@@ -272,7 +272,7 @@ export default function InscriptionPro() {
                 {/* B2C: connexion */}
                 <div>
                   <h3 className="text-gray-900 mb-4 flex items-center gap-2">
-                    <Mail className="w-5 h-5" style={{ color: '#235730' }} />
+                    <Mail className="w-5 h-5" style={{ color: '#523A28' }} />
                     {t('sections.connection')}
                   </h3>
                   <div className="space-y-4">
@@ -284,7 +284,7 @@ export default function InscriptionPro() {
                         value={formB2C.email}
                         onChange={handleChangeB2C}
                         placeholder={t('placeholders.email')}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                         required
                       />
                     </div>
@@ -297,7 +297,7 @@ export default function InscriptionPro() {
                           value={formB2C.password}
                           onChange={handleChangeB2C}
                           placeholder={t('placeholders.password')}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                           required
                         />
                       </div>
@@ -309,7 +309,7 @@ export default function InscriptionPro() {
                           value={formB2C.confirmPassword}
                           onChange={handleChangeB2C}
                           placeholder={t('placeholders.password')}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                           required
                         />
                       </div>
@@ -320,7 +320,7 @@ export default function InscriptionPro() {
                 {/* B2C: adresse */}
                 <div>
                   <h3 className="text-gray-900 mb-4 flex items-center gap-2">
-                    <MapPin className="w-5 h-5" style={{ color: '#235730' }} />
+                    <MapPin className="w-5 h-5" style={{ color: '#523A28' }} />
                     {t('sections.address')}
                   </h3>
                   <div className="space-y-4">
@@ -332,7 +332,7 @@ export default function InscriptionPro() {
                         value={formB2C.telephone}
                         onChange={handleChangeB2C}
                         placeholder={t('placeholders.phone')}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                         required
                       />
                     </div>
@@ -344,7 +344,7 @@ export default function InscriptionPro() {
                         value={formB2C.adresse}
                         onChange={handleChangeB2C}
                         placeholder={t('placeholders.address')}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                         required
                       />
                     </div>
@@ -357,7 +357,7 @@ export default function InscriptionPro() {
                           value={formB2C.codePostal}
                           onChange={handleChangeB2C}
                           placeholder={t('placeholders.zip_code')}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                           required
                         />
                       </div>
@@ -369,7 +369,7 @@ export default function InscriptionPro() {
                           value={formB2C.ville}
                           onChange={handleChangeB2C}
                           placeholder={t('placeholders.city')}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                           required
                         />
                       </div>
@@ -385,7 +385,7 @@ export default function InscriptionPro() {
                       checked={acceptConditionsB2C}
                       onChange={(e) => setAcceptConditionsB2C(e.target.checked)}
                       className="w-5 h-5 border-gray-300 rounded mt-0.5 flex-shrink-0"
-                      style={{ accentColor: '#235730' }}
+                      style={{ accentColor: '#523A28' }}
                       required
                     />
                     <span className="text-sm text-gray-600">{renderConditions}</span>
@@ -399,7 +399,7 @@ export default function InscriptionPro() {
                 {/* Informations personnelles */}
                 <div>
                   <h3 className="text-gray-900 mb-4 flex items-center gap-2">
-                    <User className="w-5 h-5" style={{ color: '#235730' }} />
+                    <User className="w-5 h-5" style={{ color: '#523A28' }} />
                     {t('sections.personal')}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -411,7 +411,7 @@ export default function InscriptionPro() {
                         value={formB2B.prenom}
                         onChange={handleChange}
                         placeholder={t('placeholders.first_name')}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                         required
                       />
                     </div>
@@ -423,7 +423,7 @@ export default function InscriptionPro() {
                         value={formB2B.nom}
                         onChange={handleChange}
                         placeholder={t('placeholders.last_name')}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                         required
                       />
                     </div>
@@ -433,7 +433,7 @@ export default function InscriptionPro() {
                 {/* Informations de connexion */}
                 <div>
                   <h3 className="text-gray-900 mb-4 flex items-center gap-2">
-                    <Mail className="w-5 h-5" style={{ color: '#235730' }} />
+                    <Mail className="w-5 h-5" style={{ color: '#523A28' }} />
                     {t('sections.connection')}
                   </h3>
                   <div className="space-y-4">
@@ -445,7 +445,7 @@ export default function InscriptionPro() {
                         value={formB2B.email}
                         onChange={handleChange}
                         placeholder={t('placeholders.email')}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                         required
                       />
                     </div>
@@ -458,7 +458,7 @@ export default function InscriptionPro() {
                           value={formB2B.password}
                           onChange={handleChange}
                           placeholder={t('placeholders.password')}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                           required
                         />
                       </div>
@@ -470,7 +470,7 @@ export default function InscriptionPro() {
                           value={formB2B.confirmPassword}
                           onChange={handleChange}
                           placeholder={t('placeholders.password')}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                           required
                         />
                       </div>
@@ -481,7 +481,7 @@ export default function InscriptionPro() {
                 {/* Informations entreprise */}
                 <div>
                   <h3 className="text-gray-900 mb-4 flex itemscenter gap-2">
-                    <Building2 className="w-5 h-5" style={{ color: '#235730' }} />
+                    <Building2 className="w-5 h-5" style={{ color: '#523A28' }} />
                     {t('sections.company')}
                   </h3>
                   <div className="space-y-4">
@@ -494,7 +494,7 @@ export default function InscriptionPro() {
                           value={formB2B.societe}
                           onChange={handleChange}
                           placeholder={t('placeholders.company_name')}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                           required
                         />
                       </div>
@@ -506,7 +506,7 @@ export default function InscriptionPro() {
                           value={formB2B.siret}
                           onChange={handleChange}
                           placeholder={t('placeholders.siret')}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                           required
                         />
                       </div>
@@ -518,7 +518,7 @@ export default function InscriptionPro() {
                           name="typeActivite"
                           value={formB2B.typeActivite}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] text-gray-900 bg-white"
                           required
                         >
                           <option value="">{t('placeholders.select')}</option>
@@ -537,7 +537,7 @@ export default function InscriptionPro() {
                           value={formB2B.telephone}
                           onChange={handleChange}
                           placeholder={t('placeholders.phone')}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                           required
                         />
                       </div>
@@ -550,7 +550,7 @@ export default function InscriptionPro() {
                         value={formB2B.adresse}
                         onChange={handleChange}
                         placeholder={t('placeholders.address')}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                         required
                       />
                     </div>
@@ -563,7 +563,7 @@ export default function InscriptionPro() {
                           value={formB2B.codePostal}
                           onChange={handleChange}
                           placeholder={t('placeholders.zip_code')}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                           required
                         />
                       </div>
@@ -575,7 +575,7 @@ export default function InscriptionPro() {
                           value={formB2B.ville}
                           onChange={handleChange}
                           placeholder={t('placeholders.city')}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                           required
                         />
                       </div>
@@ -586,13 +586,13 @@ export default function InscriptionPro() {
                 {/* Documents */}
                 <div>
                   <h3 className="text-gray-900 mb-4 flex items-center gap-2">
-                    <FileText className="w-5 h-5" style={{ color: '#235730' }} />
+                    <FileText className="w-5 h-5" style={{ color: '#523A28' }} />
                     {t('sections.documents')}
                   </h3>
 
                   <div className="bg-gray-50 border border-dashed border-gray-200 rounded-xl p-4 space-y-5">
                     <div className="flex items-start gap-3 text-sm text-gray-700">
-                      <Upload className="w-5 h-5 mt-0.5 text-[#235730]" />
+                      <Upload className="w-5 h-5 mt-0.5 text-[#523A28]" />
                       <div>
                         <p className="font-medium">Formats acceptés : PDF, JPG, JPEG, PNG</p>
                         <p className="text-xs text-gray-500">Taille max : 10 Mo par fichier</p>
@@ -603,15 +603,15 @@ export default function InscriptionPro() {
                       <div className="space-y-2">
                         <label htmlFor="kbis-upload" className="text-sm font-medium text-gray-800 flex items-center gap-2">
                           {t('fields.kbis')}
-                          <span className="text-xs bg-[#235730]/10 text-[#235730] px-2 py-0.5 rounded-full">Obligatoire</span>
+                          <span className="text-xs bg-[#523A28]/10 text-[#523A28] px-2 py-0.5 rounded-full">Obligatoire</span>
                         </label>
                         <label
                           htmlFor="kbis-upload"
-                          className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-gray-300 hover:border-[#235730] hover:bg-white/50 rounded-lg py-4 px-3 text-center cursor-pointer transition-colors"
+                          className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-gray-300 hover:border-[#523A28] hover:bg-white/50 rounded-lg py-4 px-3 text-center cursor-pointer transition-colors"
                         >
-                          <Upload className="w-5 h-5 text-[#235730]" />
+                          <Upload className="w-5 h-5 text-[#523A28]" />
                           <div className="text-sm text-gray-700">
-                            Glissez-déposez ou <span className="text-[#235730] font-semibold">cliquez pour importer</span>
+                            Glissez-déposez ou <span className="text-[#523A28] font-semibold">cliquez pour importer</span>
                           </div>
                           <p className="text-xs text-gray-500">PDF, JPG, JPEG, PNG · max 10 Mo</p>
                           <input
@@ -624,7 +624,7 @@ export default function InscriptionPro() {
                           />
                         </label>
                         {kbisFile && (
-                          <p className="text-xs text-[#235730] bg-[#235730]/5 rounded px-2 py-1 text-left">
+                          <p className="text-xs text-[#523A28] bg-[#523A28]/5 rounded px-2 py-1 text-left">
                             Fichier sélectionné : {kbisFile.name}
                           </p>
                         )}
@@ -633,15 +633,15 @@ export default function InscriptionPro() {
                       <div className="space-y-2">
                         <label htmlFor="id-upload" className="text-sm font-medium text-gray-800 flex items-center gap-2">
                           {t('fields.id_card')}
-                          <span className="text-xs bg-[#235730]/10 text-[#235730] px-2 py-0.5 rounded-full">Obligatoire</span>
+                          <span className="text-xs bg-[#523A28]/10 text-[#523A28] px-2 py-0.5 rounded-full">Obligatoire</span>
                         </label>
                         <label
                           htmlFor="id-upload"
-                          className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-gray-300 hover:border-[#235730] hover:bg-white/50 rounded-lg py-4 px-3 text-center cursor-pointer transition-colors"
+                          className="flex flex-col items-center justify-center gap-2 border-2 border-dashed border-gray-300 hover:border-[#523A28] hover:bg-white/50 rounded-lg py-4 px-3 text-center cursor-pointer transition-colors"
                         >
-                          <Upload className="w-5 h-5 text-[#235730]" />
+                          <Upload className="w-5 h-5 text-[#523A28]" />
                           <div className="text-sm text-gray-700">
-                            Glissez-déposez ou <span className="text-[#235730] font-semibold">cliquez pour importer</span>
+                            Glissez-déposez ou <span className="text-[#523A28] font-semibold">cliquez pour importer</span>
                           </div>
                           <p className="text-xs text-gray-500">PDF, JPG, JPEG, PNG · max 10 Mo</p>
                           <input
@@ -654,7 +654,7 @@ export default function InscriptionPro() {
                           />
                         </label>
                         {pieceIdentiteFile && (
-                          <p className="text-xs text-[#235730] bg-[#235730]/5 rounded px-2 py-1 text-left">
+                          <p className="text-xs text-[#523A28] bg-[#523A28]/5 rounded px-2 py-1 text-left">
                             Fichier sélectionné : {pieceIdentiteFile.name}
                           </p>
                         )}
@@ -664,7 +664,7 @@ export default function InscriptionPro() {
                 </div>
 
                 {/* Avantages B2B */}
-                <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-6">
+                <div className="bg-gradient-to-br from-[#F5EDE4] to-[#EDE0D3] rounded-lg p-6">
                   <h4 className="text-gray-900 mb-4">{t('advantages.title')}</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     <div className="flex items-center gap-2 text-sm text-gray-700">
@@ -702,7 +702,7 @@ export default function InscriptionPro() {
                       checked={acceptConditionsB2B}
                       onChange={(e) => setAcceptConditionsB2B(e.target.checked)}
                       className="w-5 h-5 border-gray-300 rounded mt-0.5 flex-shrink-0"
-                      style={{ accentColor: '#235730' }}
+                      style={{ accentColor: '#523A28' }}
                       required
                     />
                     <span className="text-sm text-gray-600">{renderConditions}</span>
@@ -717,9 +717,9 @@ export default function InscriptionPro() {
                 type="submit"
                 disabled={isLoading}
                 className="flex-1 text-white py-3 rounded-lg transition-all disabled:opacity-50"
-                style={{ backgroundColor: '#235730' }}
-                onMouseEnter={(e) => !isLoading && (e.currentTarget.style.backgroundColor = '#1a4023')}
-                onMouseLeave={(e) => !isLoading && (e.currentTarget.style.backgroundColor = '#235730')}
+                style={{ backgroundColor: '#523A28' }}
+                onMouseEnter={(e) => !isLoading && (e.currentTarget.style.backgroundColor = '#3A2819')}
+                onMouseLeave={(e) => !isLoading && (e.currentTarget.style.backgroundColor = '#523A28')}
               >
                 {isLoading
                   ? t('btn_submitting')

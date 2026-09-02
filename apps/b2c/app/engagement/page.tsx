@@ -55,7 +55,7 @@ export default function SustainabilityPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#235730]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#523A28]/80 to-transparent" />
           <div className="absolute inset-0 flex items-center">
             <div className="container mx-auto px-6">
               <h1 className="text-white text-4xl md:text-6xl" style={{ fontFamily: 'var(--font-caveat)' }}>
@@ -77,7 +77,7 @@ export default function SustainabilityPage() {
 
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-[#235730] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '42px' }}>
+              <h2 className="text-[#523A28] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '42px' }}>
                 {t('hero_title')}
               </h2>
               <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
@@ -88,8 +88,8 @@ export default function SustainabilityPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
               {commitmentsList.map((commitment, index) => (
                 <div key={index} className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
-                  <div className="w-14 h-14 bg-[#235730]/10 rounded-full flex items-center justify-center mb-4">
-                    <commitment.icon className="w-7 h-7 text-[#235730]" />
+                  <div className="w-14 h-14 bg-[#523A28]/10 rounded-full flex items-center justify-center mb-4">
+                    <commitment.icon className="w-7 h-7 text-[#523A28]" />
                   </div>
                   <h3 className="font-semibold text-[#2d2d2d] mb-2">{commitment.title}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed">{commitment.description}</p>
@@ -97,7 +97,7 @@ export default function SustainabilityPage() {
               ))}
             </div>
 
-            <div className="bg-[#235730] rounded-lg p-8 md:p-12 text-white mb-16">
+            <div className="bg-[#523A28] rounded-lg p-8 md:p-12 text-white mb-16">
               <h2 className="text-3xl mb-6" style={{ fontFamily: 'var(--font-caveat)' }}>
                 {t('stats.title')}
               </h2>
@@ -122,12 +122,12 @@ export default function SustainabilityPage() {
             </div>
 
             <div className="mb-16">
-              <h2 className="text-[#235730] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '36px' }}>
+              <h2 className="text-[#523A28] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '36px' }}>
                 {t('supply.title')}
               </h2>
               <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="w-8 h-8 bg-[#235730] text-white rounded-full flex items-center justify-center flex-shrink-0 font-medium">
+                  <div className="w-8 h-8 bg-[#523A28] text-white rounded-full flex items-center justify-center flex-shrink-0 font-medium">
                     1
                   </div>
                   <div>
@@ -138,7 +138,7 @@ export default function SustainabilityPage() {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="w-8 h-8 bg-[#235730] text-white rounded-full flex items-center justify-center flex-shrink-0 font-medium">
+                  <div className="w-8 h-8 bg-[#523A28] text-white rounded-full flex items-center justify-center flex-shrink-0 font-medium">
                     2
                   </div>
                   <div>
@@ -149,7 +149,7 @@ export default function SustainabilityPage() {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="w-8 h-8 bg-[#235730] text-white rounded-full flex items-center justify-center flex-shrink-0 font-medium">
+                  <div className="w-8 h-8 bg-[#523A28] text-white rounded-full flex items-center justify-center flex-shrink-0 font-medium">
                     3
                   </div>
                   <div>
@@ -160,7 +160,7 @@ export default function SustainabilityPage() {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="w-8 h-8 bg-[#235730] text-white rounded-full flex items-center justify-center flex-shrink-0 font-medium">
+                  <div className="w-8 h-8 bg-[#523A28] text-white rounded-full flex items-center justify-center flex-shrink-0 font-medium">
                     4
                   </div>
                   <div>
@@ -173,17 +173,15 @@ export default function SustainabilityPage() {
               </div>
             </div>
 
-            <div className="bg-[#235730]/5 rounded-lg p-8 text-center">
-              <h2 className="text-[#235730] mb-4" style={{ fontFamily: 'var(--font-caveat)', fontSize: '32px' }}>
+            <div className="bg-[#523A28]/5 rounded-lg p-8 text-center">
+              <h2 className="text-[#523A28] mb-4" style={{ fontFamily: 'var(--font-caveat)', fontSize: '32px' }}>
                 {t('join.title')}
               </h2>
               <p className="text-gray-600 mb-6 max-w-xl mx-auto">
                 {t('join.desc')}
               </p>
-              <Link href="/produits">
-                <button className="bg-[#235730] hover:bg-[#1d4626] text-white px-8 py-3 rounded-sm transition-colors">
-                  {t('join.cta')}
-                </button>
+              <Link href="/produits" className="inline-block bg-[#523A28] hover:bg-[#3A2819] text-white px-8 py-3 rounded-sm transition-colors">
+                {t('join.cta')}
               </Link>
             </div>
           </div>

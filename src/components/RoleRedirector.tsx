@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { auth, db, doc, getDoc } from '@mishki/firebase';
+import { auth, db, doc, getDoc } from '@meybeauty/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 
 export default function RoleRedirector() {

@@ -86,7 +86,7 @@ export default function LanguageSwitcher() {
                 disabled={isPending}
                 className={cn(
                     "flex items-center gap-3 px-4 py-3 rounded-full shadow-[0_8px_25px_-5px_rgba(35,87,48,0.4)] transition-all duration-500 transform hover:scale-105 active:scale-95 group",
-                    "bg-[#235730] text-white hover:bg-[#1a4224]",
+                    "bg-[#523A28] text-white hover:bg-[#1a4224]",
                     isOpen ? "ring-4 ring-emerald-500/20 translate-y-[-4px]" : "",
                     isPending ? "opacity-90 cursor-wait" : ""
                 )}

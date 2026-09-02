@@ -82,13 +82,31 @@
   }
   body {
     @apply text-foreground;
-    background-color: #f7f0e0;
+    background-color: #F5EDE4;
+  }
+  input,
+  select,
+  textarea {
+    color: #1A1410;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: #9ca3af;
   }
 
   .font-serif {
-    font-family: var(--font-playfair), serif;
+    font-family: var(--font-cormorant-garamond), serif;
   }
-  .font-caveat {
+  .font-cormorant-sc {
     font-family: var(--font-caveat), cursive;
+  }
+  .font-titre {
+    font-family: var(--font-cormorant-garamond), serif;
+  }
+  .font-sc {
+    font-family: var(--font-caveat), cursive;
+  }
+  .font-corps {
+    font-family: var(--font-lato), sans-serif;
   }
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { auth, db, login as firebaseLogin, logout as firebaseLogout, signupB2B, doc, getDoc } from '@mishki/firebase';
+import { auth, db, login as firebaseLogin, logout as firebaseLogout, signupB2B, doc, getDoc } from '@meybeauty/firebase';
 
 import { onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
 

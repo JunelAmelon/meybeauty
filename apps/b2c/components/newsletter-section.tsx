@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Button } from "@/apps/b2c/components/ui/button"
 import { Input } from "@/apps/b2c/components/ui/input"
 import { useTranslations } from "next-intl"
-import { db } from "@mishki/firebase"
+import { db } from "@meybeauty/firebase"
 import { addDoc, collection, serverTimestamp } from "firebase/firestore"
 
 export function NewsletterSection() {
@@ -40,7 +40,7 @@ export function NewsletterSection() {
     <section className="py-16 bg-white" id="newsletter">
       <div className="container mx-auto px-6 text-center">
         <h2
-          className="mb-4 text-[#235730]"
+          className="mb-4 text-[#523A28]"
           style={{
             fontFamily: 'var(--font-caveat)',
             fontSize: '48px',
@@ -56,13 +56,13 @@ export function NewsletterSection() {
           <Input
             type="email"
             placeholder={t('placeholder')}
-            className="flex-1 border-[#235730]"
+            className="flex-1 border-[#523A28]"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
             disabled={loading}
           />
-          <Button type="submit" disabled={loading} className="bg-[#235730] hover:bg-[#1d4626] text-white px-8">
+          <Button type="submit" disabled={loading} className="bg-[#523A28] hover:bg-[#3A2819] text-white px-8">
             {t('btn')}
           </Button>
         </form>

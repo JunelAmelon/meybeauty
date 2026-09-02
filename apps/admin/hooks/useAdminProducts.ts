@@ -14,7 +14,7 @@ import {
     updateDoc,
     type QuerySnapshot,
     type DocumentData,
-} from '@mishki/firebase';
+} from '@meybeauty/firebase';
 
 export type ProductDb = {
     slug: string;

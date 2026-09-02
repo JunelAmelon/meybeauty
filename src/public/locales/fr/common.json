@@ -66,7 +66,15 @@
                 "modifyDiscount": "Modifier la remise",
                 "modifyDiscountPrompt": "Nouvelle remise (%) :"
             },
-            "error": "Erreur lors de la récupération des professionnels : {error}"
+            "error": "Erreur lors de la récupération des professionnels : {error}",
+            "auth": {
+                "register": {
+                    "btn_cancel": "Annuler"
+                }
+            },
+            "settings": {
+                "saveChanges": "Enregistrer"
+            }
         },
         "professionalDetail": {
             "backToList": "Retour à la liste",
@@ -95,7 +103,9 @@
                 "validateAccount": "Valider le compte",
                 "modifyDiscount": "Modifier la remise",
                 "reactivateAccount": "Réactiver le compte",
-                "suspendAccount": "Suspendre le compte"
+                "suspendAccount": "Suspendre le compte",
+                "cancel": "Annuler",
+                "save": "Enregistrer"
             },
             "error": "Erreur : {error}",
             "userNotFound": "Utilisateur non trouvé"
@@ -267,6 +277,90 @@
                 "user": "Utilisateur: {user}"
             }
         },
+        "downloads": {
+            "title": "Téléchargements B2B",
+            "subtitle": "Gérer les fichiers et supports de communication pour les professionnels",
+            "add": "Ajouter un fichier",
+            "edit": "Modifier le fichier",
+            "search": "Rechercher un fichier...",
+            "empty": "Aucun fichier trouvé. Cliquez sur \"Ajouter un fichier\" pour commencer.",
+            "form": {
+                "slug": "Identifiant (slug)",
+                "title": "Titre",
+                "type": "Type",
+                "category": "Catégorie",
+                "file": "Fichier",
+                "uploading": "Upload en cours...",
+                "upload_placeholder": "Cliquez pour importer un fichier (image, PDF)",
+                "replace_file": "Remplacer le fichier",
+                "save": "Enregistrer",
+                "cancel": "Annuler",
+                "use_list": "Liste",
+                "new_category": "Nouvelle catégorie"
+            }
+        },
+        "protocoles": {
+            "title": "Protocoles B2B",
+            "subtitle": "Gérer les fiches techniques et rituels cabine pour les professionnels",
+            "add": "Ajouter un protocole",
+            "edit": "Modifier le protocole",
+            "search": "Rechercher un protocole...",
+            "empty": "Aucun protocole trouvé. Cliquez sur \"Ajouter un protocole\" pour commencer.",
+            "stats_total": "Total protocoles",
+            "stats_fiches": "Fiches techniques",
+            "stats_rituels": "Rituels cabine",
+            "form": {
+                "slug": "Identifiant (slug)",
+                "type": "Type",
+                "title": "Titre",
+                "description": "Description",
+                "category": "Catégorie",
+                "reference": "Référence",
+                "duration": "Durée",
+                "volume": "Volume",
+                "extraction": "Extraction",
+                "theme": "Thème",
+                "ambiance": "Ambiance",
+                "image": "Image",
+                "upload_image": "Cliquez pour uploader une image",
+                "document": "Document (PDF, etc.)",
+                "upload_doc": "Cliquez pour uploader un document",
+                "file": "Fichier PDF",
+                "upload_placeholder": "Cliquez pour importer un fichier PDF",
+                "uploading": "Upload en cours...",
+                "replace_file": "Remplacer le fichier",
+                "save": "Enregistrer",
+                "cancel": "Annuler",
+                "section_basic": "Informations de base",
+                "section_media": "Médias",
+                "section_actifs": "Actifs",
+                "section_proprietes": "Propriétés",
+                "section_utilisation": "Utilisation",
+                "section_caracteristiques": "Caractéristiques",
+                "section_avis": "Avis expert",
+                "section_preparation": "Préparation",
+                "section_deroulement": "Déroulement",
+                "section_retail": "Conseils retail",
+                "section_notes": "Notes",
+                "add_actif": "Ajouter un actif",
+                "empty_actifs": "Aucun actif. Cliquez sur \"Ajouter un actif\" pour commencer.",
+                "add_phase": "Ajouter une phase",
+                "empty_phases": "Aucune phase. Cliquez sur \"Ajouter une phase\" pour commencer.",
+                "frequence": "Fréquence",
+                "methode": "Méthode d'application",
+                "temps": "Temps de pose",
+                "retrait": "Retrait",
+                "texture": "Texture",
+                "odeur": "Odeur",
+                "ph": "pH",
+                "conservation": "Conservation",
+                "prep_cabine": "Préparation cabine",
+                "prep_materiel": "Matériel",
+                "prep_produits": "Produits",
+                "use_list": "Liste",
+                "new_category": "Nouvelle catégorie"
+            }
+        },
         "header": {
             "search": "Rechercher...",
             "admin": "Admin",
@@ -281,6 +375,10 @@
                 "professionals": "Professionnels",
                 "orders": "Commandes",
                 "products": "Produits",
+                "blog": "Blog",
+                "rituals": "Rituels",
+                "protocoles": "Protocoles",
+                "downloads": "Téléchargements",
                 "settings": "Paramètres",
                 "logs": "Logs"
             },
@@ -356,14 +454,14 @@
                 },
                 "info": {
                     "title": "Espace Professionnel",
-                    "desc": "Accédez aux tarifs pros, commandes rapides et protocoles dédiés aux partenaires Mishki."
+                    "desc": "Accédez aux tarifs pros, commandes rapides et protocoles dédiés aux partenaires Mey Beauty."
                 }
             },
             "register": {
                 "title": "Inscription Professionnelle",
                 "subtitle": "Créez votre compte B2B avec tarifs HT et remises exclusives",
-                "title_b2c": "Créer mon compte Mishki",
-                "subtitle_b2c": "Rejoignez la communauté Mishki et profitez d'offres exclusives",
+                "title_b2c": "Créer mon compte Mey Beauty",
+                "subtitle_b2c": "Rejoignez la communauté Mey Beauty et profitez d'offres exclusives",
                 "sections": {
                     "personal": "Informations personnelles",
                     "connection": "Informations de connexion",
@@ -495,6 +593,59 @@
                 "col_action": "Action",
                 "btn_added": "Ajouté",
                 "btn_add": "Ajouter"
+            },
+            "detail": {
+                "back": "Retour",
+                "reviews": "{count, plural, =0 {Aucun avis} =1 {1 avis} other {# avis}}",
+                "questions": "{count, plural, =0 {Aucune question} =1 {1 question} other {# questions}}",
+                "view_desc": "Voir la description",
+                "in_stock": "EN STOCK",
+                "delivery": "Achetez-le aujourd'hui et\nrecevez-le à partir du",
+                "points": "Vous obtiendrez jusqu'à {count} points !",
+                "stock_out": "Rupture de stock",
+                "stock_limited": "Stock insuffisant, max {max}",
+                "stock_left": "Stock : {count}",
+                "in_stock_with_qty": "En stock ({count})",
+                "add_to_cart": "Ajouter au panier",
+                "loading_product": "Chargement du produit...",
+                "product_not_found": "Produit introuvable",
+                "anonymous": "Anonyme",
+                "review_error": "Impossible d'enregistrer l'avis. Veuillez réessayer.",
+                "question_error": "Impossible d'enregistrer la question. Veuillez réessayer.",
+                "tabs": {
+                    "description": "Description",
+                    "reviews": "Avis ({count})",
+                    "questions": "Questions et Réponses ({count})"
+                },
+                "view_more": "Voir plus",
+                "nutrition": "Valeurs nutritionnelles",
+                "specs": "Fiche technique",
+                "video_desc": "Découvrez notre produit en vidéo",
+                "form_review": {
+                    "title": "Laisser un avis",
+                    "label_rating": "Votre note",
+                    "placeholder_name": "Votre nom",
+                    "placeholder_text": "Votre avis...",
+                    "btn_send": "Envoyer mon avis"
+                },
+                "form_question": {
+                    "title": "Poser une question",
+                    "placeholder_name": "Votre nom",
+                    "placeholder_text": "Votre question...",
+                    "btn_send": "Envoyer ma question"
+                },
+                "no_questions": "Aucune question pour le moment. Soyez le premier à poser une question !",
+                "qa_prefix": {
+                    "q": "Q",
+                    "r": "R"
+                },
+                "usage_title": "Conseils d'utilisation",
+                "ingredient_title": "Ingrédient à la base",
+                "currency": "EUR",
+                "no_description": "Aucune description disponible pour ce produit.",
+                "cancel": "Annuler",
+                "similar_products": "Produits similaires",
+                "loading": "Envoi..."
             }
         },
         "protocoles": {
@@ -521,6 +672,7 @@
         "downloads_page": {
             "title": "Téléchargements",
             "subtitle": "PLV, visuels marketing et supports de communication professionnels",
+            "loading": "Chargement...",
             "search_placeholder": "Rechercher un fichier...",
             "filter_all_types": "Tous les types",
             "filter_favorites": "Favoris",
@@ -532,6 +684,7 @@
             },
             "results_count": "{count, plural, =0 {Aucun fichier trouvé} =1 {1 fichier trouvé} other {# fichiers trouvés}}",
             "btn_download": "Télécharger",
+            "btn_preview": "Prévisualiser",
             "no_results": "Aucun fichier trouvé",
             "no_results_desc": "Essayez de modifier vos filtres de recherche",
             "reset_filters": "Réinitialiser les filtres",
@@ -869,6 +1022,7 @@
             }
         },
         "technical_sheet": {
+            "loading": "Chargement...",
             "back_btn": "Retour aux protocoles",
             "badge": "Fiche Technique",
             "btn_download": "Télécharger PDF",
@@ -909,8 +1063,7 @@
                 "nav": {
                     "products": "Produits",
                     "blog": "Blog",
-                    "rituals": "Rituels",
-                    "podcast": "Podcast"
+                    "rituals": "Rituels"
                 },
                 "auth": {
                     "login_register": "Connexion/Inscription"
@@ -934,13 +1087,13 @@
                     "title": "Rejoignez-nous ici",
                     "desc": "Suivez-nous sur nos réseaux sociaux pour découvrir nos dernières actualités et conseils beauté."
                 },
-                "rights": "Mishki. Tous droits réservés."
+                "rights": "Mey Beauty. Tous droits réservés."
             }
         },
         "home": {
             "hero": {
-                "title": "Révélez une beauté pure et précieuse avec Mishki, soins d'exception issus de la biodiversité péruvienne.",
-                "desc": "Plongez au cœur de Mishki, marque de beauté naturelle raffinée, inspirée des plantes sacrées du Pérou et des rituels traditionnels. Nos soins aux ingrédients 100% naturels révèlent l'éclat de votre peau, respectent la biodiversité et vous offrent une expérience sensorielle unique. Beauté, pureté, douceur et élégance, à chaque geste de votre routine.",
+                "title": "Révélez votre beauté naturelle avec Mey Beauty, soins d'exception et technologies de pointe pour une peau éclatante.",
+                "desc": "Plongez au cœur de Mey Beauty, institut de beauté raffiné à Viry-Châtillon. Nos soins experts allient technologies de pointe et actifs premium pour révéler l'éclat de votre peau, sublimer votre silhouette et vous offrir une expérience sensorielle unique. Beauté, expertise et élégance, à chaque geste de votre routine.",
                 "cta": "Découvrir nos produits"
             },
             "products": {
@@ -969,7 +1122,7 @@
         },
         "shop": {
             "title": "Nos Produits",
-            "subtitle": "Découvrez nos soins naturels issus de la biodiversité péruvienne",
+            "subtitle": "Découvrez nos soins experts et technologies de pointe pour une peau éclatante",
             "loading": "Chargement...",
             "categories_heading": "Catégories",
             "categories": {
@@ -1032,7 +1185,9 @@
                 "ingredient_title": "Ingrédient à la base",
                 "currency": "EUR",
                 "no_description": "Aucune description disponible pour ce produit.",
-                "cancel": "Annuler"
+                "cancel": "Annuler",
+                "similar_products": "Produits similaires",
+                "loading": "Envoi..."
             },
             "back": "Retour"
         },
@@ -1049,13 +1204,13 @@
         },
         "about": {
             "title": "À propos",
-            "subtitle": "Découvrez l'histoire et les valeurs qui animent Mishki",
+            "subtitle": "Découvrez l'histoire et les valeurs qui animent Mey Beauty",
             "back": "Retour",
             "history": {
                 "title": "Notre histoire",
-                "p1": "Mishki est né d'une passion pour la beauté naturelle et d'un profond respect pour les traditions ancestrales péruviennes. Notre fondatrice, après plusieurs voyages au Pérou, a été émerveillée par la richesse de la biodiversité locale et les secrets de beauté transmis de mère en fille depuis des générations.",
-                "p2": "En quechua, \"Mishki\" signifie \"doux\" - une référence à la douceur des soins que nous proposons et à notre approche respectueuse envers la nature et les communautés avec lesquelles nous travaillons.",
-                "p3": "Aujourd'hui, Mishki propose une gamme de soins naturels qui allie le meilleur de la tradition péruvienne aux exigences de la cosmétique moderne, pour des produits efficaces, éthiques et respectueux de votre peau."
+                "p1": "Mey Beauty est né d'une passion pour la beauté et le bien-être, avec pour vocation d'offrir des soins d'exception dans un cadre raffiné et accueillant. Notre fondatrice a souhaité créer un institut de beauté où l'expertise technique rencontre l'art du soin pour révéler la beauté unique de chaque personne.",
+                "p2": "Installée à Viry-Châtillon, Mey Beauty s'inspire des meilleures technologies de pointe et des actifs premium pour offrir des résultats visibles et durables, tout en cultivant une approche personnalisée et bienveillante.",
+                "p3": "Aujourd'hui, Mey Beauty propose une gamme complète de soins du visage, du corps et de minceur, alliant technologies de pointe et expertise professionnelle pour des résultats efficaces et une expérience sensorielle unique."
             },
             "values": {
                 "title": "Nos valeurs",
@@ -1065,7 +1220,7 @@
                 },
                 "authenticity": {
                     "title": "Authenticité",
-                    "desc": "Nous préservons les recettes ancestrales péruviennes transmises de génération en génération."
+                    "desc": "Nous sélectionnons des actifs premium et des technologies de pointe reconnus pour leur efficacité."
                 },
                 "sustainability": {
                     "title": "Durabilité",
@@ -1078,7 +1233,7 @@
             },
             "engagement": {
                 "title": "Notre engagement",
-                "intro": "Chez Mishki, nous croyons que la beauté ne devrait jamais se faire au détriment de la planète ou des communautés. C'est pourquoi nous nous engageons à :",
+                "intro": "Chez Mey Beauty, nous croyons que la beauté ne devrait jamais se faire au détriment de la planète ou des communautés. C'est pourquoi nous nous engageons à :",
                 "list": {
                     "ingredients": "Utiliser uniquement des ingrédients naturels et biodégradables",
                     "fair": "Travailler en partenariat équitable avec les producteurs locaux",
@@ -1097,7 +1252,7 @@
             "subtitle": "Une beauté responsable pour un avenir durable",
             "back": "Retour",
             "hero_title": "La beauté au service de la planète",
-            "hero_desc": "Chez Mishki, nous croyons qu'il est possible de prendre soin de soi tout en prenant soin de notre planète. Notre engagement environnemental et social est au cœur de chacune de nos décisions, de la sélection des ingrédients à la livraison de vos commandes.",
+            "hero_desc": "Chez Mey Beauty, nous croyons qu'il est possible de prendre soin de soi tout en prenant soin de notre planète. Notre engagement environnemental et social est au cœur de chacune de nos décisions, de la sélection des ingrédients à la livraison de vos commandes.",
             "commitments": {
                 "ingredients": {
                     "title": "Ingrédients naturels",
@@ -1109,7 +1264,7 @@
                 },
                 "reforestation": {
                     "title": "Reforestation",
-                    "desc": "Pour chaque commande, nous plantons un arbre au Pérou en partenariat avec des associations locales."
+                    "desc": "Pour chaque commande, nous soutenons des initiatives locales en faveur de l'environnement et du bien-être."
                 },
                 "water": {
                     "title": "Préservation de l'eau",
@@ -1117,7 +1272,7 @@
                 },
                 "fair": {
                     "title": "Commerce équitable",
-                    "desc": "Nous travaillons en direct avec les producteurs péruviens et leur garantissons des revenus justes."
+                    "desc": "Nous travaillons en direct avec nos partenaires et leur garantissons des conditions justes et équitables."
                 },
                 "energy": {
                     "title": "Énergie renouvelable",
@@ -1136,7 +1291,7 @@
                 "steps": {
                     "sourcing": {
                         "title": "Sourcing responsable",
-                        "desc": "Nous sélectionnons nos ingrédients directement auprès de producteurs péruviens pratiquant une agriculture durable et respectueuse de la biodiversité."
+                        "desc": "Nous sélectionnons nos produits auprès de laboratoires reconnus pour leur exigence de qualité et leur engagement envers l'innovation."
                     },
                     "manufacturing": {
                         "title": "Fabrication éthique",
@@ -1154,7 +1309,7 @@
             },
             "join": {
                 "title": "Rejoignez le mouvement",
-                "desc": "En choisissant Mishki, vous participez activement à un mode de consommation plus responsable. Ensemble, construisons un avenir où beauté rime avec durabilité.",
+                "desc": "En choisissant Mey Beauty, vous participez activement à un mode de consommation plus responsable. Ensemble, construisons un avenir où beauté rime avec durabilité.",
                 "cta": "Découvrir nos produits"
             }
         },
@@ -1269,7 +1424,7 @@
         },
         "rituals": {
             "title": "Nos Rituels",
-            "subtitle": "Découvrez nos rituels de beauté inspirés des traditions péruviennes pour une peau rayonnante",
+            "subtitle": "Découvrez nos rituels de beauté experte pour une peau rayonnante et un bien-être absolu",
             "loading": "Chargement...",
             "back": "Retour",
             "heading": "Rituels de Beauté",
@@ -1286,7 +1441,7 @@
         },
         "blog": {
             "title": "Notre Blog",
-            "subtitle": "Conseils beauté, rituels ancestraux et secrets de la nature péruvienne",
+            "subtitle": "Conseils beauté, expertises et innovations pour prendre soin de votre peau",
             "loading": "Chargement...",
             "back": "Retour",
             "heading": "Articles",
@@ -1313,7 +1468,7 @@
             "back": "Retour",
             "heading": "Épisodes",
             "info": {
-                "title": "Beauté Naturelle par Mishki",
+                "title": "Beauté Naturelle par Mey Beauty",
                 "subtitle": "Un podcast sur la beauté, le bien-être et la nature",
                 "desc": "Chaque semaine, nous invitons des experts pour discuter des secrets de la beauté naturelle, des ingrédients ancestraux et des rituels de soins du monde entier. Abonnez-vous pour ne manquer aucun épisode !",
                 "spotify": "S'abonner sur Spotify",
@@ -1327,15 +1482,15 @@
                 "update": "Dernière mise à jour: 11 décembre 2024",
                 "s1": {
                     "title": "1. Objet",
-                    "text": "Les présentes conditions générales de vente régissent les relations contractuelles entre Mishki et toute personne effectuant un achat via notre site internet. Toute commande implique l'acceptation sans réserve de ces conditions."
+                    "text": "Les présentes conditions générales de vente régissent les relations contractuelles entre Mey Beauty et toute personne effectuant un achat via notre site internet. Toute commande implique l'acceptation sans réserve de ces conditions."
                 },
                 "s2": {
                     "title": "2. Produits",
-                    "text": "Les produits proposés sont ceux décrits sur notre site. Les photographies sont les plus fidèles possibles mais ne peuvent assurer une similitude parfaite avec le produit offert. Mishki se réserve le droit de modifier à tout moment la gamme de produits proposée."
+                    "text": "Les produits proposés sont ceux décrits sur notre site. Les photographies sont les plus fidèles possibles mais ne peuvent assurer une similitude parfaite avec le produit offert. Mey Beauty se réserve le droit de modifier à tout moment la gamme de produits proposée."
                 },
                 "s3": {
                     "title": "3. Prix",
-                    "text": "Les prix sont indiqués en euros, toutes taxes comprises. Mishki se réserve le droit de modifier ses prix à tout moment mais les produits seront facturés sur la base des tarifs en vigueur au moment de la validation de la commande."
+                    "text": "Les prix sont indiqués en euros, toutes taxes comprises. Mey Beauty se réserve le droit de modifier ses prix à tout moment mais les produits seront facturés sur la base des tarifs en vigueur au moment de la validation de la commande."
                 },
                 "s4": {
                     "title": "4. Commande",
@@ -1355,7 +1510,7 @@
                 },
                 "s8": {
                     "title": "8. Responsabilité",
-                    "text": "Mishki ne saurait être tenu pour responsable des dommages résultant d'une mauvaise utilisation des produits. Il appartient au client de vérifier l'adéquation du produit à son usage et de respecter les précautions d'emploi."
+                    "text": "Mey Beauty ne saurait être tenu pour responsable des dommages résultant d'une mauvaise utilisation des produits. Il appartient au client de vérifier l'adéquation du produit à son usage et de respecter les précautions d'emploi."
                 },
                 "s9": {
                     "title": "9. Litiges",
@@ -1363,13 +1518,13 @@
                 },
                 "s10": {
                     "title": "10. Contact",
-                    "text": "Pour toute question relative aux présentes conditions, vous pouvez nous contacter à l'adresse suivante: contact@mishki.fr"
+                    "text": "Pour toute question relative aux présentes conditions, vous pouvez nous contacter à l'adresse suivante: contact@meybeauty.fr"
                 }
             },
             "privacy": {
                 "title": "Politique de confidentialité",
                 "update": "Dernière mise à jour: 11 décembre 2024",
-                "intro": "Chez Mishki, nous accordons une grande importance à la protection de vos données personnelles. Cette politique vous explique comment nous collectons et utilisons vos informations.",
+                "intro": "Chez Mey Beauty, nous accordons une grande importance à la protection de vos données personnelles. Cette politique vous explique comment nous collectons et utilisons vos informations.",
                 "s1": {
                     "title": "1. Collecte des données",
                     "text": "Nous collectons les informations que vous nous fournissez lors de la création de votre compte, de vos commandes ou de vos échanges avec notre service client (nom, email, adresse, etc.)."
@@ -1380,7 +1535,7 @@
                 },
                 "s3": {
                     "title": "3. Partage des données",
-                    "text": "Mishki ne vend pas vos données à des tiers. Nous les partageons uniquement avec nos prestataires techniques nécessaires à l'exécution de vos commandes (transporteurs, plateformes de paiement)."
+                    "text": "Mey Beauty ne vend pas vos données à des tiers. Nous les partageons uniquement avec nos prestataires techniques nécessaires à l'exécution de vos commandes (transporteurs, plateformes de paiement)."
                 },
                 "s4": {
                     "title": "4. Vos droits",
@@ -1407,7 +1562,7 @@
         "auth": {
             "login": {
                 "title": "Connexion",
-                "subtitle": "Accédez à votre compte Mishki pour gérer vos commandes",
+                "subtitle": "Accédez à votre compte Mey Beauty pour gérer vos commandes",
                 "back": "Retour",
                 "email": "Email",
                 "password": "Mot de passe",

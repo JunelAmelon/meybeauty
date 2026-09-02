@@ -15,14 +15,14 @@ export function Footer() {
   const t = useTranslations('b2c.layout.footer')
 
   return (
-    <footer className="bg-[#235730] text-white py-12">
+    <footer className="bg-[#523A28] text-white py-12">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="flex items-start">
             <Link href="/">
               <Image
-                src="/b2c/logo-mishki.png"
-                alt="Mishki"
+                src="/b2c/logo-mey-beauty.png"
+                alt="Mey Beauty"
                 width={120}
                 height={40}
                 className="brightness-0 invert"

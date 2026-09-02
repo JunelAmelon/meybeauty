@@ -17,7 +17,7 @@ export default function PrivacyPage() {
       <Header />
       <div className="min-h-screen">
         <div className="relative h-[200px] md:h-[300px] w-full pt-16 md:pt-20">
-          <div className="absolute inset-0 bg-[#235730]" />
+          <div className="absolute inset-0 bg-[#523A28]" />
           <div className="absolute inset-0 flex items-center">
             <div className="container mx-auto px-6">
               <h1 className="text-white text-3xl md:text-5xl" style={{ fontFamily: 'var(--font-caveat)' }}>
@@ -40,7 +40,7 @@ export default function PrivacyPage() {
 
             {sections.map((section) => (
               <section key={section} className="mb-8">
-                <h2 className="text-[#235730] text-xl font-semibold mb-4">{t(`${section}.title`)}</h2>
+                <h2 className="text-[#523A28] text-xl font-semibold mb-4">{t(`${section}.title`)}</h2>
                 <p className="text-gray-600 leading-relaxed text-justify">
                   {t(`${section}.text`)}
                 </p>

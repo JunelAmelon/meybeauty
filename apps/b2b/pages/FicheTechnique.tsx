@@ -35,7 +35,7 @@ export default function FicheTechnique() {
         <button
           onClick={() => router.push('/pro/protocoles')}
           className="px-4 py-2 text-white rounded-lg"
-          style={{ backgroundColor: '#235730' }}
+          style={{ backgroundColor: '#523A28' }}
         >
           {t('back_btn')}
         </button>
@@ -48,14 +48,14 @@ export default function FicheTechnique() {
       {/* Back Button */}
       <Link
         href="/pro/protocoles"
-        className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+        className="inline-flex items-center gap-2 text-[#523A28] hover:text-[#3A2819] transition-colors text-sm font-medium"
       >
         <ArrowLeft className="w-4 h-4" />
         {t('back_btn')}
       </Link>
 
       {/* Header */}
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-2xl border border-[#E8E0D8] overflow-hidden shadow-sm">
         <div className="aspect-[21/9] bg-gray-100 overflow-hidden">
           <Image
             src={fiche.image}
@@ -65,48 +65,65 @@ export default function FicheTechnique() {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="p-8">
+        <div className="p-6 md:p-8" style={{ background: 'linear-gradient(135deg, #FDF8F3 0%, #F5EDE4 100%)' }}>
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
             <div>
-              <span className="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full mb-3">
+              <span className="inline-block px-3 py-1 bg-[#523A28] text-white text-xs rounded-full mb-3 font-medium">
                 {t('badge')}
               </span>
-              <h1 className="text-gray-900 mb-2">{fiche.title}</h1>
-              <p className="text-gray-600">{fiche.description}</p>
+              <h1 className="text-2xl md:text-3xl text-[#1A1410] mb-2" style={{ fontFamily: 'var(--font-cormorant-garamond), serif' }}>{fiche.title}</h1>
+              <p className="text-sm text-gray-600 max-w-2xl">{fiche.description}</p>
             </div>
-            <div className="flex gap-2">
-              <button className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap">
-                <Download className="w-5 h-5" />
+            <div className="flex gap-2 flex-shrink-0">
+              <button
+                onClick={() => {
+                  const link = document.createElement('a');
+                  link.href = fiche.image;
+                  link.download = `${fiche.slug}.jpg`;
+                  link.target = '_blank';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
+                className="flex items-center gap-2 px-5 py-2.5 text-white rounded-lg transition-colors whitespace-nowrap text-sm font-medium"
+                style={{ backgroundColor: '#523A28' }}
+                onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#3A2819')}
+                onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#523A28')}
+              >
+                <Download className="w-4 h-4" />
                 {t('btn_download')}
               </button>
-              <button className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap">
-                <Printer className="w-5 h-5" />
+              <button
+                onClick={() => window.print()}
+                className="flex items-center gap-2 px-5 py-2.5 bg-white text-[#523A28] border border-[#523A28]/20 rounded-lg hover:bg-[#523A28]/5 transition-colors whitespace-nowrap text-sm font-medium"
+              >
+                <Printer className="w-4 h-4" />
                 {t('btn_print')}
               </button>
             </div>
           </div>
 
           {/* Quick Info */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-blue-50 rounded-lg p-4">
-              <Shield className="w-5 h-5 text-blue-600 mb-2" />
-              <p className="text-sm text-gray-600">{t('stats.reference')}</p>
-              <p className="text-gray-900 font-medium">{fiche.reference}</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="bg-white rounded-xl p-4 border border-[#E8E0D8]">
+              <Shield className="w-5 h-5 text-[#523A28] mb-2" />
+              <p className="text-xs text-gray-500 mb-0.5">{t('stats.reference')}</p>
+              <p className="text-sm text-[#1A1410] font-semibold">{fiche.reference}</p>
             </div>
-            <div className="bg-blue-50 rounded-lg p-4">
-              <Droplets className="w-5 h-5 text-blue-600 mb-2" />
-              <p className="text-sm text-gray-600">{t('stats.volume')}</p>
-              <p className="text-gray-900 font-medium">{fiche.volume}</p>
+            <div className="bg-white rounded-xl p-4 border border-[#E8E0D8]">
+              <Droplets className="w-5 h-5 text-[#523A28] mb-2" />
+              <p className="text-xs text-gray-500 mb-0.5">{t('stats.volume')}</p>
+              <p className="text-sm text-[#1A1410] font-semibold">{fiche.volume}</p>
             </div>
-            <div className="bg-blue-50 rounded-lg p-4">
-              <FlaskConical className="w-5 h-5 text-blue-600 mb-2" />
-              <p className="text-sm text-gray-600">{t('stats.category')}</p>
-              <p className="text-gray-900 font-medium">{fiche.category}</p>
+            <div className="bg-white rounded-xl p-4 border border-[#E8E0D8]">
+              <FlaskConical className="w-5 h-5 text-[#523A28] mb-2" />
+              <p className="text-xs text-gray-500 mb-0.5">{t('stats.category')}</p>
+              <p className="text-sm text-[#1A1410] font-semibold">{fiche.category}</p>
             </div>
-            <div className="bg-blue-50 rounded-lg p-4">
-              <Clock className="w-5 h-5 text-blue-600 mb-2" />
-              <p className="text-sm text-gray-600">{t('stats.duration')}</p>
-              <p className="text-gray-900 font-medium">{fiche.utilisation.temps}</p>
+            <div className="bg-white rounded-xl p-4 border border-[#E8E0D8]">
+              <Clock className="w-5 h-5 text-[#523A28] mb-2" />
+              <p className="text-xs text-gray-500 mb-0.5">{t('stats.duration')}</p>
+              <p className="text-sm text-[#1A1410] font-semibold">{fiche.utilisation.temps}</p>
             </div>
           </div>
         </div>
@@ -116,31 +133,31 @@ export default function FicheTechnique() {
         {/* Left Column - Actifs & Propriétés */}
         <div className="lg:col-span-2 space-y-6">
           {/* Actifs */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <h3 className="text-gray-900 mb-6 flex items-center gap-2">
-              <Beaker className="w-5 h-5 text-blue-600" />
+          <div className="bg-white rounded-2xl border border-[#E8E0D8] p-6 shadow-sm">
+            <h3 className="text-lg text-[#1A1410] mb-6 flex items-center gap-2" style={{ fontFamily: 'var(--font-cormorant-garamond), serif' }}>
+              <Beaker className="w-5 h-5 text-[#523A28]" />
               {t('assets.title')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {fiche.actifs.map((actif, index) => (
-                <div key={index} className="p-4 bg-gray-50 rounded-lg border border-gray-100">
-                  <h4 className="text-blue-700 font-medium mb-1">{actif.nom}</h4>
-                  <p className="text-sm text-gray-600">{actif.role}</p>
+                <div key={index} className="p-4 bg-[#FDF8F3] rounded-xl border border-[#E8E0D8]">
+                  <h4 className="text-[#523A28] font-medium mb-1 text-sm">{actif.nom}</h4>
+                  <p className="text-xs text-gray-600">{actif.role}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Propriétés */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <h3 className="text-gray-900 mb-4 flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-blue-600" />
+          <div className="bg-white rounded-2xl border border-[#E8E0D8] p-6 shadow-sm">
+            <h3 className="text-lg text-[#1A1410] mb-4 flex items-center gap-2" style={{ fontFamily: 'var(--font-cormorant-garamond), serif' }}>
+              <Sparkles className="w-5 h-5 text-[#523A28]" />
               {t('properties.title')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {fiche.proprietes.map((prop, index) => (
-                <div key={index} className="flex items-center gap-2 text-gray-700 bg-blue-50/50 p-3 rounded-lg">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                <div key={index} className="flex items-center gap-2 text-gray-700 bg-[#F5EDE4]/50 p-3 rounded-lg">
+                  <CheckCircle2 className="w-4 h-4 text-[#523A28] flex-shrink-0" />
                   <span className="text-sm">{prop}</span>
                 </div>
               ))}
@@ -148,24 +165,24 @@ export default function FicheTechnique() {
           </div>
 
           {/* Utilisation */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <h3 className="text-gray-900 mb-6">{t('usage.title')}</h3>
+          <div className="bg-white rounded-2xl border border-[#E8E0D8] p-6 shadow-sm">
+            <h3 className="text-lg text-[#1A1410] mb-6" style={{ fontFamily: 'var(--font-cormorant-garamond), serif' }}>{t('usage.title')}</h3>
             <div className="space-y-6">
               <div className="flex gap-4">
-                <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 bg-[#523A28]/10 text-[#523A28] rounded-lg flex items-center justify-center flex-shrink-0">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-gray-900 font-medium">{t('usage.frequency')}</h4>
+                  <h4 className="text-sm text-[#1A1410] font-medium mb-0.5">{t('usage.frequency')}</h4>
                   <p className="text-sm text-gray-600">{fiche.utilisation.frequence}</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 bg-[#523A28]/10 text-[#523A28] rounded-lg flex items-center justify-center flex-shrink-0">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-gray-900 font-medium">{t('usage.method')}</h4>
+                  <h4 className="text-sm text-[#1A1410] font-medium mb-0.5">{t('usage.method')}</h4>
                   <p className="text-sm text-gray-600">{fiche.utilisation.methode}</p>
                 </div>
               </div>
@@ -176,33 +193,33 @@ export default function FicheTechnique() {
         {/* Right Column - Caractéristiques & Avis */}
         <div className="space-y-6">
           {/* Caractéristiques */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <h3 className="text-gray-900 mb-6">{t('specs.title')}</h3>
+          <div className="bg-white rounded-2xl border border-[#E8E0D8] p-6 shadow-sm">
+            <h3 className="text-lg text-[#1A1410] mb-6" style={{ fontFamily: 'var(--font-cormorant-garamond), serif' }}>{t('specs.title')}</h3>
             <div className="space-y-4">
-              <div className="flex justify-between items-center py-2 border-bottom border-gray-100">
-                <span className="text-sm text-gray-600">{t('specs.texture')}</span>
-                <span className="text-sm font-medium text-gray-900">{fiche.caracteristiques.texture}</span>
+              <div className="flex justify-between items-center py-2 border-b border-[#E8E0D8]">
+                <span className="text-sm text-gray-500">{t('specs.texture')}</span>
+                <span className="text-sm font-medium text-[#1A1410]">{fiche.caracteristiques.texture}</span>
               </div>
-              <div className="flex justify-between items-center py-2 border-bottom border-gray-100">
-                <span className="text-sm text-gray-600">{t('specs.smell')}</span>
-                <span className="text-sm font-medium text-gray-900">{fiche.caracteristiques.odeur}</span>
+              <div className="flex justify-between items-center py-2 border-b border-[#E8E0D8]">
+                <span className="text-sm text-gray-500">{t('specs.smell')}</span>
+                <span className="text-sm font-medium text-[#1A1410]">{fiche.caracteristiques.odeur}</span>
               </div>
-              <div className="flex justify-between items-center py-2 border-bottom border-gray-100">
-                <span className="text-sm text-gray-600">{t('specs.ph')}</span>
-                <span className="text-sm font-medium text-gray-900">{fiche.caracteristiques.ph}</span>
+              <div className="flex justify-between items-center py-2 border-b border-[#E8E0D8]">
+                <span className="text-sm text-gray-500">{t('specs.ph')}</span>
+                <span className="text-sm font-medium text-[#1A1410]">{fiche.caracteristiques.ph}</span>
               </div>
               <div className="flex justify-between items-center py-2">
-                <span className="text-sm text-gray-600">{t('specs.paot')}</span>
-                <span className="text-sm font-medium text-gray-900">{fiche.caracteristiques.conservation}</span>
+                <span className="text-sm text-gray-500">{t('specs.paot')}</span>
+                <span className="text-sm font-medium text-[#1A1410]">{fiche.caracteristiques.conservation}</span>
               </div>
             </div>
           </div>
 
           {/* Expert Note */}
-          <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl p-6 text-white shadow-lg">
-            <Sparkles className="w-8 h-8 mb-4 text-blue-200" />
-            <h3 className="text-lg font-bold mb-2">{t('expert.title')}</h3>
-            <p className="text-blue-50 text-sm leading-relaxed italic">
+          <div className="rounded-2xl p-6 text-white shadow-lg" style={{ background: 'linear-gradient(135deg, #523A28 0%, #3A2819 100%)' }}>
+            <Sparkles className="w-8 h-8 mb-4 text-[#C4A35A]" />
+            <h3 className="text-lg font-bold mb-2" style={{ fontFamily: 'var(--font-cormorant-garamond), serif' }}>{t('expert.title')}</h3>
+            <p className="text-[#F5EDE4] text-sm leading-relaxed italic">
               &quot;{fiche.avis_experts}&quot;
             </p>
           </div>

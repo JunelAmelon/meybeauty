@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useLocale } from 'next-intl';
-import { collection, db, getDocs, query, where } from '@mishki/firebase';
+import { collection, db, getDocs, query, where } from '@meybeauty/firebase';
 
 type OrderLine = {
   name?: string;

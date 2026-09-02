@@ -10,6 +10,9 @@ import {
   Package,
   Settings,
   FileText,
+  BookOpen,
+  Sparkles,
+  Download,
   X,
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -28,6 +31,10 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
     { to: '/admin/professionnels', icon: Users, label: t('navigation.professionals') },
     { to: '/admin/commandes', icon: ShoppingBag, label: t('navigation.orders') },
     { to: '/admin/produits', icon: Package, label: t('navigation.products') },
+    { to: '/admin/blog', icon: BookOpen, label: t('navigation.blog') },
+    { to: '/admin/rituels', icon: Sparkles, label: t('navigation.rituals') },
+    { to: '/admin/protocoles', icon: FileText, label: t('navigation.protocoles') },
+    { to: '/admin/telechargements', icon: Download, label: t('navigation.downloads') },
     { to: '/admin/parametres', icon: Settings, label: t('navigation.settings') },
     { to: '/admin/logs', icon: FileText, label: t('navigation.logs') },
   ];
@@ -53,14 +60,14 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         `}
       >
         {/* Header with Logo */}
-        <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-[#235730]">
+        <div className="p-4 border-b border-gray-200 flex items-center justify-between bg-[#523A28]">
           <div className="flex-1 flex items-center justify-center">
             <Image
-              src="/b2b/images/logo-mishki.png"
-              alt="Mishki Admin"
+              src="/b2b/images/logo-mey-beauty.png"
+              alt="Mey Beauty Admin"
               width={110}
               height={36}
-              className="object-contain"
+              className="object-contain brightness-0 invert"
             />
           </div>
           {/* Close button for mobile */}
@@ -83,7 +90,7 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
                 href={item.to}
                 onClick={onClose}
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${isActive
-                    ? 'bg-[#235730] text-white'
+                    ? 'bg-[#523A28] text-white'
                     : 'text-gray-600 hover:bg-gray-50'
                   }`}
               >
@@ -96,9 +103,9 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
 
         {/* Admin Badge */}
         <div className="p-4 border-t border-gray-200">
-          <div className="rounded-lg p-4" style={{ backgroundColor: '#F7F0E0' }}>
+          <div className="rounded-lg p-4" style={{ backgroundColor: '#F5EDE4' }}>
             <p className="text-xs text-gray-600 mb-1">{t('adminMode')}</p>
-            <p className="text-xs font-semibold" style={{ color: '#235730' }}>
+            <p className="text-xs font-semibold" style={{ color: '#523A28' }}>
               {t('fullAccess')}
             </p>
           </div>

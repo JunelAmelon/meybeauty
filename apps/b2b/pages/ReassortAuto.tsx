@@ -10,8 +10,8 @@ export default function ReassortAuto() {
     <div className="flex items-center justify-center min-h-[60vh]">
       <div className="text-center max-w-md px-6">
         <div className="mb-6 flex justify-center">
-          <div className="w-20 h-20 bg-[#235730]/10 rounded-full flex items-center justify-center">
-            <Clock className="w-10 h-10 text-[#235730]" />
+          <div className="w-20 h-20 bg-[#523A28]/10 rounded-full flex items-center justify-center">
+            <Clock className="w-10 h-10 text-[#523A28]" />
           </div>
         </div>
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
@@ -196,8 +196,8 @@ export default function ReassortAuto() {
 //         </div>
 //         <div className="bg-white rounded-xl p-6 border border-gray-200">
 //           <div className="flex items-center gap-3 mb-2">
-//             <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-//               <CheckCircle2 className="w-5 h-5 text-blue-600" />
+//             <div className="w-10 h-10 bg-[#523A28]/10 rounded-lg flex items-center justify-center">
+//               <CheckCircle2 className="w-5 h-5 text-[#523A28]" />
 //             </div>
 //             <div>
 //               <p className="text-2xl text-gray-900">{totalProductsMonitored}</p>
@@ -294,7 +294,7 @@ export default function ReassortAuto() {
 //                     <div className="flex items-center gap-2">
 //                       <button
 //                         onClick={() => openEdit(config.id)}
-//                         className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+//                         className="p-2 text-[#523A28] hover:bg-[#F5EDE4] rounded-lg transition-colors"
 //                       >
 //                         <Edit2 className="w-4 h-4" />
 //                       </button>
@@ -345,7 +345,7 @@ export default function ReassortAuto() {
 //                         className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs ${statusFmt.variant === 'green'
 //                           ? 'bg-green-100 text-green-700'
 //                           : statusFmt.variant === 'blue'
-//                             ? 'bg-blue-100 text-blue-700'
+//                             ? 'bg-[#523A28]/10 text-[#523A28]'
 //                             : 'bg-gray-100 text-gray-700'
 //                           }`}
 //                       >
@@ -373,7 +373,7 @@ export default function ReassortAuto() {
 //             {t('tips.tip1_desc')}
 //           </p>
 //         </div>
-//         <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg p-4 border border-blue-200">
+//         <div className="bg-gradient-to-br from-[#F5EDE4] to-[#EDE0D3] rounded-lg p-4 border border-[#523A28]/20">
 //           <h4 className="text-gray-900 mb-2">{t('tips.tip2_title')}</h4>
 //           <p className="text-sm text-gray-600">
 //             {t('tips.tip2_desc')}
@@ -495,9 +495,9 @@ export default function ReassortAuto() {
 //                   setShowAddModal(false);
 //                 }}
 //                 className="px-4 py-2 text-sm text-white rounded-lg transition-colors"
-//                 style={{ backgroundColor: '#235730' }}
-//                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1a4023')}
-//                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#235730')}
+//                 style={{ backgroundColor: '#523A28' }}
+//                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#3A2819')}
+//                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#523A28')}
 //               >
 //                 {formMode === 'create' ? t('modal.save') : t('modal.update')}
 //               </button>

@@ -11,7 +11,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
   const [showUserMenu, setShowUserMenu] = useState(false);
 
   return (
-    <header className="border-b border-gray-200 px-6 py-4" style={{ backgroundColor: '#235730' }}>
+    <header className="border-b border-gray-200 px-6 py-4" style={{ backgroundColor: '#523A28' }}>
       <div className="flex items-center justify-between">
         {/* Left Section */}
         <div className="flex items-center gap-4 flex-1">
@@ -70,7 +70,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
 
                 <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
                   <div className="px-4 py-3 border-b border-gray-100">
-                    <p className="text-sm text-gray-900">admin@mishki.com</p>
+                    <p className="text-sm text-gray-900">admin@meybeauty.fr</p>
                     <p className="text-xs text-gray-500 mt-1">Administrateur système</p>
                   </div>
                   <button

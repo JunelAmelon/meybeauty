@@ -9,7 +9,7 @@ type InvoiceEmailTemplateParams = {
 };
 
 /**
- * Template HTML simple aux couleurs Mishki (#235730).
+ * Template HTML simple aux couleurs Mey Beauty (#523A28).
  */
 export async function buildInvoiceEmailHtml({
   customerName,
@@ -18,7 +18,7 @@ export async function buildInvoiceEmailHtml({
   invoiceNumber,
   ctaHref,
 }: InvoiceEmailTemplateParams): Promise<string> {
-  const primary = '#235730';
+  const primary = '#523A28';
   const muted = '#4b5563';
   const bg = '#f8fafc';
 
@@ -32,7 +32,7 @@ export async function buildInvoiceEmailHtml({
             <table width="640" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.06);">
               <tr>
                 <td style="background:${primary};color:#ffffff;padding:24px 28px;font-size:20px;font-weight:700;letter-spacing:0.2px;">
-                  MISHKI — Facture ${invoiceNumber}
+                  Mey Beauty — Facture ${invoiceNumber}
                 </td>
               </tr>
               <tr>
@@ -52,8 +52,8 @@ export async function buildInvoiceEmailHtml({
               </tr>
               <tr>
                 <td style="padding:16px 28px 24px 28px;font-size:12px;color:${muted};background:#f4f5f7;">
-                  <p style="margin:0 0 6px 0;"><strong>MISHKI LAB</strong> — 5 Rue du Printemps, 88000 Jeuxey, France</p>
-                  <p style="margin:0;">facturation@mishki.com</p>
+                  <p style="margin:0 0 6px 0;"><strong>Mey Beauty</strong> — 6 Place des Martyrs de Châteaubriand, 91170 Viry-Châtillon, France</p>
+                  <p style="margin:0;">facturation@meybeauty.fr</p>
                 </td>
               </tr>
             </table>

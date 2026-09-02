@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     const smtpPort = Number(process.env.SMTP_PORT || 587);
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
-    const smtpFrom = process.env.SMTP_FROM || 'facturation@mishki.com';
+    const smtpFrom = process.env.SMTP_FROM || 'facturation@meybeauty.fr';
 
     if (!smtpHost || !smtpUser || !smtpPass) {
       return NextResponse.json({ error: 'SMTP configuration is missing' }, { status: 500 });
@@ -42,8 +42,8 @@ export async function POST(req: Request) {
     const subject = `Votre facture ${invoiceData.invoiceNumber || invoiceData.orderNumber || ''}`.trim();
     const ctaHref =
       invoiceData.buyer.company && invoiceData.buyer.company.trim().length > 0
-        ? 'https://mishki.com/pro/accueil'
-        : 'https://mishki.com/';
+        ? 'https://meybeauty.fr/pro/accueil'
+        : 'https://meybeauty.fr/';
 
     const html = await buildInvoiceEmailHtml({
       customerName: invoiceData.buyer.name,

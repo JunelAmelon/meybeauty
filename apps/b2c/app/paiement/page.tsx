@@ -17,7 +17,7 @@ import PaypalButton from '@/components/payments/PaypalButton'
 import { useCheckout } from '@/apps/b2c/hooks/useCheckout'
 import InvoiceDownloadButton from '@/components/invoice/InvoiceDownloadButton'
 import { InvoiceData } from '@/lib/invoice/types'
-import { auth, db, doc, getDoc } from '@mishki/firebase'
+import { auth, db, doc, getDoc } from '@meybeauty/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 
 type Step = 'livraison' | 'paiement'
@@ -103,17 +103,18 @@ export default function PaymentPage() {
     return () => unsub()
   }, [])
 
-  const userRegion = useMemo(() => {
+  const [userRegion, setUserRegion] = useState<'fr' | 'pe'>('fr')
+
+  useEffect(() => {
     try {
       const tz = Intl.DateTimeFormat().resolvedOptions().timeZone?.toLowerCase()
-      if (tz?.includes('lima') || tz?.includes('peru')) return 'pe' as const
-      if (tz?.includes('paris') || tz?.includes('europe/paris')) return 'fr' as const
+      if (tz?.includes('lima') || tz?.includes('peru')) { setUserRegion('pe'); return }
+      if (tz?.includes('paris') || tz?.includes('europe/paris')) { setUserRegion('fr'); return }
     } catch {
       // ignore
     }
     const lowerLocale = locale.toLowerCase()
-    if (lowerLocale.includes('pe')) return 'pe' as const
-    return 'fr' as const
+    setUserRegion(lowerLocale.includes('pe') ? 'pe' : 'fr')
   }, [locale])
 
   const currencyCode = userRegion === 'pe' ? 'PEN' : 'EUR'
@@ -264,11 +265,11 @@ export default function PaymentPage() {
             email: userEmail || undefined,
           },
           seller: {
-            name: 'MISHKI LAB',
-            addressLines: ['5 Rue du Printemps', '88000 Jeuxey', 'France'],
+            name: 'Mey Beauty',
+            addressLines: ['6 Place des Martyrs de Chateaubriand', '91170 Viry-Chatillon', 'France'],
             siret: '92089652300011',
             ape: '2042Z',
-            email: 'facturation@mishki.com',
+            email: 'facturation@meybeauty.fr',
           },
           payment: { terms: provider === 'paypal' ? 'Paiement en ligne (PayPal)' : 'Paiement en ligne (carte)' },
           lines: linesSnapshot.map((l) => ({
@@ -342,11 +343,11 @@ export default function PaymentPage() {
         phone: buyerPhone,
       },
       seller: {
-        name: 'MISHKI LAB',
-        addressLines: ['5 Rue du Printemps', '88000 Jeuxey', 'France'],
+        name: 'Mey Beauty',
+        addressLines: ['6 Place des Martyrs de Chateaubriand', '91170 Viry-Chatillon', 'France'],
         siret: '92089652300011',
         ape: '2042Z',
-        email: 'facturation@mishki.com',
+        email: 'facturation@meybeauty.fr',
       },
       payment: { terms: 'Paiement en ligne (carte/PayPal)' },
       lines: orderLinesSnapshot.map((l) => ({
@@ -389,7 +390,7 @@ export default function PaymentPage() {
         <div className="min-h-screen pt-20 flex items-center justify-center">
           <div className="bg-white rounded-lg p-12 shadow-lg text-center max-w-md mx-4">
             <h2
-              className="text-[#235730] mb-6"
+              className="text-[#523A28] mb-6"
               style={{
                 fontFamily: 'var(--font-caveat)',
                 fontSize: '32px',
@@ -398,17 +399,17 @@ export default function PaymentPage() {
             >
               {t('confirmation.title')}
             </h2>
-            <div className="w-24 h-24 mx-auto bg-[#235730] rounded-full flex items-center justify-center" style={{ clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)' }}>
-              <div className="w-20 h-20 bg-[#235730] rounded-full flex items-center justify-center">
+            <div className="w-24 h-24 mx-auto bg-[#523A28] rounded-full flex items-center justify-center" style={{ clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)' }}>
+              <div className="w-20 h-20 bg-[#523A28] rounded-full flex items-center justify-center">
                 <Check className="w-10 h-10 text-white" />
               </div>
             </div>
             <div className="mt-8">
-              <Link href="/">
-                <Button className="bg-[#235730] hover:bg-[#1d4626] text-white rounded-sm px-8">
+              <Button asChild className="bg-[#523A28] hover:bg-[#3A2819] text-white rounded-sm px-8">
+                <Link href="/">
                   {t('confirmation.btn_home')}
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
             {invoiceData && (
               <div className="mt-6">
@@ -442,9 +443,9 @@ export default function PaymentPage() {
               />
             </Link>
             <div className="flex items-center gap-3">
-              <CreditCard className="w-8 h-8 text-[#235730]" />
+              <CreditCard className="w-8 h-8 text-[#523A28]" />
               <h2
-                className="text-[#235730]"
+                className="text-[#523A28]"
                 style={{
                   fontFamily: 'var(--font-caveat)',
                   fontSize: '48px',
@@ -454,7 +455,7 @@ export default function PaymentPage() {
                 {t('title')}
               </h2>
             </div>
-            <div className="w-full h-[1px] bg-[#235730] mt-2"></div>
+            <div className="w-full h-[1px] bg-[#523A28] mt-2"></div>
           </div>
 
           <div className="max-w-xl mx-auto">
@@ -463,16 +464,16 @@ export default function PaymentPage() {
                 {steps.map((step, index) => (
                   <div key={step.key} className="flex items-center">
                     <div className="flex items-center gap-2">
-                      <span className={`text-sm ${getStepStatus(step.key) === 'current' ? 'text-[#235730] font-medium' : 'text-gray-500'}`}>
+                      <span className={`text-sm ${getStepStatus(step.key) === 'current' ? 'text-[#523A28] font-medium' : 'text-gray-500'}`}>
                         {step.label}
                       </span>
                       {getStepStatus(step.key) === 'completed' && (
-                        <div className="w-5 h-5 bg-[#235730] rounded-full flex items-center justify-center">
+                        <div className="w-5 h-5 bg-[#523A28] rounded-full flex items-center justify-center">
                           <Check className="w-3 h-3 text-white" />
                         </div>
                       )}
                       {getStepStatus(step.key) === 'current' && (
-                        <div className="w-5 h-5 border-2 border-[#235730] rounded-full" />
+                        <div className="w-5 h-5 border-2 border-[#523A28] rounded-full" />
                       )}
                     </div>
                     {index < steps.length - 1 && (
@@ -488,7 +489,7 @@ export default function PaymentPage() {
                   <span className="text-sm text-gray-500">{t('order_summary.items_count', { count: selectedItems.length })}</span>
                 </div>
                 {selectedItems.length === 0 ? (
-                  <p className="text-sm text-gray-500">{t('order_summary.empty')} <Link href="/produits" className="text-[#235730] hover:underline">{t('order_summary.back_to_shop')}</Link></p>
+                  <p className="text-sm text-gray-500">{t('order_summary.empty')} <Link href="/produits" className="text-[#523A28] hover:underline">{t('order_summary.back_to_shop')}</Link></p>
                 ) : (
                   <div className="space-y-2">
                     {selectedItems.map((item) => (
@@ -530,7 +531,7 @@ export default function PaymentPage() {
                         id="addr_saved"
                         checked={addressMode === 'saved'}
                         onChange={() => setAddressMode('saved')}
-                        className="w-4 h-4 text-[#235730] focus:ring-[#235730]"
+                        className="w-4 h-4 text-[#523A28] focus:ring-[#523A28]"
                       />
                       <Label htmlFor="addr_saved" className="text-sm text-gray-700">
                         {t('sections.delivery.use_saved')}
@@ -540,7 +541,7 @@ export default function PaymentPage() {
                       disabled={addressMode !== 'saved' || !savedProfile}
                       value={selectedSavedAddress}
                       onChange={(e) => setSelectedSavedAddress(e.target.value)}
-                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:border-[#235730] focus:ring-[#235730] disabled:bg-gray-50 disabled:text-gray-400"
+                      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 bg-white focus:border-[#523A28] focus:ring-[#523A28] disabled:bg-gray-50 disabled:text-gray-400"
                     >
                       {savedProfile ? (
                         <option value={selectedSavedAddress || ''}>
@@ -562,7 +563,7 @@ export default function PaymentPage() {
                         id="addr_new"
                         checked={addressMode === 'new'}
                         onChange={() => setAddressMode('new')}
-                        className="w-4 h-4 text-[#235730] focus:ring-[#235730]"
+                        className="w-4 h-4 text-[#523A28] focus:ring-[#523A28]"
                       />
                       <Label htmlFor="addr_new" className="text-sm text-gray-700">
                         {t('sections.delivery.address_label')}
@@ -579,10 +580,10 @@ export default function PaymentPage() {
                               value={formData.address}
                               onChange={(e) => updateFormData('address', e.target.value)}
                               placeholder={t('sections.delivery.address_placeholder')}
-                              className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                              className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                             />
                             {formData.address && (
-                              <div className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 bg-[#235730] rounded-full flex items-center justify-center">
+                              <div className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 bg-[#523A28] rounded-full flex items-center justify-center">
                                 <Check className="w-3 h-3 text-white" />
                               </div>
                             )}
@@ -597,10 +598,10 @@ export default function PaymentPage() {
                               value={formData.city}
                               onChange={(e) => updateFormData('city', e.target.value)}
                               placeholder={t('sections.delivery.city_placeholder')}
-                              className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                              className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                             />
                             {formData.city && (
-                              <div className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 bg-[#235730] rounded-full flex items-center justify-center">
+                              <div className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 bg-[#523A28] rounded-full flex items-center justify-center">
                                 <Check className="w-3 h-3 text-white" />
                               </div>
                             )}
@@ -615,7 +616,7 @@ export default function PaymentPage() {
                               value={formData.postalCode}
                               onChange={(e) => updateFormData('postalCode', e.target.value)}
                               placeholder={t('sections.delivery.zip_placeholder')}
-                              className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                              className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                             />
                           </div>
                         </div>
@@ -631,10 +632,10 @@ export default function PaymentPage() {
                             value={formData.phone}
                             onChange={(e) => updateFormData('phone', e.target.value)}
                             placeholder={t('sections.delivery.phone_placeholder')}
-                            className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                            className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                           />
                           {formData.phone && (
-                            <div className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 bg-[#235730] rounded-full flex items-center justify-center">
+                            <div className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 bg-[#523A28] rounded-full flex items-center justify-center">
                               <Check className="w-3 h-3 text-white" />
                             </div>
                           )}
@@ -645,7 +646,7 @@ export default function PaymentPage() {
                         <select
                           value={formData.deliveryType}
                           onChange={(e) => updateFormData('deliveryType', e.target.value)}
-                          className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:border-[#235730] focus:ring-[#235730]"
+                          className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 bg-white focus:border-[#523A28] focus:ring-[#523A28]"
                         >
                           <option value={t('sections.delivery.types.relay')}>{t('sections.delivery.types.relay')}</option>
                           <option value={t('sections.delivery.types.home')}>{t('sections.delivery.types.home')}</option>
@@ -657,7 +658,7 @@ export default function PaymentPage() {
                   <div className="flex items-center justify-center gap-4 pt-8">
                     <button
                       onClick={() => window.location.href = '/panier'}
-                      className="text-sm text-gray-500 hover:text-[#235730]"
+                      className="text-sm text-gray-500 hover:text-[#523A28]"
                     >
                       {t('sections.delivery.cancel')}
                     </button>
@@ -667,7 +668,7 @@ export default function PaymentPage() {
                           setCurrentStep('paiement')
                         }
                       }}
-                      className="bg-[#235730] hover:bg-[#1d4626] text-white rounded-sm px-8"
+                      className="bg-[#523A28] hover:bg-[#3A2819] text-white rounded-sm px-8"
                     >
                       {t('sections.delivery.next')}
                     </Button>
@@ -688,8 +689,8 @@ export default function PaymentPage() {
                         type="button"
                         onClick={() => setPaymentMethod('card')}
                         className={`w-full border rounded-md px-4 py-3 text-sm flex items-center justify-between transition ${paymentMethod === 'card'
-                          ? 'border-[#235730] bg-[#235730]/5 text-[#235730]'
-                          : 'border-gray-300 text-gray-700 hover:border-[#235730]'
+                          ? 'border-[#523A28] bg-[#523A28]/5 text-[#523A28]'
+                          : 'border-gray-300 text-gray-700 hover:border-[#523A28]'
                           }`}
                       >
                         <span className="flex items-center gap-3">
@@ -711,9 +712,10 @@ export default function PaymentPage() {
                             <Image
                               src="/b2c/payments/stripe.svg"
                               alt="Stripe"
-                              width={64}
-                              height={24}
-                              className="h-10 w-auto object-contain"
+                              width={50}
+                              height={21}
+                              className="h-5 w-auto object-contain"
+                              unoptimized
                             />
                           </span>
                         </span>
@@ -722,8 +724,8 @@ export default function PaymentPage() {
                         type="button"
                         onClick={() => setPaymentMethod('paypal')}
                         className={`w-full border rounded-md px-4 py-3 text-sm flex items-center justify-between transition ${paymentMethod === 'paypal'
-                          ? 'border-[#235730] bg-[#235730]/5 text-[#235730]'
-                          : 'border-gray-300 text-gray-700 hover:border-[#235730]'
+                          ? 'border-[#523A28] bg-[#523A28]/5 text-[#523A28]'
+                          : 'border-gray-300 text-gray-700 hover:border-[#523A28]'
                           }`}
                       >
                         <span className="flex items-center gap-3">
@@ -751,10 +753,10 @@ export default function PaymentPage() {
                               value={formData.cardName}
                               onChange={(e) => updateFormData('cardName', e.target.value)}
                               placeholder={t('sections.payment.card_name_placeholder')}
-                              className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                              className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                             />
                             {formData.cardName && (
-                              <div className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 bg-[#235730] rounded-full flex items-center justify-center">
+                              <div className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 bg-[#523A28] rounded-full flex items-center justify-center">
                                 <Check className="w-3 h-3 text-white" />
                               </div>
                             )}
@@ -768,7 +770,7 @@ export default function PaymentPage() {
                             value={formData.cardNumber}
                             onChange={(e) => updateFormData('cardNumber', e.target.value)}
                             placeholder={t('sections.payment.card_number_placeholder')}
-                            className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                            className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                           />
                         </div>
 
@@ -780,14 +782,14 @@ export default function PaymentPage() {
                                 value={formData.expMonth}
                                 onChange={(e) => updateFormData('expMonth', e.target.value)}
                                 placeholder="03"
-                                className="border-gray-300 focus:border-[#235730] focus:ring-[#235730] text-center"
+                                className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28] text-center"
                               />
                               <span className="text-gray-400">/</span>
                               <Input
                                 value={formData.expYear}
                                 onChange={(e) => updateFormData('expYear', e.target.value)}
                                 placeholder="24"
-                                className="border-gray-300 focus:border-[#235730] focus:ring-[#235730] text-center"
+                                className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28] text-center"
                               />
                             </div>
                           </div>
@@ -799,7 +801,7 @@ export default function PaymentPage() {
                               value={formData.cvc}
                               onChange={(e) => updateFormData('cvc', e.target.value)}
                               placeholder={t('sections.payment.cvc_placeholder')}
-                              className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                              className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                             />
                           </div>
                         </div>
@@ -807,9 +809,9 @@ export default function PaymentPage() {
                     )}
 
                     {paymentMethod === 'paypal' && (
-                      <div className="p-4 border border-dashed border-[#235730] rounded-md bg-[#235730]/5 text-sm text-[#235730] space-y-2">
+                      <div className="p-4 border border-dashed border-[#523A28] rounded-md bg-[#523A28]/5 text-sm text-[#523A28] space-y-2">
                         <p className="font-medium mb-1">PayPal</p>
-                        <p className="text-[#235730]/80">
+                        <p className="text-[#523A28]/80">
                           {t('sections.payment.paypal_redirect')}
                         </p>
                         <PaypalButton
@@ -819,7 +821,7 @@ export default function PaymentPage() {
                           onError={handlePaypalError}
                           disabled={saving}
                         />
-                        {paypalError && <p className="text-red-600 text-xs">{paypalError}</p>}
+                        {paypalError && <p className="text-red-600 text-xs mt-1">{paypalError}</p>}
                       </div>
                     )}
                   </div>
@@ -827,14 +829,14 @@ export default function PaymentPage() {
                   <div className="flex items-center justify-center gap-4 pt-8">
                     <button
                       onClick={() => setCurrentStep('livraison')}
-                      className="text-sm text-gray-500 hover:text-[#235730]"
+                      className="text-sm text-gray-500 hover:text-[#523A28]"
                     >
                       {t('sections.payment.cancel')}
                     </button>
                     <Button
                       onClick={handleValidate}
                       disabled={saving}
-                      className="bg-[#235730] hover:bg-[#1d4626] disabled:opacity-60 text-white rounded-sm px-8"
+                      className="bg-[#523A28] hover:bg-[#3A2819] disabled:opacity-60 text-white rounded-sm px-8"
                     >
                       {saving ? t('sections.payment.processing') : t('sections.payment.pay')}
                     </Button>

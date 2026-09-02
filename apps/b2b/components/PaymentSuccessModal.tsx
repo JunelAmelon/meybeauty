@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import InvoiceDownloadButton from '@/components/invoice/InvoiceDownloadButton';
 import { useTranslations } from 'next-intl';
@@ -40,28 +40,29 @@ type PaymentSuccessModalProps = {
 };
 
 const sellerInfo = {
-  name: 'MISHKI LAB',
-  addressLines: ['5 Rue du Printemps', '88000 Jeuxey', 'France'],
+  name: 'Mey Beauty',
+  addressLines: ['6 Place des Martyrs de Chateaubriand', '91170 Viry-Chatillon', 'France'],
   siret: '92089652300011',
   ape: '2042Z',
-  email: 'facturation@mishki.com',
+  email: 'facturation@meybeauty.fr',
 };
 
 export default function PaymentSuccessModal({ open, onClose, orderId, lines, totals, buyer, homeHref = '/pro/accueil' }: PaymentSuccessModalProps) {
   const t = useTranslations('b2b.payment.success');
   const locale = useLocale();
 
-  const userRegion = useMemo(() => {
+  const [userRegion, setUserRegion] = useState<'fr' | 'pe'>('fr');
+
+  useEffect(() => {
     try {
       const tz = Intl.DateTimeFormat().resolvedOptions().timeZone?.toLowerCase();
-      if (tz?.includes('lima') || tz?.includes('peru')) return 'pe' as const;
-      if (tz?.includes('paris') || tz?.includes('europe/paris')) return 'fr' as const;
+      if (tz?.includes('lima') || tz?.includes('peru')) { setUserRegion('pe'); return; }
+      if (tz?.includes('paris') || tz?.includes('europe/paris')) { setUserRegion('fr'); return; }
     } catch {
       // ignore
     }
     const lowerLocale = locale.toLowerCase();
-    if (lowerLocale.includes('pe')) return 'pe' as const;
-    return 'fr' as const;
+    setUserRegion(lowerLocale.includes('pe') ? 'pe' : 'fr');
   }, [locale]);
 
   const invoiceData: InvoiceData | null = useMemo(() => {
@@ -122,7 +123,7 @@ export default function PaymentSuccessModal({ open, onClose, orderId, lines, tot
         <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-end">
           <Link
             href={homeHref}
-            className="px-4 py-2 rounded-lg bg-[#235730] text-white hover:bg-[#1a4023] transition-colors text-center"
+            className="px-4 py-2 rounded-lg bg-[#523A28] text-white hover:bg-[#3A2819] transition-colors text-center"
           >
             {t('ctaHome', { defaultMessage: 'Accueil pro' })}
           </Link>

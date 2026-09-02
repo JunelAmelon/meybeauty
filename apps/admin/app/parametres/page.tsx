@@ -19,8 +19,8 @@ export default function Parametres() {
         {/* General Settings */}
         <div className="bg-white rounded-xl border border-gray-200 p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Settings className="w-5 h-5 text-blue-600" />
+            <div className="w-10 h-10 bg-[#523A28]/10 rounded-lg flex items-center justify-center">
+              <Settings className="w-5 h-5 text-[#523A28]" />
             </div>
             <h2 className="text-lg font-semibold text-gray-900">{t('general.title')}</h2>
           </div>
@@ -31,8 +31,8 @@ export default function Parametres() {
               </label>
               <input
                 type="text"
-                defaultValue="Mishki B2B"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235730]"
+                defaultValue="Mey Beauty B2B"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
               />
             </div>
             <div>
@@ -41,8 +41,8 @@ export default function Parametres() {
               </label>
               <input
                 type="email"
-                defaultValue="contact@mishki.com"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235730]"
+                defaultValue="contact@meybeauty.fr"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
               />
             </div>
             <div>
@@ -52,7 +52,7 @@ export default function Parametres() {
               <input
                 type="tel"
                 defaultValue="+33 1 23 45 67 89"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235730]"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
               />
             </div>
           </div>
@@ -69,19 +69,19 @@ export default function Parametres() {
           <div className="space-y-3">
             <label className="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer">
               <span className="text-sm text-gray-700">{t('emailNotifications.newOrders')}</span>
-              <input type="checkbox" defaultChecked className="w-5 h-5 text-[#235730] rounded" />
+              <input type="checkbox" defaultChecked className="w-5 h-5 text-[#523A28] rounded" />
             </label>
             <label className="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer">
               <span className="text-sm text-gray-700">{t('emailNotifications.newProfessionals')}</span>
-              <input type="checkbox" defaultChecked className="w-5 h-5 text-[#235730] rounded" />
+              <input type="checkbox" defaultChecked className="w-5 h-5 text-[#523A28] rounded" />
             </label>
             <label className="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer">
               <span className="text-sm text-gray-700">{t('emailNotifications.lowStock')}</span>
-              <input type="checkbox" defaultChecked className="w-5 h-5 text-[#235730] rounded" />
+              <input type="checkbox" defaultChecked className="w-5 h-5 text-[#523A28] rounded" />
             </label>
             <label className="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer">
               <span className="text-sm text-gray-700">{t('emailNotifications.weeklyReports')}</span>
-              <input type="checkbox" className="w-5 h-5 text-[#235730] rounded" />
+              <input type="checkbox" className="w-5 h-5 text-[#523A28] rounded" />
             </label>
           </div>
         </div>
@@ -102,7 +102,7 @@ export default function Parametres() {
               <input
                 type="number"
                 defaultValue="50"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235730]"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
               />
             </div>
             <div>
@@ -112,7 +112,7 @@ export default function Parametres() {
               <input
                 type="number"
                 defaultValue="3"
-                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235730]"
+                className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
               />
             </div>
           </div>
@@ -129,15 +129,15 @@ export default function Parametres() {
           <div className="space-y-3">
             <label className="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer">
               <span className="text-sm text-gray-700">{t('security.twoFactor')}</span>
-              <input type="checkbox" className="w-5 h-5 text-[#235730] rounded" />
+              <input type="checkbox" className="w-5 h-5 text-[#523A28] rounded" />
             </label>
             <label className="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer">
               <span className="text-sm text-gray-700">{t('security.activityLogs')}</span>
-              <input type="checkbox" defaultChecked className="w-5 h-5 text-[#235730] rounded" />
+              <input type="checkbox" defaultChecked className="w-5 h-5 text-[#523A28] rounded" />
             </label>
             <label className="flex items-center justify-between p-3 bg-gray-50 rounded-lg cursor-pointer">
               <span className="text-sm text-gray-700">{t('security.manualValidation')}</span>
-              <input type="checkbox" defaultChecked className="w-5 h-5 text-[#235730] rounded" />
+              <input type="checkbox" defaultChecked className="w-5 h-5 text-[#523A28] rounded" />
             </label>
           </div>
         </div>
@@ -156,7 +156,7 @@ export default function Parametres() {
             <p className="text-sm text-gray-700 mb-1">{t('backup.lastBackup')}</p>
             <p className="text-xs text-gray-500">05/01/2026 à 03:00</p>
           </div>
-          <button className="px-4 py-2 bg-[#235730] text-white rounded-lg hover:bg-[#1a4023] transition-colors">
+          <button className="px-4 py-2 bg-[#523A28] text-white rounded-lg hover:bg-[#3A2819] transition-colors">
             {t('backup.backupNow')}
           </button>
         </div>
@@ -164,7 +164,7 @@ export default function Parametres() {
 
       {/* Save Button */}
       <div className="flex justify-end">
-        <button className="px-6 py-3 bg-[#235730] text-white rounded-lg hover:bg-[#1a4023] transition-colors font-medium">
+        <button className="px-6 py-3 bg-[#523A28] text-white rounded-lg hover:bg-[#3A2819] transition-colors font-medium">
           {t('saveChanges')}
         </button>
       </div>

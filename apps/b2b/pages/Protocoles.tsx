@@ -1,20 +1,17 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { FileText, Download, Clock, Search, Filter, Eye } from 'lucide-react';
-import { useProtocolesListB2B } from '../hooks/useProtocolesB2B';
+import { FileText, Download, Search, Filter, Eye, X } from 'lucide-react';
+import { useProtocolesListB2B, ProtocoleListItem } from '../hooks/useProtocolesB2B';
 
 export default function Protocoles() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedType, setSelectedType] = useState('Tous');
   const [selectedCategorie, setSelectedCategorie] = useState('Toutes');
+  const [previewProto, setPreviewProto] = useState<ProtocoleListItem | null>(null);
   const t = useTranslations('b2b.protocoles');
   const { items, categories: catList, loading, error } = useProtocolesListB2B();
 
-  const types = ['Tous', 'Fiche Technique', 'Rituel Cabine'];
   const categories = useMemo(
     () => ['Toutes', ...catList.filter(Boolean)],
     [catList]
@@ -24,61 +21,44 @@ export default function Protocoles() {
     const matchesSearch = (protocole.title || '')
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
-    const matchesType =
-      selectedType === 'Tous' ||
-      (selectedType === 'Fiche Technique' && protocole.type === 'fiche') ||
-      (selectedType === 'Rituel Cabine' && protocole.type === 'rituel');
     const matchesCategorie =
       selectedCategorie === 'Toutes' || protocole.category === selectedCategorie;
-    return matchesSearch && matchesType && matchesCategorie;
+    return matchesSearch && matchesCategorie;
   });
 
   return (
-    <div className="space-y-4 md:space-y-6">
+    <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-gray-900 mb-2 text-lg md:text-xl lg:text-2xl">{t('title')}</h1>
-        <p className="text-xs md:text-sm text-gray-600">
-          {t('subtitle')}
-        </p>
+        <h1 className="text-2xl text-gray-900 mb-2 font-bold">{t('title')}</h1>
+        <p className="text-gray-600">{t('subtitle')}</p>
+      </div>
+
+      {/* Stats */}
+      <div className="grid grid-cols-1 gap-4">
+        <div className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+          <p className="text-sm text-gray-500 mb-1">{t('results_count', { count: filteredProtocoles.length })}</p>
+          <p className="text-2xl font-bold text-gray-900">{filteredProtocoles.length}</p>
+        </div>
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl border border-gray-200 p-3 md:p-4">
-        <div className="flex flex-col lg:flex-row gap-3 md:gap-4">
-          {/* Search */}
-          <div className="flex-1">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder={t('search_placeholder')}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
+      <div className="bg-white rounded-xl border border-gray-200 p-4">
+        <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex-1 relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <input
+              type="text"
+              placeholder={t('search_placeholder')}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
+            />
           </div>
-
-          {/* Type Filter */}
-          <select
-            value={selectedType}
-            onChange={(e) => setSelectedType(e.target.value)}
-            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            {types.map((type) => (
-              <option key={type} value={type}>
-                {type === 'Tous' ? t('filter_all_types') :
-                  type === 'Fiche Technique' ? t('type_fiche') : t('type_rituel')}
-              </option>
-            ))}
-          </select>
-
-          {/* Category Filter */}
           <select
             value={selectedCategorie}
             onChange={(e) => setSelectedCategorie(e.target.value)}
-            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] text-gray-900 bg-white"
           >
             {categories.map((cat) => (
               <option key={cat} value={cat}>
@@ -89,69 +69,45 @@ export default function Protocoles() {
         </div>
       </div>
 
-      {/* Results Count */}
-      <div className="flex items-center justify-between">
-        <p className="text-gray-600">
-          {t('results_count', { count: filteredProtocoles.length })}
-        </p>
-      </div>
+      {/* Loading / Error */}
+      {loading && <p className="text-gray-500">{t('loading') || 'Chargement...'}</p>}
+      {error && <p className="text-red-600">{error}</p>}
 
       {/* Protocoles Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {loading && <p className="text-gray-500">{t('loading') || 'Chargement...'}</p>}
-        {error && <p className="text-red-600">{error}</p>}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredProtocoles.map((protocole) => (
           <div
             key={protocole.slug}
-            className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all group flex flex-col"
-            style={{ minHeight: '500px' }}
+            className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all flex flex-col"
           >
-            <div className="relative h-48 bg-gray-100 overflow-hidden flex-shrink-0">
-              <Image
-                src={protocole.image}
-                alt={protocole.title}
-                width={800}
-                height={450}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute top-3 right-3">
-                <span
-                  className={`px-3 py-1 rounded-full text-xs text-white ${protocole.type === 'fiche'
-                    ? 'bg-blue-600'
-                    : 'bg-purple-600'
-                    }`}
-                >
-                  {protocole.type === 'fiche' ? t('type_fiche') : t('type_rituel')}
-                </span>
-              </div>
+            <div className="relative h-40 bg-gray-100 overflow-hidden flex items-center justify-center">
+              <FileText className="w-16 h-16 text-gray-400" />
             </div>
-
-            <div className="p-5 flex flex-col flex-grow">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
-                  {protocole.category || t('filter_all_cats')}
-                </span>
-                <span className="flex items-center gap-1 text-xs text-gray-500">
-                  <Clock className="w-3 h-3" />
-                  {protocole.duration || '-'}
-                </span>
-              </div>
-
-              <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2" style={{ minHeight: '48px' }}>{protocole.title}</h3>
-              <p className="text-sm text-gray-600 mb-4 line-clamp-2" style={{ minHeight: '40px' }}>{protocole.description}</p>
-
-              <div className="flex gap-2 mt-auto">
-                <Link
-                  href={`/pro/protocoles/${protocole.type}/${protocole.slug}`}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-white rounded-lg transition-colors text-sm"
-                  style={{ backgroundColor: '#235730' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1a4023')}
-                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#235730')}
+            <div className="p-4 flex flex-col flex-grow">
+              <span className="inline-block px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded mb-2 w-fit">
+                {protocole.category || '—'}
+              </span>
+              <h3 className="font-semibold text-sm text-gray-900 mb-1 line-clamp-2">{protocole.title}</h3>
+              <p className="text-xs text-gray-500 mb-3 line-clamp-2">{protocole.description}</p>
+              <div className="flex items-center gap-2 mt-auto">
+                <button
+                  onClick={() => setPreviewProto(protocole)}
+                  className="p-2 text-gray-600 hover:text-[#523A28] hover:bg-gray-100 rounded-lg transition-colors"
                 >
                   <Eye className="w-4 h-4" />
-                  {t('btn_consult')}
-                </Link>
-                <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">
+                </button>
+                <button
+                  onClick={() => {
+                    const link = document.createElement('a');
+                    link.href = protocole.image;
+                    link.download = protocole.slug;
+                    link.target = '_blank';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                  }}
+                  className="p-2 text-gray-600 hover:text-[#523A28] hover:bg-gray-100 rounded-lg transition-colors"
+                >
                   <Download className="w-4 h-4" />
                 </button>
               </div>
@@ -160,46 +116,51 @@ export default function Protocoles() {
         ))}
       </div>
 
-      {filteredProtocoles.length === 0 && (
+      {filteredProtocoles.length === 0 && !loading && (
         <div className="bg-white rounded-xl border border-gray-200 p-12 text-center">
           <Filter className="w-12 h-12 text-gray-400 mx-auto mb-4" />
           <h3 className="text-gray-900 mb-2">{t('no_results')}</h3>
-          <p className="text-gray-600 mb-4">
-            {t('no_results_desc')}
-          </p>
+          <p className="text-gray-600 mb-4">{t('no_results_desc')}</p>
           <button
             onClick={() => {
               setSearchTerm('');
-              setSelectedType('Tous');
               setSelectedCategorie('Toutes');
             }}
             className="px-4 py-2 text-white rounded-lg transition-colors"
-            style={{ backgroundColor: '#235730' }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1a4023')}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#235730')}
+            style={{ backgroundColor: '#523A28' }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#3A2819')}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#523A28')}
           >
             {t('reset_filters')}
           </button>
         </div>
       )}
 
-      {/* Info Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200">
-          <FileText className="w-8 h-8 mb-3" style={{ color: '#235730' }} />
-          <h3 className="text-gray-900 mb-2">{t('cards.fiches_title')}</h3>
-          <p className="text-sm text-gray-600">
-            {t('cards.fiches_desc')}
-          </p>
+      {/* Inline Preview Modal */}
+      {previewProto && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4" onClick={() => setPreviewProto(null)}>
+          <div className="bg-white rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-4 border-b border-gray-200">
+              <h2 className="text-sm font-semibold text-gray-900">{previewProto.title}</h2>
+              <div className="flex items-center gap-2">
+                <a
+                  href={previewProto.image}
+                  download={previewProto.slug}
+                  className="p-2 text-gray-600 hover:text-[#523A28] hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <Download className="w-5 h-5" />
+                </a>
+                <button onClick={() => setPreviewProto(null)} className="text-gray-400 hover:text-gray-600 p-1">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+            <div className="flex-1 overflow-auto bg-gray-50 flex items-center justify-center">
+              <iframe src={previewProto.image} className="w-full h-[80vh]" title={previewProto.title} />
+            </div>
+          </div>
         </div>
-        <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
-          <FileText className="w-8 h-8 mb-3" style={{ color: '#235730' }} />
-          <h3 className="text-gray-900 mb-2">{t('cards.rituels_title')}</h3>
-          <p className="text-sm text-gray-600">
-            {t('cards.rituels_desc')}
-          </p>
-        </div>
-      </div>
+      )}
     </div>
   );
 }

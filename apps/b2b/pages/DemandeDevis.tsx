@@ -187,7 +187,7 @@ export default function DemandeDevis() {
           {/* Section 1: Général */}
           <div className="bg-white rounded-xl border border-gray-200 p-6 space-y-4">
             <div className="flex items-center gap-2 mb-2">
-              <FileText className="w-5 h-5" style={{ color: '#235730' }} />
+              <FileText className="w-5 h-5" style={{ color: '#523A28' }} />
               <h2 className="text-lg font-semibold text-gray-900">{t('sections.general.title')}</h2>
             </div>
 
@@ -200,7 +200,7 @@ export default function DemandeDevis() {
                   required
                   type="text"
                   placeholder={t('sections.general.subject_placeholder')}
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                   value={form.subject}
                   onChange={(e) => setFormField('subject', e.target.value)}
                 />
@@ -212,7 +212,7 @@ export default function DemandeDevis() {
                 </label>
                 <select
                   required
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] text-gray-900 bg-white"
                   value={form.type}
                   onChange={(e) => setFormField('type', e.target.value)}
                 >
@@ -233,7 +233,7 @@ export default function DemandeDevis() {
                   <button
                     type="button"
                     onClick={() => setShowDatePicker((v) => !v)}
-                    className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-left focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-left focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                   >
                     <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                     {formattedDate || t('sections.general.date_placeholder', { defaultMessage: 'Choisir une date' })}
@@ -282,7 +282,7 @@ export default function DemandeDevis() {
                               type="button"
                               onClick={() => selectDate(day)}
                               className={`py-2 rounded-lg transition-colors ${isSelected
-                                ? 'bg-[#235730] text-white'
+                                ? 'bg-[#523A28] text-white'
                                 : 'text-gray-700 hover:bg-gray-100'
                                 }`}
                             >
@@ -304,7 +304,7 @@ export default function DemandeDevis() {
                   required
                   rows={4}
                   placeholder={t('sections.general.description_placeholder')}
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                   value={form.description}
                   onChange={(e) => setFormField('description', e.target.value)}
                 ></textarea>
@@ -316,7 +316,7 @@ export default function DemandeDevis() {
                 </label>
                 <input
                   type="number"
-                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                   value={form.quantity ?? ''}
                   min={0}
                   onChange={(e) => {
@@ -334,7 +334,7 @@ export default function DemandeDevis() {
                   <Euro className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
                     type="number"
-                    className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                     value={form.budget ?? ''}
                     min={0}
                     onChange={(e) => {
@@ -351,14 +351,14 @@ export default function DemandeDevis() {
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <Plus className="w-5 h-5" style={{ color: '#235730' }} />
+                <Plus className="w-5 h-5" style={{ color: '#523A28' }} />
                 <h2 className="text-lg font-semibold text-gray-900">{t('sections.products.title')}</h2>
               </div>
               <button
                 type="button"
                 onClick={() => setShowProductSelector(true)}
                 className="text-sm font-medium hover:underline"
-                style={{ color: '#235730' }}
+                style={{ color: '#523A28' }}
               >
                 {t('sections.products.btn_add')}
               </button>
@@ -382,7 +382,7 @@ export default function DemandeDevis() {
                           min={1}
                           value={product.quantite}
                           onChange={(e) => updateProductQty(product.id, Number(e.target.value) || 1)}
-                          className="w-20 px-2 py-1 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-20 px-2 py-1 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#523A28]"
                         />
                         <div className="text-right">
                           <p className="text-sm text-gray-900">
@@ -421,14 +421,14 @@ export default function DemandeDevis() {
           {/* Section 3: Documents */}
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Upload className="w-5 h-5" style={{ color: '#235730' }} />
+              <Upload className="w-5 h-5" style={{ color: '#523A28' }} />
               <h2 className="text-lg font-semibold text-gray-900">{t('sections.docs.title')}</h2>
             </div>
 
             <div className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:border-blue-400 transition-colors cursor-pointer group">
               <label className="block cursor-pointer">
-                <div className="bg-gray-50 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-50 transition-colors">
-                  <Upload className="w-6 h-6 text-gray-400 group-hover:text-blue-500" />
+                <div className="bg-gray-50 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-[#F5EDE4] transition-colors">
+                  <Upload className="w-6 h-6 text-gray-400 group-hover:text-[#523A28]" />
                 </div>
                 <p className="text-sm text-gray-600 mb-1">
                   {t('sections.docs.upload_placeholder')}
@@ -499,7 +499,7 @@ export default function DemandeDevis() {
               disabled={submitting}
               type="submit"
               className="px-12 py-4 text-white rounded-xl font-bold transition-all transform hover:scale-105 disabled:opacity-50 disabled:scale-100 flex items-center gap-3"
-              style={{ backgroundColor: '#235730' }}
+              style={{ backgroundColor: '#523A28' }}
             >
               {submitting ? (
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
@@ -513,15 +513,15 @@ export default function DemandeDevis() {
 
         {/* Sidebar Info */}
         <div className="space-y-4">
-          <div className="bg-gradient-to-br from-[#235730]/10 to-blue-50 rounded-xl p-6 border border-[#235730]/20">
+          <div className="bg-gradient-to-br from-[#523A28]/10 to-blue-50 rounded-xl p-6 border border-[#523A28]/20">
             <h3 className="text-gray-900 mb-4 flex items-center gap-2">
-              <AlertCircle className="w-5 h-5" style={{ color: '#235730' }} />
+              <AlertCircle className="w-5 h-5" style={{ color: '#523A28' }} />
               Pourquoi demander un devis ?
             </h3>
             <div className="space-y-4">
               <div className="flex gap-3">
                 <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
-                  <Clock className="w-4 h-4" style={{ color: '#235730' }} />
+                  <Clock className="w-4 h-4" style={{ color: '#523A28' }} />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-gray-900">{t('tips.tip1_title')}</p>
@@ -530,7 +530,7 @@ export default function DemandeDevis() {
               </div>
               <div className="flex gap-3">
                 <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
-                  <Euro className="w-4 h-4" style={{ color: '#235730' }} />
+                  <Euro className="w-4 h-4" style={{ color: '#523A28' }} />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-gray-900">{t('tips.tip2_title')}</p>
@@ -539,7 +539,7 @@ export default function DemandeDevis() {
               </div>
               <div className="flex gap-3">
                 <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
-                  <FileText className="w-4 h-4" style={{ color: '#235730' }} />
+                  <FileText className="w-4 h-4" style={{ color: '#523A28' }} />
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-gray-900">{t('tips.tip3_title')}</p>
@@ -552,7 +552,7 @@ export default function DemandeDevis() {
           <div className="bg-white rounded-xl border border-gray-200 p-6 text-center">
             <p className="text-sm text-gray-600 mb-4">Besoin d&apos;aide immédiate ?</p>
             <p className="text-lg font-bold text-gray-900 mb-1">01 23 45 67 89</p>
-            <p className="text-xs text-gray-400">pro@mishki.com</p>
+            <p className="text-xs text-gray-400">pro@meybeauty.com</p>
           </div>
         </div>
       </div>

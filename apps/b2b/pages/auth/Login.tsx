@@ -1,7 +1,7 @@
 'use client';
 
 import { useAuth } from '../../context/AuthContext';
-import { LoginForm } from '@mishki/shared';
+import { LoginForm } from '@meybeauty/shared';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -22,12 +22,12 @@ export default function Login() {
     <LoginForm
       onLogin={login}
       redirectUrl='/'
-      logoSrc="/b2b/images/logo-mishki.png"
+      logoSrc="/b2b/images/logo-mey-beauty.png"
       title={t('title')}
       subtitle={t('subtitle')}
       showB2BInfo={true}
-      primaryColor="#235730"
-      backgroundColor="#F7F0E0"
+      primaryColor="#523A28"
+      backgroundColor="#F5EDE4"
       labels={{
         email: t('fields.email'),
         password: t('fields.password'),

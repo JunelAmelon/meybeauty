@@ -9,10 +9,10 @@ import { Footer } from '@/apps/b2c/components/footer'
 import { Button } from '@/apps/b2c/components/ui/button'
 import { Input } from '@/apps/b2c/components/ui/input'
 import { useTranslations } from 'next-intl'
-import { db, login, doc, getDoc } from '@mishki/firebase'
+import { db, login, doc, getDoc } from '@meybeauty/firebase'
 import { FirebaseError } from 'firebase/app'
 import { useCart } from '@/apps/b2c/lib/cart-context'
-import { auth } from '@mishki/firebase'
+import { auth } from '@meybeauty/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 
 export default function LoginPage() {
@@ -85,7 +85,7 @@ export default function LoginPage() {
             </Link>
 
             <div className="text-center mb-10">
-              <h1 className="text-3xl font-bold text-[#235730] mb-2" style={{ fontFamily: 'var(--font-caveat)' }}>
+              <h1 className="text-3xl font-bold text-[#523A28] mb-2" style={{ fontFamily: 'var(--font-caveat)' }}>
                 {t('title')}
               </h1>
               <p className="text-gray-500 text-sm">
@@ -108,7 +108,7 @@ export default function LoginPage() {
               <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <label className="text-sm font-medium text-gray-700">{t('password')}</label>
-                  <Link href="#" className="text-xs text-[#235730] hover:underline">
+                  <Link href="#" className="text-xs text-[#523A28] hover:underline">
                     {t('forgot')}
                   </Link>
                 </div>
@@ -127,7 +127,7 @@ export default function LoginPage() {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-[#235730] hover:bg-[#1d4626] text-white py-6 disabled:opacity-50"
+                className="w-full bg-[#523A28] hover:bg-[#3A2819] text-white py-6 disabled:opacity-50"
               >
                 {isLoading ? t('btn_login') + '...' : t('btn_login')}
               </Button>
@@ -138,7 +138,7 @@ export default function LoginPage() {
                 {t('no_account')}{' '}
                 <Link
                   href={`/register?redirect=${encodeURIComponent(redirect)}`}
-                  className="text-[#235730] font-semibold hover:underline"
+                  className="text-[#523A28] font-semibold hover:underline"
                 >
                   {t('register')}
                 </Link>

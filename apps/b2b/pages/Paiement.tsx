@@ -10,7 +10,7 @@ import PaymentSuccessModal from '../components/PaymentSuccessModal';
 import { useCheckoutB2B } from '../hooks/useCheckoutB2B';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
-import { db, doc, getDoc } from '@mishki/firebase';
+import { db, doc, getDoc } from '@meybeauty/firebase';
 import type { InvoiceData } from '@/lib/invoice/types';
 
 type CheckoutLine = {
@@ -124,17 +124,18 @@ export default function PaiementB2B() {
     void loadProfile();
   }, [user?.id]);
 
-  const userRegion = useMemo(() => {
+  const [userRegion, setUserRegion] = useState<'fr' | 'pe'>('fr');
+
+  useEffect(() => {
     try {
       const tz = Intl.DateTimeFormat().resolvedOptions().timeZone?.toLowerCase();
-      if (tz?.includes('lima') || tz?.includes('peru')) return 'pe' as const;
-      if (tz?.includes('paris') || tz?.includes('europe/paris')) return 'fr' as const;
+      if (tz?.includes('lima') || tz?.includes('peru')) { setUserRegion('pe'); return; }
+      if (tz?.includes('paris') || tz?.includes('europe/paris')) { setUserRegion('fr'); return; }
     } catch {
       // ignore
     }
     const lowerLocale = locale.toLowerCase();
-    if (lowerLocale.includes('pe')) return 'pe' as const;
-    return 'fr' as const;
+    setUserRegion(lowerLocale.includes('pe') ? 'pe' : 'fr');
   }, [locale]);
 
   const currencyCode = userRegion === 'pe' ? 'PEN' : 'EUR';
@@ -272,11 +273,11 @@ export default function PaiementB2B() {
             email: user.email || undefined,
           },
           seller: {
-            name: 'MISHKI LAB',
-            addressLines: ['5 Rue du Printemps', '88000 Jeuxey', 'France'],
+            name: 'Mey Beauty',
+            addressLines: ['6 Place des Martyrs de Chateaubriand', '91170 Viry-Chatillon', 'France'],
             siret: '92089652300011',
             ape: '2042Z',
-            email: 'facturation@mishki.com',
+            email: 'facturation@meybeauty.fr',
           },
           payment: { terms: provider === 'paypal' ? 'Paiement en ligne (PayPal)' : 'Paiement en ligne (carte)' },
           lines: invoiceLines.map((l) => ({
@@ -343,7 +344,7 @@ export default function PaiementB2B() {
               {user?.remise ? (
                 <p className="text-xs md:text-sm text-gray-700">
                   {tr('orderSummary.discount', 'Remise professionnelle appliquée :')}{' '}
-                  <span className="font-semibold text-[#235730]">{user.remise}%</span>
+                  <span className="font-semibold text-[#523A28]">{user.remise}%</span>
                 </p>
               ) : null}
               {baseLines.length === 0 ? (
@@ -388,7 +389,7 @@ export default function PaiementB2B() {
                   id="addr_saved"
                   checked={addressMode === 'saved'}
                   onChange={() => setAddressMode('saved')}
-                  className="w-4 h-4 text-[#235730] focus:ring-[#235730]"
+                  className="w-4 h-4 text-[#523A28] focus:ring-[#523A28]"
                 />
                 <Label htmlFor="addr_saved" className="text-sm text-gray-700">
                   {tr('shipping.useSaved', "Utiliser l'adresse enregistrée")}
@@ -400,7 +401,7 @@ export default function PaiementB2B() {
                   id="addr_new"
                   checked={addressMode === 'new'}
                   onChange={() => setAddressMode('new')}
-                  className="w-4 h-4 text-[#235730] focus:ring-[#235730]"
+                  className="w-4 h-4 text-[#523A28] focus:ring-[#523A28]"
                 />
                 <Label htmlFor="addr_new" className="text-sm text-gray-700">
                   {tr('shipping.newAddress', 'Saisir une nouvelle adresse')}
@@ -434,7 +435,7 @@ export default function PaiementB2B() {
                       value={formData.contactName}
                       onChange={(e) => updateForm('contactName', e.target.value)}
                       placeholder={tr('shipping.contactPlaceholder', 'Nom du contact')}
-                      className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                      className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                     />
                   </div>
                   <div className="md:col-span-2">
@@ -446,7 +447,7 @@ export default function PaiementB2B() {
                       value={formData.address}
                       onChange={(e) => updateForm('address', e.target.value)}
                       placeholder={tr('shipping.addressPlaceholder', 'Adresse complète')}
-                      className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                      className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                     />
                   </div>
                   <div>
@@ -458,7 +459,7 @@ export default function PaiementB2B() {
                       value={formData.postalCode}
                       onChange={(e) => updateForm('postalCode', e.target.value)}
                       placeholder={tr('shipping.postalCodePlaceholder', '75001')}
-                      className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                      className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                     />
                   </div>
                   <div>
@@ -470,7 +471,7 @@ export default function PaiementB2B() {
                       value={formData.city}
                       onChange={(e) => updateForm('city', e.target.value)}
                       placeholder={tr('shipping.cityPlaceholder', 'Paris')}
-                      className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                      className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                     />
                   </div>
                 </div>
@@ -486,7 +487,7 @@ export default function PaiementB2B() {
                     value={formData.phone}
                     onChange={(e) => updateForm('phone', e.target.value)}
                     placeholder={tr('shipping.phonePlaceholder', '+33 6 ...')}
-                    className="border-gray-300 focus:border-[#235730] focus:ring-[#235730]"
+                    className="border-gray-300 focus:border-[#523A28] focus:ring-[#523A28]"
                   />
                 </div>
                 <div>
@@ -494,7 +495,7 @@ export default function PaiementB2B() {
                   <select
                     value={formData.deliveryType}
                     onChange={(e) => updateForm('deliveryType', e.target.value)}
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:border-[#235730] focus:ring-[#235730]"
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm text-gray-900 bg-white focus:border-[#523A28] focus:ring-[#523A28]"
                   >
                     <option value="Point relais">{tr('shipping.deliveryRelay', 'Point relais')}</option>
                     <option value="Livraison à domicile">{tr('shipping.deliveryHome', 'Livraison à domicile')}</option>
@@ -527,7 +528,7 @@ export default function PaiementB2B() {
               <button
                 onClick={() => persistOrder('card', null)}
                 className="inline-flex items-center gap-2 px-4 py-3 rounded-lg text-white"
-                style={{ backgroundColor: '#235730' }}
+                style={{ backgroundColor: '#523A28' }}
                 disabled={saving}
               >
                 <CreditCard className="w-4 h-4" />
@@ -556,13 +557,13 @@ export default function PaiementB2B() {
 
               <div className="mt-4 text-sm text-gray-600 space-y-1">
                 <p className="flex items-center gap-2">
-                  <Check className="w-4 h-4" style={{ color: '#235730' }} /> {tr('summary.badgeSecure', 'Paiement sécurisé')}
+                  <Check className="w-4 h-4" style={{ color: '#523A28' }} /> {tr('summary.badgeSecure', 'Paiement sécurisé')}
                 </p>
                 <p className="flex items-center gap-2">
-                  <Check className="w-4 h-4" style={{ color: '#235730' }} /> {tr('summary.badgeShipping', 'Livraison suivie')}
+                  <Check className="w-4 h-4" style={{ color: '#523A28' }} /> {tr('summary.badgeShipping', 'Livraison suivie')}
                 </p>
                 <p className="flex items-center gap-2">
-                  <Check className="w-4 h-4" style={{ color: '#235730' }} /> {tr('summary.badgeSupport', 'Assistance dédiée pro')}
+                  <Check className="w-4 h-4" style={{ color: '#523A28' }} /> {tr('summary.badgeSupport', 'Assistance dédiée pro')}
                 </p>
               </div>
             </div>

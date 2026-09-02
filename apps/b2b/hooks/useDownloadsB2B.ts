@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useLocale } from 'next-intl';
-import { collection, db, getDocs } from '@mishki/firebase';
+import { collection, db, getDocs } from '@meybeauty/firebase';
 
 type Locale = string;
 

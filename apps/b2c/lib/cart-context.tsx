@@ -1,7 +1,7 @@
 'use client'
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
-import { auth, db, doc, getDoc } from '@mishki/firebase'
+import { auth, db, doc, getDoc } from '@meybeauty/firebase'
 
 interface CartItem {
   id: string
@@ -31,7 +31,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [userId, setUserId] = useState<string | null>(null)
   const [checkoutItems, setCheckoutItems] = useState<CartItem[]>([])
 
-  const storageKey = (uid: string | null) => (uid ? `mishki_cart_user_${uid}` : 'mishki_cart_guest')
+  const storageKey = (uid: string | null) => (uid ? `meybeauty_cart_user_${uid}` : 'meybeauty_cart_guest')
 
   const loadCart = (uid: string | null) => {
     const stored = typeof window !== 'undefined' ? localStorage.getItem(storageKey(uid)) : null

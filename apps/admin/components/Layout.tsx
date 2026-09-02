@@ -16,7 +16,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#F7F0E0]">
+    <div className="flex min-h-screen bg-[#F5EDE4]">
       <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
       <div className="flex-1 flex flex-col overflow-hidden w-full">
         <Header onToggleSidebar={toggleSidebar} />

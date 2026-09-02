@@ -33,7 +33,7 @@ export default function ProfessionnelDetail() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <Loader2 className="w-8 h-8 text-[#235730] animate-spin" />
+        <Loader2 className="w-8 h-8 text-[#523A28] animate-spin" />
       </div>
     );
   }
@@ -119,8 +119,8 @@ export default function ProfessionnelDetail() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div className="bg-white rounded-xl border border-gray-200 p-6">
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Package className="w-5 h-5 text-blue-600" />
+            <div className="w-10 h-10 bg-[#523A28]/10 rounded-lg flex items-center justify-center">
+              <Package className="w-5 h-5 text-[#523A28]" />
             </div>
           </div>
           <p className="text-2xl font-bold text-gray-900 mb-1">{stats.totalOrders}</p>
@@ -217,7 +217,7 @@ export default function ProfessionnelDetail() {
           {user.status === 'En attente' && (
             <button
               onClick={() => validateUser(user.id)}
-              className="px-4 py-2 bg-[#235730] text-white rounded-lg hover:bg-[#1a4023] transition-colors"
+              className="px-4 py-2 bg-[#523A28] text-white rounded-lg hover:bg-[#3A2819] transition-colors"
             >
               {t('actions.validateAccount')}
             </button>

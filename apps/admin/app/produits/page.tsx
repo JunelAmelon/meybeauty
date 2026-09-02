@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Search, Plus, Edit, Trash2, Eye, Loader2 } from 'lucide-react';
@@ -12,6 +12,8 @@ export default function Produits() {
   const { products, loading, deleteProduct, addProduct, updateProduct } = useAdminProducts();
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('Toutes');
+  const [currentPage, setCurrentPage] = useState(1);
+  const PRODUCTS_PER_PAGE = 8;
   const t = useTranslations('admin.products');
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -41,6 +43,23 @@ export default function Produits() {
       return matchesSearch && matchesCategory;
     });
   }, [products, searchTerm, categoryFilter]);
+
+  const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
+
+  const paginatedProducts = useMemo(() => {
+    const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
+    return filteredProducts.slice(start, start + PRODUCTS_PER_PAGE);
+  }, [filteredProducts, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, categoryFilter]);
+
+  useEffect(() => {
+    if (currentPage > totalPages && totalPages > 0) {
+      setCurrentPage(1);
+    }
+  }, [totalPages, currentPage]);
 
   const stats = useMemo(() => {
     return {
@@ -82,7 +101,7 @@ export default function Produits() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <Loader2 className="w-8 h-8 text-[#235730] animate-spin" />
+        <Loader2 className="w-8 h-8 text-[#523A28] animate-spin" />
       </div>
     );
   }
@@ -97,7 +116,7 @@ export default function Produits() {
         </div>
         <button
           onClick={handleCreate}
-          className="flex items-center gap-2 px-4 py-2 bg-[#235730] text-white rounded-lg hover:bg-[#1a4023] transition-colors"
+          className="flex items-center gap-2 px-4 py-2 bg-[#523A28] text-white rounded-lg hover:bg-[#3A2819] transition-colors"
         >
           <Plus className="w-4 h-4" />
           {t('newProduct')}
@@ -135,7 +154,7 @@ export default function Produits() {
                 placeholder={t('search.placeholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235730]"
+                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] text-gray-900 bg-white"
               />
             </div>
           </div>
@@ -143,7 +162,7 @@ export default function Produits() {
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235730] bg-white"
+            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] bg-white text-gray-900"
           >
             {categories.map((cat) => (
               <option key={cat.value} value={cat.value}>{cat.label}</option>
@@ -158,8 +177,9 @@ export default function Produits() {
           {t('noResults')}
         </div>
       ) : (
+        <>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
+          {paginatedProducts.map((product) => (
             <div
               key={product.id}
               className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all flex flex-col group"
@@ -197,7 +217,7 @@ export default function Produits() {
 
                 <div className="flex items-center justify-between mb-4 mt-auto">
                   <div>
-                    <p className="text-lg font-bold text-[#235730]">{product.price.toFixed(2)} €</p>
+                    <p className="text-lg font-bold text-[#523A28]">{product.price.toFixed(2)} €</p>
                     <p className="text-[10px] text-gray-400 uppercase font-bold">{t('card.priceB2C')}</p>
                   </div>
                   <div className="text-right">
@@ -217,7 +237,7 @@ export default function Produits() {
                   </Link>
                   <button
                     onClick={() => handleEdit(product)}
-                    className="p-2 bg-[#235730]/10 text-[#235730] rounded-lg hover:bg-[#235730]/20 transition-colors"
+                    className="p-2 bg-[#523A28]/10 text-[#523A28] rounded-lg hover:bg-[#523A28]/20 transition-colors"
                   >
                     <Edit className="w-4 h-4" />
                   </button>
@@ -232,6 +252,49 @@ export default function Produits() {
             </div>
           ))}
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-2 mt-8 flex-wrap">
+            <button
+              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+              className="px-4 py-2 text-sm rounded-lg border border-[#523A28] text-[#523A28] hover:bg-[#523A28] hover:text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              Précédent
+            </button>
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`w-10 h-10 text-sm rounded-lg transition-colors ${
+                  currentPage === page
+                    ? 'bg-[#523A28] text-white'
+                    : 'border border-[#523A28] text-[#523A28] hover:bg-[#523A28] hover:text-white'
+                }`}
+              >
+                {page}
+              </button>
+            ))}
+            <button
+              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 text-sm rounded-lg border border-[#523A28] text-[#523A28] hover:bg-[#523A28] hover:text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              Suivant
+            </button>
+          </div>
+        )}
+
+        {/* Results count */}
+        <p className="text-center text-sm text-gray-500 mt-4">
+          {Math.min((currentPage - 1) * PRODUCTS_PER_PAGE + 1, filteredProducts.length)}
+          {'–'}
+          {Math.min(currentPage * PRODUCTS_PER_PAGE, filteredProducts.length)}
+          {' sur '}
+          {filteredProducts.length} produits
+        </p>
+        </>
       )}
 
       {/* Product Modal */}

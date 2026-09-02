@@ -23,9 +23,9 @@ export default function AdminGuard({ children }: AdminGuardProps) {
 
     if (loading) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-[#F7F0E0]">
+            <div className="min-h-screen flex items-center justify-center bg-[#F5EDE4]">
                 <div className="text-center space-y-4">
-                    <Loader2 className="w-12 h-12 text-[#235730] animate-spin mx-auto" />
+                    <Loader2 className="w-12 h-12 text-[#523A28] animate-spin mx-auto" />
                     <p className="text-gray-600 font-medium">Vérification des accès...</p>
                 </div>
             </div>

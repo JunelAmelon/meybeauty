@@ -35,28 +35,28 @@ export default function AccueilPro() {
       description: t('actions.catalogue_desc'),
       icon: Package,
       link: '/pro/catalogue',
-      color: '#235730',
+      color: '#523A28',
     },
     {
       title: t('actions.quick_order'),
       description: t('actions.quick_order_desc'),
       icon: ShoppingCart,
       link: '/pro/commande-rapide',
-      color: '#235730',
+      color: '#523A28',
     },
     {
       title: t('actions.protocols'),
       description: t('actions.protocols_desc'),
       icon: FileText,
       link: '/pro/protocoles',
-      color: '#235730',
+      color: '#523A28',
     },
     {
       title: t('actions.downloads'),
       description: t('actions.downloads_desc'),
       icon: Download,
       link: '/pro/telechargements',
-      color: '#235730',
+      color: '#523A28',
     },
   ];
 
@@ -113,7 +113,7 @@ export default function AccueilPro() {
               className="bg-white rounded-xl border border-gray-200 p-4 md:p-6 hover:shadow-lg transition-shadow"
             >
               <div className="flex items-center justify-between mb-3 md:mb-4">
-                <div className="p-2 md:p-3 rounded-lg" style={{ backgroundColor: '#235730' }}>
+                <div className="p-2 md:p-3 rounded-lg" style={{ backgroundColor: '#523A28' }}>
                   <stat.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </div>
                 {stat.change && <span className="text-xs md:text-sm text-green-600">{stat.change}</span>}
@@ -139,11 +139,11 @@ export default function AccueilPro() {
                   <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: action.color }}>
                     <action.icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-gray-900 mb-1 transition-colors" style={{ '--hover-color': '#235730' } as React.CSSProperties} onMouseEnter={(e) => e.currentTarget.style.color = '#235730'} onMouseLeave={(e) => e.currentTarget.style.color = ''}>
+                  <h3 className="text-gray-900 mb-1 transition-colors" style={{ '--hover-color': '#523A28' } as React.CSSProperties} onMouseEnter={(e) => e.currentTarget.style.color = '#523A28'} onMouseLeave={(e) => e.currentTarget.style.color = ''}>
                     {action.title}
                   </h3>
                   <p className="text-sm text-gray-600">{action.description}</p>
-                  <div className="flex items-center gap-2 mt-3 text-sm group-hover:gap-3 transition-all" style={{ color: '#235730' }}>
+                  <div className="flex items-center gap-2 mt-3 text-sm group-hover:gap-3 transition-all" style={{ color: '#523A28' }}>
                     {t('actions.access')}
                     <ArrowRight className="w-4 h-4" />
                   </div>
@@ -156,7 +156,7 @@ export default function AccueilPro() {
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-gray-900 text-lg md:text-xl">{t('recent_orders.title')}</h2>
-              <Link href="/factures" className="text-xs md:text-sm hover:underline" style={{ color: '#235730' }}>
+              <Link href="/factures" className="text-xs md:text-sm hover:underline" style={{ color: '#523A28' }}>
                 {t('recent_orders.view_all')}
               </Link>
             </div>
@@ -188,7 +188,7 @@ export default function AccueilPro() {
                               <span className="hidden sm:inline">{t('recent_orders.status_delivered')}</span>
                             </span>
                           ) : (
-                            <span className="inline-flex items-center gap-1 px-2 md:px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">
+                            <span className="inline-flex items-center gap-1 px-2 md:px-3 py-1 bg-[#523A28]/10 text-[#523A28] rounded-full text-xs">
                               <Clock className="w-3 h-3" />
                               <span className="hidden sm:inline">{t('recent_orders.status_processing')}</span>
                             </span>
@@ -220,7 +220,7 @@ export default function AccueilPro() {
                         ? 'bg-yellow-500'
                         : notif.type === 'success'
                           ? 'bg-green-500'
-                          : 'bg-blue-500'
+                          : 'bg-[#F5EDE4]0'
                         }`}
                     ></div>
                     <div className="flex-1 min-w-0">
@@ -237,7 +237,7 @@ export default function AccueilPro() {
           {/* Reassort Widget */}
           <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-6 border border-orange-200">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#235730' }}>
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#523A28' }}>
                 <RotateCcw className="w-5 h-5 text-white" />
               </div>
               <h3 className="text-gray-900">{t('reassort.title')}</h3>
@@ -248,7 +248,7 @@ export default function AccueilPro() {
             <Link
               href="/reassort"
               className="w-full px-4 py-2 bg-white rounded-lg hover:bg-gray-50 transition-colors text-sm flex items-center justify-center gap-2"
-              style={{ color: '#235730' }}
+              style={{ color: '#523A28' }}
             >
               {t('reassort.manage')}
               <ArrowRight className="w-4 h-4" />
@@ -258,7 +258,7 @@ export default function AccueilPro() {
           {/* Downloads Widget */}
           <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-xl p-6 border border-purple-200">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#235730' }}>
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#523A28' }}>
                 <Download className="w-5 h-5 text-white" />
               </div>
               <h3 className="text-gray-900">{t('downloads_widget.title')}</h3>
@@ -269,7 +269,7 @@ export default function AccueilPro() {
             <Link
               href="/telechargements"
               className="w-full px-4 py-2 bg-white rounded-lg hover:bg-gray-50 transition-colors text-sm flex items-center justify-center gap-2"
-              style={{ color: '#235730' }}
+              style={{ color: '#523A28' }}
             >
               {t('downloads_widget.library')}
               <ArrowRight className="w-4 h-4" />

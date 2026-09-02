@@ -26,7 +26,7 @@ export default function RituelsPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#235730]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#523A28]/80 to-transparent" />
           <div className="absolute inset-0 flex items-center">
             <div className="container mx-auto px-6">
               <h1 className="text-white text-4xl md:text-6xl" style={{ fontFamily: 'var(--font-caveat)' }}>
@@ -44,10 +44,10 @@ export default function RituelsPage() {
             <Link href="/" className="inline-flex items-center gap-2 mb-8 hover:opacity-80 transition-opacity">
               <Image src="/b2c/akar-icons_arrow-back.svg" alt={t('back')} width={32} height={32} />
             </Link>
-            <h2 className="text-[#235730] mb-2" style={{ fontFamily: 'var(--font-caveat)', fontSize: '48px', fontWeight: 400 }}>
+            <h2 className="text-[#523A28] mb-2" style={{ fontFamily: 'var(--font-caveat)', fontSize: '48px', fontWeight: 400 }}>
               {t('heading')}
             </h2>
-            <div className="w-full h-[1px] bg-[#235730]"></div>
+            <div className="w-full h-[1px] bg-[#523A28]"></div>
           </div>
 
           {loading && (
@@ -73,7 +73,7 @@ export default function RituelsPage() {
 
                 <div className={`space-y-6 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                   <div>
-                    <span className="text-[#235730] text-sm font-medium uppercase tracking-wide">
+                    <span className="text-[#523A28] text-sm font-medium uppercase tracking-wide">
                       {ritual.subtitle}
                     </span>
                     <h3 className="text-3xl font-semibold text-[#2d2d2d] mt-2" style={{ fontFamily: 'var(--font-caveat)' }}>
@@ -87,11 +87,11 @@ export default function RituelsPage() {
 
                   <div className="flex items-center gap-6">
                     <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Clock className="w-4 h-4 text-[#235730]" />
+                      <Clock className="w-4 h-4 text-[#523A28]" />
                       {ritual.duration}
                     </div>
                     <div className="flex items-center gap-2 text-sm text-gray-500">
-                      <Sparkles className="w-4 h-4 text-[#235730]" />
+                      <Sparkles className="w-4 h-4 text-[#523A28]" />
                       {ritual.difficulty}
                     </div>
                   </div>
@@ -101,7 +101,7 @@ export default function RituelsPage() {
                     <ol className="space-y-2">
                       {ritual.steps.map((step, stepIndex) => (
                         <li key={stepIndex} className="flex items-center gap-3 text-sm text-gray-600">
-                          <span className="w-6 h-6 bg-[#235730] text-white rounded-full flex items-center justify-center text-xs">
+                          <span className="w-6 h-6 bg-[#523A28] text-white rounded-full flex items-center justify-center text-xs">
                             {stepIndex + 1}
                           </span>
                           {step.name || step.desc}
@@ -111,12 +111,12 @@ export default function RituelsPage() {
                   </div>
 
                   <div className="pt-4">
-                    <Link href={`/rituels/${ritual.slug}`}>
-                      <Button className="bg-[#235730] hover:bg-[#1d4626] text-white rounded-sm">
+                    <Button asChild className="bg-[#523A28] hover:bg-[#3A2819] text-white rounded-sm">
+                      <Link href={`/rituels/${ritual.slug}`}>
                         <Heart className="w-4 h-4 mr-2" />
                         {t('discover')}
-                      </Button>
-                    </Link>
+                      </Link>
+                    </Button>
                   </div>
                 </div>
               </div>

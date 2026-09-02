@@ -25,7 +25,7 @@ export default function BlogPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#235730]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#523A28]/80 to-transparent" />
           <div className="absolute inset-0 flex items-center">
             <div className="container mx-auto px-6">
               <h1 className="text-white text-4xl md:text-6xl" style={{ fontFamily: 'var(--font-caveat)' }}>
@@ -43,10 +43,10 @@ export default function BlogPage() {
             <Link href="/" className="inline-flex items-center gap-2 mb-8 hover:opacity-80 transition-opacity">
               <Image src="/b2c/akar-icons_arrow-back.svg" alt={t('back')} width={32} height={32} />
             </Link>
-            <h2 className="text-[#235730] mb-2" style={{ fontFamily: 'var(--font-caveat)', fontSize: '48px', fontWeight: 400 }}>
+            <h2 className="text-[#523A28] mb-2" style={{ fontFamily: 'var(--font-caveat)', fontSize: '48px', fontWeight: 400 }}>
               {t('heading')}
             </h2>
-            <div className="w-full h-[1px] bg-[#235730]"></div>
+            <div className="w-full h-[1px] bg-[#523A28]"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -61,7 +61,7 @@ export default function BlogPage() {
                 <div className="relative h-48">
                   <Image src={post.image} alt={post.title} fill className="object-cover" />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-[#235730] text-white text-xs px-3 py-1 rounded-full">
+                    <span className="bg-[#523A28] text-white text-xs px-3 py-1 rounded-full">
                       {post.category}
                     </span>
                   </div>
@@ -83,7 +83,7 @@ export default function BlogPage() {
                   <p className="text-sm text-gray-600 mb-4 line-clamp-3">
                     {post.excerpt}
                   </p>
-                  <Link href={`/blog/${post.id}`} className="inline-flex items-center gap-2 text-[#235730] text-sm font-medium hover:gap-3 transition-all">
+                  <Link href={`/blog/${post.id}`} className="inline-flex items-center gap-2 text-[#523A28] text-sm font-medium hover:gap-3 transition-all">
                     {t('read_more')}
                     <ArrowRight className="w-4 h-4" />
                   </Link>

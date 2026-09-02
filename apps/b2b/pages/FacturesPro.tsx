@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Search, Download, Eye, Filter, Calendar, FileText } from 'lucide-react';
 import { useInvoicesB2B } from '../hooks/useInvoicesB2B';
@@ -13,7 +13,7 @@ export default function FacturesPro() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStatut, setSelectedStatut] = useState<'all' | 'payee' | 'en_attente' | 'retard'>('all');
   const [selectedMois, setSelectedMois] = useState<string>('all');
-  const [selectedYear, setSelectedYear] = useState<string>(() => new Date().getFullYear().toString());
+  const [selectedYear, setSelectedYear] = useState<string>('');
   const detectRegion = useMemo(() => {
     return () => {
       try {
@@ -33,7 +33,12 @@ export default function FacturesPro() {
       return 'fr' as const;
     };
   }, [locale]);
-  const userRegion = useMemo(() => detectRegion(), [detectRegion]);
+  const [userRegion, setUserRegion] = useState<'fr' | 'pe'>('fr');
+
+  useEffect(() => {
+    setUserRegion(detectRegion());
+    if (!selectedYear) setSelectedYear(new Date().getFullYear().toString());
+  }, [detectRegion, selectedYear]);
 
   const currencyCode = userRegion === 'pe' ? 'PEN' : 'EUR';
   const formatMoney = useMemo(
@@ -69,7 +74,7 @@ export default function FacturesPro() {
       case 'payee':
         return 'bg-green-100 text-green-700';
       case 'en_attente':
-        return 'bg-blue-100 text-blue-700';
+        return 'bg-[#523A28]/10 text-[#523A28]';
       case 'retard':
         return 'bg-red-100 text-red-700';
       default:
@@ -178,9 +183,9 @@ export default function FacturesPro() {
         </div>
         <button
           className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 text-white rounded-lg transition-colors w-full sm:w-auto justify-center"
-          style={{ backgroundColor: '#235730' }}
-          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1a4023')}
-          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#235730')}
+          style={{ backgroundColor: '#523A28' }}
+          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#3A2819')}
+          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#523A28')}
           onClick={() => {
             // TODO: batch download all PDFs; for now noop.
           }}
@@ -202,7 +207,7 @@ export default function FacturesPro() {
         </div>
         <div className="bg-white rounded-xl p-6 border border-gray-200">
           <p className="text-sm text-gray-600 mb-1">{t('stats.pending')}</p>
-          <p className="text-2xl text-blue-600">{enAttente}</p>
+          <p className="text-2xl text-[#523A28]">{enAttente}</p>
         </div>
         <div className="bg-white rounded-xl p-6 border border-gray-200">
           <p className="text-sm text-gray-600 mb-1">{t('stats.overdue')}</p>
@@ -222,7 +227,7 @@ export default function FacturesPro() {
                 placeholder={t('search_placeholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28]"
               />
             </div>
           </div>
@@ -231,7 +236,7 @@ export default function FacturesPro() {
           <select
             value={selectedStatut}
             onChange={(e) => setSelectedStatut(e.target.value as typeof selectedStatut)}
-            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] text-gray-900 bg-white"
           >
             {statuts.map((s) => (
               <option key={s.value} value={s.value}>
@@ -244,7 +249,7 @@ export default function FacturesPro() {
           <select
             value={selectedYear}
             onChange={(e) => setSelectedYear(e.target.value)}
-            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] text-gray-900 bg-white"
           >
             {years.map((y) => (
               <option key={y} value={y}>
@@ -257,7 +262,7 @@ export default function FacturesPro() {
           <select
             value={selectedMois}
             onChange={(e) => setSelectedMois(e.target.value)}
-            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] text-gray-900 bg-white"
           >
             <option value="all">{t('filter_all_months')}</option>
             {months.map((m) => (
@@ -338,7 +343,7 @@ export default function FacturesPro() {
                               href={pdfUrl}
                               target="_blank"
                               rel="noreferrer"
-                              className="p-1.5 md:p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors inline-flex"
+                              className="p-1.5 md:p-2 text-[#523A28] hover:bg-[#F5EDE4] rounded-lg transition-colors inline-flex"
                               title={t('table.action_view')}
                             >
                               <Eye className="w-3 h-3 md:w-4 md:h-4" />
@@ -387,9 +392,9 @@ export default function FacturesPro() {
               setSelectedMois('all');
             }}
             className="px-4 py-2 text-white rounded-lg transition-colors"
-            style={{ backgroundColor: '#235730' }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1a4023')}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#235730')}
+            style={{ backgroundColor: '#523A28' }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#3A2819')}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#523A28')}
           >
             {t('reset_filters')}
           </button>
@@ -397,23 +402,23 @@ export default function FacturesPro() {
       )}
 
       {/* Info */}
-      <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200">
+      <div className="bg-gradient-to-br from-[#F5EDE4] to-[#EDE0D3] rounded-xl p-6 border border-[#523A28]/20">
         <h3 className="text-gray-900 mb-3">{t('info.title')}</h3>
         <ul className="space-y-2 text-sm text-gray-700">
           <li className="flex items-start gap-2">
-            <span style={{ color: '#235730' }}>•</span>
+            <span style={{ color: '#523A28' }}>•</span>
             {t('info.line1')}
           </li>
           <li className="flex items-start gap-2">
-            <span style={{ color: '#235730' }}>•</span>
+            <span style={{ color: '#523A28' }}>•</span>
             {t('info.line2')}
           </li>
           <li className="flex items-start gap-2">
-            <span style={{ color: '#235730' }}>•</span>
+            <span style={{ color: '#523A28' }}>•</span>
             {t('info.line3')}
           </li>
           <li className="flex items-start gap-2">
-            <span style={{ color: '#235730' }}>•</span>
+            <span style={{ color: '#523A28' }}>•</span>
             {t('info.line4')}
           </li>
         </ul>

@@ -23,8 +23,8 @@
       "@/*": ["./src/*"],
       "@/apps/*": ["apps/*"],
       "@/packages/*": ["packages/*"],
-      "@mishki/*": ["packages/*"],
-      "@mishki/shared": ["packages/shared/index.tsx"]
+      "@meybeauty/*": ["packages/*"],
+      "@meybeauty/shared": ["packages/shared/index.tsx"]
     }
   },
   "include": [

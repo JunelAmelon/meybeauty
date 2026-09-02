@@ -24,7 +24,7 @@ export default function Dashboard() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <Loader2 className="w-8 h-8 text-[#235730] animate-spin" />
+        <Loader2 className="w-8 h-8 text-[#523A28] animate-spin" />
       </div>
     );
   }
@@ -36,7 +36,7 @@ export default function Dashboard() {
       change: stats.pendingPros > 0 ? t('stats.pending', { count: stats.pendingPros }) : t('stats.upToDate'),
       trend: stats.pendingPros > 0 ? 'down' : 'up',
       icon: Users,
-      color: 'bg-blue-500',
+      color: 'bg-[#523A28]',
     },
     {
       title: t('stats.orders'),
@@ -98,7 +98,7 @@ export default function Dashboard() {
         <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-bold text-gray-900">{t('recentOrders.title')}</h2>
-            <Link href="/admin/commandes" className="text-xs font-bold text-[#235730] hover:underline uppercase tracking-wider">
+            <Link href="/admin/commandes" className="text-xs font-bold text-[#523A28] hover:underline uppercase tracking-wider">
               {t('recentOrders.viewAll')}
             </Link>
           </div>
@@ -115,7 +115,7 @@ export default function Dashboard() {
                   <div className="text-right flex flex-col items-end gap-1">
                     <p className="font-bold text-gray-900">{order.amount}</p>
                     <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${order.status === 'Livrée' ? 'bg-green-100 text-green-700 border border-green-200' :
-                      order.status === 'En cours' ? 'bg-blue-100 text-blue-700 border border-blue-200' :
+                      order.status === 'En cours' ? 'bg-[#523A28]/10 text-[#523A28] border border-[#523A28]/20' :
                         'bg-yellow-100 text-yellow-700 border border-yellow-200'
                       }`}>
                       {order.status}
@@ -131,7 +131,7 @@ export default function Dashboard() {
         <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-bold text-gray-900">{t('pendingValidations.title')}</h2>
-            <Link href="/admin/professionnels" className="text-xs font-bold text-[#235730] hover:underline uppercase tracking-wider">
+            <Link href="/admin/professionnels" className="text-xs font-bold text-[#523A28] hover:underline uppercase tracking-wider">
               {t('pendingValidations.manage', { count: stats.pendingPros })}
             </Link>
           </div>
@@ -156,7 +156,7 @@ export default function Dashboard() {
                     <div className="flex gap-2">
                       <button
                         onClick={() => handleValidate(pro.id, pro.name)}
-                        className="px-3 py-1.5 bg-[#235730] text-white text-[10px] font-bold uppercase rounded-lg hover:bg-[#1a4023] transition-colors shadow-sm"
+                        className="px-3 py-1.5 bg-[#523A28] text-white text-[10px] font-bold uppercase rounded-lg hover:bg-[#3A2819] transition-colors shadow-sm"
                       >
                         {t('pendingValidations.validate')}
                       </button>

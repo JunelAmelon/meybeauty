@@ -1,6 +1,6 @@
 'use client';
 
-import { addDoc, collection, db, doc, runTransaction } from '@mishki/firebase';
+import { addDoc, collection, db, doc, runTransaction } from '@meybeauty/firebase';
 import { serverTimestamp } from 'firebase/firestore';
 import { useCallback } from 'react';
 

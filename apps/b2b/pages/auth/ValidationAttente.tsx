@@ -25,19 +25,19 @@ export default function ValidationAttente() {
 
   if (isLoading || !user) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: '#F7F0E0' }}>
+      <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: '#F5EDE4' }}>
         <div className="text-gray-700">Vérification de votre session...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: '#F7F0E0' }}>
+    <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: '#F5EDE4' }}>
       <div className="w-full max-w-2xl">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center mb-4 px-8 py-4 rounded-xl" style={{ backgroundColor: '#235730' }}>
-            <span className="text-white text-2xl md:text-3xl font-bold">Mishki B2B</span>
+          <div className="inline-flex items-center justify-center mb-4 px-8 py-4 rounded-xl" style={{ backgroundColor: '#523A28' }}>
+            <span className="text-white text-2xl md:text-3xl font-bold">Mey Beauty B2B</span>
           </div>
         </div>
 
@@ -56,7 +56,7 @@ export default function ValidationAttente() {
           </p>
 
           {/* Timeline */}
-          <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 mb-8 text-left max-w-md mx-auto">
+          <div className="bg-gradient-to-br from-[#F5EDE4] to-[#EDE0D3] rounded-xl p-6 mb-8 text-left max-w-md mx-auto">
             <h3 className="text-gray-900 mb-4">{t('steps_title')}</h3>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
@@ -93,7 +93,7 @@ export default function ValidationAttente() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
             <div className="bg-gray-50 rounded-lg p-4 text-left">
               <div className="flex items-center gap-3 mb-2">
-                <Mail className="w-5 h-5" style={{ color: '#235730' }} />
+                <Mail className="w-5 h-5" style={{ color: '#523A28' }} />
                 <h4 className="text-gray-900">{t('cards.email_title')}</h4>
               </div>
               <p className="text-sm text-gray-600">
@@ -102,7 +102,7 @@ export default function ValidationAttente() {
             </div>
             <div className="bg-gray-50 rounded-lg p-4 text-left">
               <div className="flex items-center gap-3 mb-2">
-                <Phone className="w-5 h-5" style={{ color: '#235730' }} />
+                <Phone className="w-5 h-5" style={{ color: '#523A28' }} />
                 <h4 className="text-gray-900">{t('cards.help_title')}</h4>
               </div>
               <p className="text-sm text-gray-600">
@@ -122,9 +122,9 @@ export default function ValidationAttente() {
             <Link
               href="/login"
               className="px-6 py-3 text-white rounded-lg transition-all"
-              style={{ backgroundColor: '#235730' }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1a4023')}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#235730')}
+              style={{ backgroundColor: '#523A28' }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#3A2819')}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#523A28')}
             >
               {t('btn_back')}
             </Link>

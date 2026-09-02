@@ -30,6 +30,18 @@
   --chart-4: 43 74% 66%;
   --chart-5: 27 87% 67%;
   --radius: 0.5rem;
+
+  /* Mey Beauty brand tokens */
+  --brun: #523A28;
+  --brun-dark: #3A2819;
+  --brun-medium: #6B4C35;
+  --nude: #D0B49F;
+  --nude-light: #F5EDE4;
+  --nude-lighter: #FDF8F3;
+  --noir: #1A1410;
+  --or: #C4A35A;
+  --gris-card: #F2EFEC;
+  --gris-border: #E8E0D8;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -91,8 +103,8 @@
   --color-chart-4: hsl(var(--chart-4));
   --color-chart-5: hsl(var(--chart-5));
   --radius: var(--radius);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-inter);
+  --font-sans: var(--font-lato);
+  --font-mono: var(--font-lato);
 }
 
 @layer base {
@@ -106,12 +118,24 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-color: #f7f0e0;
+    background-color: #F5EDE4;
+  }
+  input,
+  select,
+  textarea {
+    color: #1A1410;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: #9ca3af;
   }
   .font-serif {
-    font-family: var(--font-playfair), serif;
+    font-family: var(--font-cormorant-garamond), serif;
   }
-  .font-caveat {
+  .font-sc {
     font-family: var(--font-caveat), cursive;
+  }
+  .font-corps {
+    font-family: var(--font-lato), sans-serif;
   }
 }

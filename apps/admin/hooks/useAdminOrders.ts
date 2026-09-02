@@ -8,12 +8,13 @@ import {
     orderBy,
     onSnapshot,
     getDoc,
+    deleteDoc,
     doc as fsDoc,
     type QuerySnapshot,
     type DocumentData,
     type QueryDocumentSnapshot,
     type Timestamp,
-} from '@mishki/firebase';
+} from '@meybeauty/firebase';
 
 export type RawOrderData = {
     userSociete?: string;
@@ -139,5 +140,9 @@ export function useAdminOrders() {
         return () => unsubscribe();
     }, [userEmails]); // Re-run when userEmails changes to update normalized orders
 
-    return { orders, loading, error };
+    const deleteOrder = async (id: string) => {
+        await deleteDoc(fsDoc(db, 'orders', id));
+    };
+
+    return { orders, loading, error, deleteOrder };
 }

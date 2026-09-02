@@ -1,6 +1,6 @@
-# Bible du Projet Mishki
+# Bible du Projet Mey Beauty
 
-> **Objectif de ce document** : Fournir une compréhension totale et exhaustive du projet Mishki (architecture, base de données, logique métier) sans avoir besoin d'ouvrir le code source.
+> **Objectif de ce document** : Fournir une compréhension totale et exhaustive du Projet Mey Beauty (architecture, base de données, logique métier) sans avoir besoin d'ouvrir le code source.
 
 ---
 
@@ -9,8 +9,8 @@
 Le projet est un **Monolithe Modulaire** basé sur le framework **Next.js 16+ (App Router)**.
 Il héberge deux applications distinctes au sein du même codebase :
 
-1.  **Mishki Retail (B2C)** : La boutique e-commerce grand public.
-2.  **Mishki Pro (B2B)** : L'espace revendeur pour les professionnels (instituts, spas).
+1.  **Mey Beauty Retail (B2C)** : La boutique e-commerce grand public.
+2.  **Mey Beauty Pro (B2B)** : L'espace revendeur pour les professionnels (instituts, spas).
 
 ### Technologies Clés
 *   **Frontend** : Next.js (React), Tailwind CSS, Radix UI.

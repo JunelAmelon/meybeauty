@@ -62,14 +62,14 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         }}
       >
         {/* Header with Logo */}
-        <div className="p-3 sm:p-4 border-b border-gray-200 flex items-center justify-between bg-[#235730]">
+        <div className="p-3 sm:p-4 border-b border-gray-200 flex items-center justify-between bg-[#523A28]">
           <div className="flex-1 flex items-center justify-center">
             <Image
-              src="/b2b/images/logo-mishki.png"
-              alt="Mishki B2B"
+              src="/b2b/images/logo-mey-beauty.png"
+              alt="Mey Beauty B2B"
               width={110}
               height={36}
-              className="object-contain"
+              className="object-contain brightness-0 invert"
             />
           </div>
           {/* Close button for mobile */}
@@ -93,7 +93,7 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
                 onClick={onClose}
                 className={`flex items-center gap-2 sm:gap-3 px-2 sm:px-3 md:px-4 py-2 md:py-2.5 lg:py-3 rounded-lg transition-colors text-sm sm:text-base ${
                   isActive
-                    ? 'bg-[#235730] text-white'
+                    ? 'bg-[#523A28] text-white'
                     : 'text-gray-600 hover:bg-gray-50'
                 }`}
               >
@@ -106,11 +106,11 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
 
         {/* Support Section */}
         <div className="p-2 sm:p-3 md:p-4 border-t border-gray-200">
-          <div className="rounded-lg p-2 sm:p-3 md:p-4" style={{ backgroundColor: '#F7F0E0' }}>
+          <div className="rounded-lg p-2 sm:p-3 md:p-4" style={{ backgroundColor: '#F5EDE4' }}>
             <p className="text-xs text-gray-600 mb-2">{t('support.help')}</p>
             <button
               className="w-full px-2 py-2 bg-white rounded-md text-xs sm:text-sm hover:bg-gray-50 transition-colors"
-              style={{ color: '#235730' }}
+              style={{ color: '#523A28' }}
             >
               {t('support.btn')}
             </button>

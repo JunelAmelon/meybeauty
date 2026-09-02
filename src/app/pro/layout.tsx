@@ -28,7 +28,7 @@ function ProGate({ children }: { children: React.ReactNode }) {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F7F0E0] text-gray-700">
+      <div className="min-h-screen flex items-center justify-center bg-[#F5EDE4] text-gray-700">
         Vérification des accès...
       </div>
     );

@@ -56,7 +56,7 @@ export default function RitualDetailPage({ params }: { params: Promise<{ id: str
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#235730]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#523A28]/80 to-transparent" />
           <div className="absolute inset-0 flex items-center">
             <div className="container mx-auto px-6">
               <span className="text-white/90 text-sm uppercase tracking-wide">{ritual.subtitle}</span>
@@ -87,7 +87,7 @@ export default function RitualDetailPage({ params }: { params: Promise<{ id: str
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2 space-y-12">
               <div>
-                <h2 className="text-[#235730] mb-4" style={{ fontFamily: 'var(--font-caveat)', fontSize: '36px' }}>
+                <h2 className="text-[#523A28] mb-4" style={{ fontFamily: 'var(--font-caveat)', fontSize: '36px' }}>
                   {t('about')}
                 </h2>
                 <p className="text-gray-600 leading-relaxed">
@@ -96,13 +96,13 @@ export default function RitualDetailPage({ params }: { params: Promise<{ id: str
               </div>
 
               <div>
-                <h2 className="text-[#235730] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '36px' }}>
+                <h2 className="text-[#523A28] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '36px' }}>
                   {t('steps_title')}
                 </h2>
                 <div className="space-y-6">
                   {ritual.steps.map((step: { name: string; desc: string }, index: number) => (
                     <div key={index} className="flex gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 bg-[#235730] text-white rounded-full flex items-center justify-center font-medium">
+                      <div className="flex-shrink-0 w-10 h-10 bg-[#523A28] text-white rounded-full flex items-center justify-center font-medium">
                         {index + 1}
                       </div>
                       <div className="flex-1 pt-1">
@@ -115,13 +115,13 @@ export default function RitualDetailPage({ params }: { params: Promise<{ id: str
               </div>
 
               <div>
-                <h2 className="text-[#235730] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '36px' }}>
+                <h2 className="text-[#523A28] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '36px' }}>
                   {t('tips_title')}
                 </h2>
-                <div className="bg-[#235730]/5 rounded-lg p-6 space-y-4">
+                <div className="bg-[#523A28]/5 rounded-lg p-6 space-y-4">
                   {ritual.tips.map((tip: string, index: number) => (
                     <div key={index} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-[#235730] flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="w-5 h-5 text-[#523A28] flex-shrink-0 mt-0.5" />
                       <p className="text-gray-600">{tip}</p>
                     </div>
                   ))}
@@ -131,7 +131,7 @@ export default function RitualDetailPage({ params }: { params: Promise<{ id: str
 
             <div className="lg:col-span-1">
               <div className="bg-white rounded-lg p-6 shadow-sm sticky top-24">
-                <h3 className="text-[#235730] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '28px' }}>
+                <h3 className="text-[#523A28] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '28px' }}>
                   {t('recommended')}
                 </h3>
                 <div className="space-y-4">
@@ -151,20 +151,20 @@ export default function RitualDetailPage({ params }: { params: Promise<{ id: str
                         </div>
                         <div className="flex-1">
                           <h4 className="font-medium text-[#2d2d2d] text-sm">{product.name}</h4>
-                          <p className="text-[#235730] font-bold">{product.price} {t('currency')}</p>
+                          <p className="text-[#523A28] font-bold">{product.price} {t('currency')}</p>
                         </div>
-                        <ShoppingCart className="w-5 h-5 text-[#235730]" />
+                        <ShoppingCart className="w-5 h-5 text-[#523A28]" />
                       </div>
                     </Link>
                   ))}
                 </div>
                 <div className="mt-6 pt-6 border-t border-gray-100">
-                  <Link href="/produits">
-                    <Button className="w-full bg-[#235730] hover:bg-[#1d4626] text-white rounded-sm">
+                  <Button asChild className="w-full bg-[#523A28] hover:bg-[#3A2819] text-white rounded-sm">
+                    <Link href="/produits">
                       <Heart className="w-4 h-4 mr-2" />
                       {t('all_products')}
-                    </Button>
-                  </Link>
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </div>

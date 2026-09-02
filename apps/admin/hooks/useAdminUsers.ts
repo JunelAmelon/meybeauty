@@ -12,7 +12,7 @@ import {
     doc,
     type QuerySnapshot,
     type DocumentData,
-} from '@mishki/firebase';
+} from '@meybeauty/firebase';
 import { type RawOrderData } from './useAdminOrders';
 
 export type AdminUser = {

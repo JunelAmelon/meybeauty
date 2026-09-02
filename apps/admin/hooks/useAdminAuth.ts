@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { auth, db, doc, getDoc } from '@mishki/firebase';
+import { auth, db, doc, getDoc } from '@meybeauty/firebase';
 import { onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
 
 interface AdminUser {

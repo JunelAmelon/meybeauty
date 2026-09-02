@@ -29,7 +29,7 @@ import {
 import { Loader2, Upload, X, Globe } from 'lucide-react';
 import { AdminProduct, ProductDb } from '@/apps/admin/hooks/useAdminProducts';
 import { useTranslations } from 'next-intl';
-import { uploadToCloudinary } from '@mishki/cloudinary';
+import { uploadToCloudinary } from '@meybeauty/cloudinary';
 import Image from 'next/image';
 
 interface ProductModalProps {
@@ -233,8 +233,8 @@ export default function ProductModal({ open, onOpenChange, product, categories, 
                                                 id="price"
                                                 type="number"
                                                 step="0.01"
-                                                value={formData.price}
-                                                onChange={(e) => setFormData({ ...formData, price: parseFloat(e.target.value) })}
+                                                value={formData.price ?? ''}
+                                                onChange={(e) => setFormData({ ...formData, price: e.target.value === '' ? undefined : parseFloat(e.target.value) })}
                                                 required
                                             />
                                         </div>
@@ -243,8 +243,8 @@ export default function ProductModal({ open, onOpenChange, product, categories, 
                                             <Input
                                                 id="stock"
                                                 type="number"
-                                                value={formData.stock}
-                                                onChange={(e) => setFormData({ ...formData, stock: parseInt(e.target.value) })}
+                                                value={formData.stock ?? ''}
+                                                onChange={(e) => setFormData({ ...formData, stock: e.target.value === '' ? undefined : parseInt(e.target.value) })}
                                                 required
                                             />
                                         </div>
@@ -265,7 +265,7 @@ export default function ProductModal({ open, onOpenChange, product, categories, 
                             <div className="md:col-span-2 space-y-6">
                                 <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 space-y-4">
                                     <Label className="text-base font-bold flex items-center gap-2">
-                                        <Package className="w-5 h-5 text-[#235730]" />
+                                        <Package className="w-5 h-5 text-[#523A28]" />
                                         {t('form.classificationLabel')}
                                     </Label>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -303,7 +303,7 @@ export default function ProductModal({ open, onOpenChange, product, categories, 
 
                                 <div className="space-y-4">
                                     <Label className="text-base font-bold flex items-center gap-2">
-                                        <Globe className="w-5 h-5 text-[#235730]" />
+                                        <Globe className="w-5 h-5 text-[#523A28]" />
                                         {t('form.contentLabel')}
                                     </Label>
                                     <Tabs defaultValue="fr" className="w-full">
@@ -383,7 +383,7 @@ export default function ProductModal({ open, onOpenChange, product, categories, 
                             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
                                 {t('actions.cancel')}
                             </Button>
-                            <Button type="submit" disabled={isSaving} className="bg-[#235730] hover:bg-[#1a4023]">
+                            <Button type="submit" disabled={isSaving} className="bg-[#523A28] hover:bg-[#3A2819]">
                                 {isSaving ? (
                                     <>
                                         <Loader2 className="w-4 h-4 mr-2 animate-spin" />

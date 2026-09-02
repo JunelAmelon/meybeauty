@@ -45,7 +45,7 @@ export default function AboutPage(): React.JSX.Element {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#235730]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#523A28]/80 to-transparent" />
           <div className="absolute inset-0 flex items-center">
             <div className="container mx-auto px-6">
               <h1 className="text-white text-4xl md:text-6xl" style={{ fontFamily: 'var(--font-caveat)' }}>
@@ -67,7 +67,7 @@ export default function AboutPage(): React.JSX.Element {
 
           <div className="max-w-4xl mx-auto">
             <div className="mb-16">
-              <h2 className="text-[#235730] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '42px' }}>
+              <h2 className="text-[#523A28] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '42px' }}>
                 {t('history.title')}
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
@@ -78,14 +78,14 @@ export default function AboutPage(): React.JSX.Element {
             </div>
 
             <div className="mb-16">
-              <h2 className="text-[#235730] mb-8" style={{ fontFamily: 'var(--font-caveat)', fontSize: '42px' }}>
+              <h2 className="text-[#523A28] mb-8" style={{ fontFamily: 'var(--font-caveat)', fontSize: '42px' }}>
                 {t('values.title')}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {values.map((value, index) => (
                   <div key={index} className="flex gap-4">
-                    <div className="w-14 h-14 bg-[#235730]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <value.icon className="w-6 h-6 text-[#235730]" />
+                    <div className="w-14 h-14 bg-[#523A28]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <value.icon className="w-6 h-6 text-[#523A28]" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-[#2d2d2d] mb-2">{value.title}</h3>
@@ -97,28 +97,28 @@ export default function AboutPage(): React.JSX.Element {
             </div>
 
             <div className="mb-16">
-              <h2 className="text-[#235730] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '42px' }}>
+              <h2 className="text-[#523A28] mb-6" style={{ fontFamily: 'var(--font-caveat)', fontSize: '42px' }}>
                 {t('engagement.title')}
               </h2>
-              <div className="bg-[#235730]/5 rounded-lg p-8 space-y-4">
+              <div className="bg-[#523A28]/5 rounded-lg p-8 space-y-4">
                 <p className="text-gray-600 leading-relaxed">
                   {t('engagement.intro')}
                 </p>
                 <ul className="space-y-3 text-gray-600">
                   <li className="flex items-start gap-3">
-                    <span className="w-2 h-2 bg-[#235730] rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-[#523A28] rounded-full mt-2 flex-shrink-0"></span>
                     {t('engagement.list.ingredients')}
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="w-2 h-2 bg-[#235730] rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-[#523A28] rounded-full mt-2 flex-shrink-0"></span>
                     {t('engagement.list.fair')}
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="w-2 h-2 bg-[#235730] rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-[#523A28] rounded-full mt-2 flex-shrink-0"></span>
                     {t('engagement.list.carbon')}
                   </li>
                   <li className="flex items-start gap-3">
-                    <span className="w-2 h-2 bg-[#235730] rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-[#523A28] rounded-full mt-2 flex-shrink-0"></span>
                     {t('engagement.list.packaging')}
                   </li>
                 </ul>
@@ -127,15 +127,15 @@ export default function AboutPage(): React.JSX.Element {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div className="p-6">
-                <p className="text-4xl font-bold text-[#235730] mb-2">100%</p>
+                <p className="text-4xl font-bold text-[#523A28] mb-2">100%</p>
                 <p className="text-gray-600">{t('stats.ingredients')}</p>
               </div>
               <div className="p-6">
-                <p className="text-4xl font-bold text-[#235730] mb-2">50+</p>
+                <p className="text-4xl font-bold text-[#523A28] mb-2">50+</p>
                 <p className="text-gray-600">{t('stats.families')}</p>
               </div>
               <div className="p-6">
-                <p className="text-4xl font-bold text-[#235730] mb-2">0</p>
+                <p className="text-4xl font-bold text-[#523A28] mb-2">0</p>
                 <p className="text-gray-600">{t('stats.animals')}</p>
               </div>
             </div>

@@ -66,7 +66,15 @@
                 "modifyDiscount": "Modify discount",
                 "modifyDiscountPrompt": "New discount (%) :"
             },
-            "error": "Error retrieving professionals: {error}"
+            "error": "Error retrieving professionals: {error}",
+            "auth": {
+                "register": {
+                    "btn_cancel": "Cancel"
+                }
+            },
+            "settings": {
+                "saveChanges": "Save"
+            }
         },
         "professionalDetail": {
             "backToList": "Back to list",
@@ -95,7 +103,9 @@
                 "validateAccount": "Validate account",
                 "modifyDiscount": "Modify discount",
                 "reactivateAccount": "Reactivate account",
-                "suspendAccount": "Suspend account"
+                "suspendAccount": "Suspend account",
+                "cancel": "Cancel",
+                "save": "Save"
             },
             "error": "Error: {error}",
             "userNotFound": "User not found"
@@ -267,6 +277,90 @@
                 "user": "User: {user}"
             }
         },
+        "downloads": {
+            "title": "B2B Downloads",
+            "subtitle": "Manage files and communication materials for professionals",
+            "add": "Add file",
+            "edit": "Edit file",
+            "search": "Search for a file...",
+            "empty": "No files found. Click \"Add file\" to get started.",
+            "form": {
+                "slug": "Identifier (slug)",
+                "title": "Title",
+                "type": "Type",
+                "category": "Category",
+                "file": "File",
+                "uploading": "Uploading...",
+                "upload_placeholder": "Click to upload a file (image, PDF)",
+                "replace_file": "Replace file",
+                "save": "Save",
+                "cancel": "Cancel",
+                "use_list": "List",
+                "new_category": "New category"
+            }
+        },
+        "protocoles": {
+            "title": "B2B Protocols",
+            "subtitle": "Manage technical data sheets and cabin rituals for professionals",
+            "add": "Add protocol",
+            "edit": "Edit protocol",
+            "search": "Search for a protocol...",
+            "empty": "No protocols found. Click \"Add protocol\" to get started.",
+            "stats_total": "Total protocols",
+            "stats_fiches": "Technical sheets",
+            "stats_rituels": "Cabin rituals",
+            "form": {
+                "slug": "Identifier (slug)",
+                "type": "Type",
+                "title": "Title",
+                "description": "Description",
+                "category": "Category",
+                "reference": "Reference",
+                "duration": "Duration",
+                "volume": "Volume",
+                "extraction": "Extraction",
+                "theme": "Theme",
+                "ambiance": "Ambiance",
+                "image": "Image",
+                "upload_image": "Click to upload an image",
+                "document": "Document (PDF, etc.)",
+                "upload_doc": "Click to upload a document",
+                "file": "PDF file",
+                "upload_placeholder": "Click to upload a PDF file",
+                "uploading": "Uploading...",
+                "replace_file": "Replace file",
+                "save": "Save",
+                "cancel": "Cancel",
+                "section_basic": "Basic information",
+                "section_media": "Media",
+                "section_actifs": "Active ingredients",
+                "section_proprietes": "Properties",
+                "section_utilisation": "Usage",
+                "section_caracteristiques": "Characteristics",
+                "section_avis": "Expert opinion",
+                "section_preparation": "Preparation",
+                "section_deroulement": "Procedure",
+                "section_retail": "Retail tips",
+                "section_notes": "Notes",
+                "add_actif": "Add an active ingredient",
+                "empty_actifs": "No active ingredients. Click \"Add an active ingredient\" to get started.",
+                "add_phase": "Add a phase",
+                "empty_phases": "No phases. Click \"Add a phase\" to get started.",
+                "frequence": "Frequency",
+                "methode": "Application method",
+                "temps": "Application time",
+                "retrait": "Removal",
+                "texture": "Texture",
+                "odeur": "Scent",
+                "ph": "pH",
+                "conservation": "Shelf life",
+                "prep_cabine": "Cabin preparation",
+                "prep_materiel": "Equipment",
+                "prep_produits": "Products",
+                "use_list": "List",
+                "new_category": "New category"
+            }
+        },
         "header": {
             "search": "Search...",
             "admin": "Admin",
@@ -281,6 +375,10 @@
                 "professionals": "Professionals",
                 "orders": "Orders",
                 "products": "Products",
+                "blog": "Blog",
+                "rituals": "Rituals",
+                "protocoles": "Protocols",
+                "downloads": "Downloads",
                 "settings": "Settings",
                 "logs": "Logs"
             },
@@ -356,14 +454,14 @@
                 },
                 "info": {
                     "title": "Professional Space",
-                    "desc": "Access professional pricing, quick orders, and protocols dedicated to Mishki partners."
+                    "desc": "Access professional pricing, quick orders, and protocols dedicated to Mey Beauty partners."
                 }
             },
             "register": {
                 "title": "Professional Registration",
                 "subtitle": "Create your B2B account with exclusive tax-exclusive pricing and discounts",
-                "title_b2c": "Create my Mishki account",
-                "subtitle_b2c": "Join the Mishki community and enjoy exclusive offers",
+                "title_b2c": "Create my Mey Beauty account",
+                "subtitle_b2c": "Join the Mey Beauty community and enjoy exclusive offers",
                 "sections": {
                     "personal": "Personal information",
                     "connection": "Login information",
@@ -495,6 +593,59 @@
                 "col_action": "Action",
                 "btn_added": "Added",
                 "btn_add": "Add"
+            },
+            "detail": {
+                "back": "Back",
+                "reviews": "{count, plural, =0 {No reviews} =1 {1 review} other {# reviews}}",
+                "questions": "{count, plural, =0 {No questions} =1 {1 question} other {# questions}}",
+                "view_desc": "View description",
+                "in_stock": "IN STOCK",
+                "delivery": "Buy it today and\nreceive it from",
+                "points": "You will earn up to {count} points!",
+                "stock_out": "Out of stock",
+                "stock_limited": "Insufficient stock, max {max}",
+                "stock_left": "Stock: {count}",
+                "in_stock_with_qty": "In stock ({count})",
+                "add_to_cart": "Add to cart",
+                "loading_product": "Loading product...",
+                "product_not_found": "Product not found",
+                "anonymous": "Anonymous",
+                "review_error": "Could not save review. Please try again.",
+                "question_error": "Could not save question. Please try again.",
+                "tabs": {
+                    "description": "Description",
+                    "reviews": "Reviews ({count})",
+                    "questions": "Questions & Answers ({count})"
+                },
+                "view_more": "View more",
+                "nutrition": "Nutritional values",
+                "specs": "Technical sheet",
+                "video_desc": "Discover our product in video",
+                "form_review": {
+                    "title": "Leave a review",
+                    "label_rating": "Your rating",
+                    "placeholder_name": "Your name",
+                    "placeholder_text": "Your review...",
+                    "btn_send": "Send my review"
+                },
+                "form_question": {
+                    "title": "Ask a question",
+                    "placeholder_name": "Your name",
+                    "placeholder_text": "Your question...",
+                    "btn_send": "Send my question"
+                },
+                "no_questions": "No questions yet. Be the first to ask a question!",
+                "qa_prefix": {
+                    "q": "Q",
+                    "r": "A"
+                },
+                "usage_title": "How to use",
+                "ingredient_title": "Key ingredient",
+                "currency": "EUR",
+                "no_description": "No description available for this product.",
+                "cancel": "Cancel",
+                "similar_products": "Similar products",
+                "loading": "Sending..."
             }
         },
         "protocoles": {
@@ -521,6 +672,7 @@
         "downloads_page": {
             "title": "Downloads",
             "subtitle": "Marketing materials, visuals, and professional communication supports",
+            "loading": "Loading...",
             "search_placeholder": "Search for a file...",
             "filter_all_types": "All types",
             "filter_favorites": "Favorites",
@@ -532,6 +684,7 @@
             },
             "results_count": "{count, plural, =0 {No files found} =1 {1 file found} other {# files found}}",
             "btn_download": "Download",
+            "btn_preview": "Preview",
             "no_results": "No files found",
             "no_results_desc": "Try modifying your search filters",
             "reset_filters": "Reset filters",
@@ -869,6 +1022,7 @@
             }
         },
         "technical_sheet": {
+            "loading": "Loading...",
             "back_btn": "Back to protocols",
             "badge": "Technical Data Sheet",
             "btn_download": "Download PDF",
@@ -934,13 +1088,13 @@
                     "title": "Join us here",
                     "desc": "Follow us on social media to discover our latest news and beauty tips."
                 },
-                "rights": "Mishki. All rights reserved."
+                "rights": "Mey Beauty. All rights reserved."
             }
         },
         "home": {
             "hero": {
-                "title": "Reveal a pure and precious beauty with Mishki, exceptional skincare born from Peruvian biodiversity.",
-                "desc": "Immerse yourself in the heart of Mishki, a refined natural beauty brand inspired by Peru's sacred plants and traditional rituals. Our skincare, with 100% natural ingredients, reveals your skin's radiance, respects biodiversity, and offers you a unique sensory experience. Beauty, purity, gentleness, and elegance with every step of your routine.",
+                "title": "Reveal a pure and precious beauty with Mey Beauty, exceptional professional skincare for radiant skin.",
+                "desc": "Immerse yourself in the heart of Mey Beauty, a refined beauty brand inspired by professional expertise and advanced skincare technology. Our skincare, with carefully selected ingredients, reveals your skin's radiance and offers you a unique sensory experience. Beauty, purity, gentleness, and elegance with every step of your routine.",
                 "cta": "Discover our products"
             },
             "products": {
@@ -969,7 +1123,7 @@
         },
         "shop": {
             "title": "Our Products",
-            "subtitle": "Discover our natural skincare born from Peruvian biodiversity",
+            "subtitle": "Discover our professional skincare for radiant, beautiful skin",
             "loading": "Loading...",
             "categories_heading": "Categories",
             "categories": {
@@ -1032,7 +1186,9 @@
                 "ingredient_title": "Base ingredient",
                 "currency": "EUR",
                 "no_description": "No description available for this product.",
-                "cancel": "Cancel"
+                "cancel": "Cancel",
+                "similar_products": "Similar products",
+                "loading": "Sending..."
             },
             "back": "Back"
         },
@@ -1049,13 +1205,13 @@
         },
         "about": {
             "title": "About",
-            "subtitle": "Discover the story and values that drive Mishki",
+            "subtitle": "Discover the story and values that drive Mey Beauty",
             "back": "Back",
             "history": {
                 "title": "Our story",
-                "p1": "Mishki was born from a passion for natural beauty and a deep respect for ancient Peruvian traditions. Our founder, after several trips to Peru, was amazed by the richness of the local biodiversity and the beauty secrets passed down from mother to daughter for generations.",
-                "p2": "In Quechua, \"Mishki\" means \"sweet\" - a reference to the gentleness of the care we offer and our respectful approach towards nature and the communities we work with.",
-                "p3": "Today, Mishki offers a range of natural skincare that combines the best of Peruvian tradition with the demands of modern cosmetics, for effective, ethical, and skin-respecting products."
+                "p1": "Mey Beauty was born from a passion for beauty and a deep respect for professional skincare expertise. Our founder, after years of experience in the beauty industry, was amazed by the power of advanced skincare technology and the beauty secrets passed down from professional to professional.",
+                "p2": "The name Mey Beauty reflects our commitment to gentle, effective care - a reference to the gentleness of the treatments we offer and our respectful approach towards your skin.",
+                "p3": "Today, Mey Beauty offers a range of professional skincare that combines the best of institute expertise with the demands of modern cosmetics, for effective, ethical, and skin-respecting products."
             },
             "values": {
                 "title": "Our values",
@@ -1065,7 +1221,7 @@
                 },
                 "authenticity": {
                     "title": "Authenticity",
-                    "desc": "We preserve ancestral Peruvian recipes passed down from generation to generation."
+                    "desc": "We preserve professional beauty expertise passed down from generation to generation."
                 },
                 "sustainability": {
                     "title": "Sustainability",
@@ -1078,7 +1234,7 @@
             },
             "engagement": {
                 "title": "Our commitment",
-                "intro": "At Mishki, we believe that beauty should never come at the expense of the planet or communities. That's why we are committed to:",
+                "intro": "At Mey Beauty, we believe that beauty should never come at the expense of the planet or communities. That's why we are committed to:",
                 "list": {
                     "ingredients": "Using only natural and biodegradable ingredients",
                     "fair": "Working in fair partnership with local producers",
@@ -1097,7 +1253,7 @@
             "subtitle": "Responsible beauty for a sustainable future",
             "back": "Back",
             "hero_title": "Beauty in service of the planet",
-            "hero_desc": "At Mishki, we believe it's possible to take care of yourself while taking care of our planet. Our environmental and social commitment is at the heart of each of our decisions, from ingredient selection to the delivery of your orders.",
+            "hero_desc": "At Mey Beauty, we believe it's possible to take care of yourself while taking care of our planet. Our environmental and social commitment is at the heart of each of our decisions, from ingredient selection to the delivery of your orders.",
             "commitments": {
                 "ingredients": {
                     "title": "Natural ingredients",
@@ -1109,7 +1265,7 @@
                 },
                 "reforestation": {
                     "title": "Reforestation",
-                    "desc": "For each order, we plant a tree in Peru in partnership with local associations."
+                    "desc": "For each order, we contribute to environmental preservation in partnership with local organizations."
                 },
                 "water": {
                     "title": "Water preservation",
@@ -1117,7 +1273,7 @@
                 },
                 "fair": {
                     "title": "Fair trade",
-                    "desc": "We work directly with Peruvian producers and guarantee them fair income."
+                    "desc": "We work directly with our partners and guarantee fair, ethical business practices."
                 },
                 "energy": {
                     "title": "Renewable energy",
@@ -1136,7 +1292,7 @@
                 "steps": {
                     "sourcing": {
                         "title": "Responsible sourcing",
-                        "desc": "We select our ingredients directly from Peruvian producers practicing sustainable and biodiversity-respecting agriculture."
+                        "desc": "We select our ingredients from trusted suppliers practicing sustainable and environmentally responsible sourcing."
                     },
                     "manufacturing": {
                         "title": "Ethical manufacturing",
@@ -1154,7 +1310,7 @@
             },
             "join": {
                 "title": "Join the movement",
-                "desc": "By choosing Mishki, you actively participate in a more responsible consumption model. Together, let's build a future where beauty rhymes with sustainability.",
+                "desc": "By choosing Mey Beauty, you actively participate in a more responsible consumption model. Together, let's build a future where beauty rhymes with sustainability.",
                 "cta": "Discover our products"
             }
         },
@@ -1269,7 +1425,7 @@
         },
         "rituals": {
             "title": "Our Rituals",
-            "subtitle": "Discover our beauty rituals inspired by Peruvian traditions for radiant skin",
+            "subtitle": "Discover our professional beauty rituals for radiant skin",
             "loading": "Loading...",
             "back": "Back",
             "heading": "Beauty Rituals",
@@ -1286,7 +1442,7 @@
         },
         "blog": {
             "title": "Our Blog",
-            "subtitle": "Beauty tips, ancestral rituals, and secrets of Peruvian nature",
+            "subtitle": "Beauty tips, professional rituals, and skincare expertise",
             "loading": "Loading...",
             "back": "Back",
             "heading": "Articles",
@@ -1313,7 +1469,7 @@
             "back": "Back",
             "heading": "Episodes",
             "info": {
-                "title": "Natural Beauty by Mishki",
+                "title": "Natural Beauty by Mey Beauty",
                 "subtitle": "A podcast about beauty, well-being, and nature",
                 "desc": "Each week, we invite experts to discuss natural beauty secrets, ancestral ingredients, and care rituals from around the world. Subscribe so you don't miss an episode!",
                 "spotify": "Subscribe on Spotify",
@@ -1327,15 +1483,15 @@
                 "update": "Last updated: December 11, 2024",
                 "s1": {
                     "title": "1. Purpose",
-                    "text": "These general terms and conditions of sale govern the contractual relationships between Mishki and any person making a purchase via our website. Any order implies unreserved acceptance of these conditions."
+                    "text": "These general terms and conditions of sale govern the contractual relationships between Mey Beauty and any person making a purchase via our website. Any order implies unreserved acceptance of these conditions."
                 },
                 "s2": {
                     "title": "2. Products",
-                    "text": "The products offered are those described on our site. Photographs are as faithful as possible but cannot guarantee perfect similarity with the product offered. Mishki reserves the right to modify the product range at any time."
+                    "text": "The products offered are those described on our site. Photographs are as faithful as possible but cannot guarantee perfect similarity with the product offered. Mey Beauty reserves the right to modify the product range at any time."
                 },
                 "s3": {
                     "title": "3. Prices",
-                    "text": "Prices are indicated in euros, all taxes included. Mishki reserves the right to modify its prices at any time, but products will be invoiced based on the rates in effect at the time of order validation."
+                    "text": "Prices are indicated in euros, all taxes included. Mey Beauty reserves the right to modify its prices at any time, but products will be invoiced based on the rates in effect at the time of order validation."
                 },
                 "s4": {
                     "title": "4. Order",
@@ -1355,7 +1511,7 @@
                 },
                 "s8": {
                     "title": "8. Liability",
-                    "text": "Mishki cannot be held responsible for damages resulting from misuse of products. It is the customer's responsibility to verify the product's suitability for their intended use and to respect usage precautions."
+                    "text": "Mey Beauty cannot be held responsible for damages resulting from misuse of products. It is the customer's responsibility to verify the product's suitability for their intended use and to respect usage precautions."
                 },
                 "s9": {
                     "title": "9. Disputes",
@@ -1363,13 +1519,13 @@
                 },
                 "s10": {
                     "title": "10. Contact",
-                    "text": "For any questions regarding these conditions, you can contact us at: contact@mishki.fr"
+                    "text": "For any questions regarding these conditions, you can contact us at: contact@meybeauty.fr"
                 }
             },
             "privacy": {
                 "title": "Privacy Policy",
                 "update": "Last updated: December 11, 2024",
-                "intro": "At Mishki, we place great importance on protecting your personal data. This policy explains how we collect and use your information.",
+                "intro": "At Mey Beauty, we place great importance on protecting your personal data. This policy explains how we collect and use your information.",
                 "s1": {
                     "title": "1. Data collection",
                     "text": "We collect the information you provide when creating your account, placing orders, or exchanging with our customer service (name, email, address, etc.)."
@@ -1380,7 +1536,7 @@
                 },
                 "s3": {
                     "title": "3. Data sharing",
-                    "text": "Mishki does not sell your data to third parties. We share it only with our technical providers necessary for order execution (carriers, payment platforms)."
+                    "text": "Mey Beauty does not sell your data to third parties. We share it only with our technical providers necessary for order execution (carriers, payment platforms)."
                 },
                 "s4": {
                     "title": "4. Your rights",
@@ -1407,7 +1563,7 @@
         "auth": {
             "login": {
                 "title": "Login",
-                "subtitle": "Access your Mishki account to manage your orders",
+                "subtitle": "Access your Mey Beauty account to manage your orders",
                 "back": "Back",
                 "email": "Email",
                 "password": "Password",

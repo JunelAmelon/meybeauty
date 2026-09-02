@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import { Search, Eye, Check, X, EllipsisVertical, Loader2, Pencil } from 'lucide-react';
 import { useAdminUsers, type AdminUser } from '@/apps/admin/hooks/useAdminUsers';
 import { useTranslations } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -31,6 +32,12 @@ export default function Professionnels() {
     const [currentPage, setCurrentPage] = useState(1);
     const { users, loading, error, validateUser, suspendUser, reactivateUser, updateUserRemise } = useAdminUsers();
     const t = useTranslations('admin.professionals');
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        const q = searchParams.get('q');
+        if (q) setSearchTerm(q);
+    }, [searchParams]);
 
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState<AdminUser | null>(null);
@@ -82,7 +89,7 @@ export default function Professionnels() {
     if (loading) {
         return (
             <div className="flex items-center justify-center min-h-[400px]">
-                <Loader2 className="w-8 h-8 text-[#235730] animate-spin" />
+                <Loader2 className="w-8 h-8 text-[#523A28] animate-spin" />
             </div>
         );
     }
@@ -115,7 +122,7 @@ export default function Professionnels() {
                                 placeholder={t('search.placeholder')}
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235730]"
+                                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] text-gray-900 bg-white"
                             />
                         </div>
                     </div>
@@ -124,7 +131,7 @@ export default function Professionnels() {
                     <select
                         value={statusFilter}
                         onChange={(e) => setStatusFilter(e.target.value)}
-                        className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235730]"
+                        className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] text-gray-900 bg-white"
                     >
                         <option value="Tous">{t('filters.allStatuses')}</option>
                         <option value="Validé">{t('filters.validated')}</option>

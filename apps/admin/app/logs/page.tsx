@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Search, Filter, Download, AlertCircle, CheckCircle, Info, XCircle } from 'lucide-react';
+import { Search, Filter, AlertCircle, CheckCircle, Info, XCircle } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 export default function Logs() {
@@ -14,7 +14,7 @@ export default function Logs() {
       id: '1',
       type: 'success',
       action: 'Connexion',
-      user: 'admin@mishki.com',
+      user: 'admin@meybeauty.fr',
       details: 'Connexion réussie depuis 192.168.1.1',
       timestamp: '05/01/2026 14:23:15',
     },
@@ -38,7 +38,7 @@ export default function Logs() {
       id: '4',
       type: 'success',
       action: 'Professionnel validé',
-      user: 'admin@mishki.com',
+      user: 'admin@meybeauty.fr',
       details: 'Validation du compte: Spa Harmonie',
       timestamp: '05/01/2026 12:30:18',
     },
@@ -54,7 +54,7 @@ export default function Logs() {
       id: '6',
       type: 'info',
       action: 'Produit modifié',
-      user: 'admin@mishki.com',
+      user: 'admin@meybeauty.fr',
       details: 'Prix mis à jour pour SC-CH-150',
       timestamp: '05/01/2026 10:15:27',
     },
@@ -94,7 +94,7 @@ export default function Logs() {
       case 'warning':
         return <AlertCircle className="w-5 h-5 text-yellow-600" />;
       default:
-        return <Info className="w-5 h-5 text-blue-600" />;
+        return <Info className="w-5 h-5 text-[#523A28]" />;
     }
   };
 
@@ -107,7 +107,7 @@ export default function Logs() {
       case 'warning':
         return 'bg-yellow-100 text-yellow-700';
       default:
-        return 'bg-blue-100 text-blue-700';
+        return 'bg-[#523A28]/10 text-[#523A28]';
     }
   };
 
@@ -127,15 +127,9 @@ export default function Logs() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl text-gray-900 mb-2">{t('title')}</h1>
-          <p className="text-gray-600">{t('subtitle')}</p>
-        </div>
-        <button className="flex items-center gap-2 px-4 py-2 bg-[#235730] text-white rounded-lg hover:bg-[#1a4023] transition-colors">
-          <Download className="w-4 h-4" />
-          {t('export')}
-        </button>
+      <div>
+        <h1 className="text-2xl text-gray-900 mb-2">{t('title')}</h1>
+        <p className="text-gray-600">{t('subtitle')}</p>
       </div>
 
       {/* Filters */}
@@ -150,7 +144,7 @@ export default function Logs() {
                 placeholder={t('search.placeholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235730]"
+                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] text-gray-900 bg-white"
               />
             </div>
           </div>
@@ -159,7 +153,7 @@ export default function Logs() {
           <select
             value={typeFilter}
             onChange={(e) => setTypeFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235730]"
+            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] text-gray-900 bg-white"
           >
             <option value="Tous">{t('filters.allTypes')}</option>
             <option value="success">{t('types.success')}</option>

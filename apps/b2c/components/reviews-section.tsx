@@ -7,7 +7,7 @@ import { useState } from "react"
 const reviews = [
   {
     id: 1,
-    text: "\"Des produits que je racheterais, bon rapport qualite prix, amoo soigne.\"",
+    text: "\"Des produits que je rachèterais sans hésiter. Bon rapport qualité-prix, emballage soigné et livraison rapide. Je recommande !\"",
     rating: 5,
     author: "Rita D.",
     date: "14/02/2025",
@@ -15,19 +15,19 @@ const reviews = [
   },
   {
     id: 2,
-    text: "\"Livraison relativement courte, securisee, info de livraison en temps reel.\"",
+    text: "\"La diversité des produits proposés, les prix accessibles et la rapidité de la livraison. Tout est parfait, je suis cliente fidèle maintenant !\"",
     rating: 5,
-    author: "Anonyme",
-    date: "28/01/2025",
-    avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100"
+    author: "Annie L.",
+    date: "09/01/2025",
+    avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100"
   },
   {
     id: 3,
-    text: "\"La diversite des produits proposes, les prix, la rapidite de la livraison.\"",
+    text: "\"Des produits que je rachèterais sans hésiter. Bon rapport qualité-prix, emballage soigné et livraison rapide. Je recommande !\"",
     rating: 5,
-    author: "Annie",
-    date: "09/01/2025",
-    avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100"
+    author: "Camille B.",
+    date: "22/01/2025",
+    avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100"
   }
 ]
 
@@ -43,11 +43,11 @@ export function ReviewsSection() {
   }
 
   return (
-    <section className="py-16 bg-[#f5f1e8]">
+    <section className="py-16 bg-[#FDF8F3]">
       <div className="container mx-auto px-6">
         <div className="mb-10">
           <h2
-            className="text-[#235730] mb-2"
+            className="text-[#523A28] mb-2"
             style={{
               fontFamily: 'var(--font-caveat)',
               fontSize: '48px',
@@ -56,24 +56,24 @@ export function ReviewsSection() {
           >
             Avis de nos clients
           </h2>
-          <div className="w-full h-[1px] bg-[#235730]"></div>
+          <div className="w-full h-[1px] bg-[#523A28]"></div>
         </div>
 
         <div className="text-center mb-10">
-          <p className="text-lg font-semibold text-[#2d2d2d]">Clients satisfaits</p>
+          <p className="text-lg font-semibold text-[#1A1410]">Clients satisfaits</p>
           <div className="flex justify-center items-center gap-2 my-2">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-5 h-5 fill-[#FFB800] text-[#FFB800]" />
+              <Star key={i} className="w-5 h-5 fill-[#C4A35A] text-[#C4A35A]" />
             ))}
           </div>
-          <p className="text-xl font-bold text-[#2d2d2d]">4.43/5 - Excellent</p>
-          <p className="text-sm text-[#6d6d6d]">Fonde sur 21,005 commentaires</p>
+          <p className="text-xl font-bold text-[#1A1410]">4,8/5 — Excellent</p>
+          <p className="text-sm text-[#6B4C35]">Fondé sur 2 105 commentaires</p>
         </div>
 
         <div className="relative max-w-5xl mx-auto px-4 md:px-12">
           <button
             onClick={prevReview}
-            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center text-[#2d2d2d] hover:opacity-70 transition-opacity"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center text-[#1A1410] hover:opacity-70 transition-opacity"
           >
             <ChevronLeft className="w-8 h-8" />
           </button>
@@ -86,10 +86,10 @@ export function ReviewsSection() {
               >
                 <div className="flex justify-center gap-1 mb-4">
                   {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#FFB800] text-[#FFB800]" />
+                    <Star key={i} className="w-4 h-4 fill-[#C4A35A] text-[#C4A35A]" />
                   ))}
                 </div>
-                <p className="text-[#2d2d2d] text-sm mb-6 text-center leading-relaxed min-h-[60px]">
+                <p className="text-[#1A1410] text-sm mb-6 text-center leading-relaxed min-h-[60px]">
                   {review.text}
                 </p>
                 <div className="flex items-center justify-center gap-3">
@@ -102,8 +102,8 @@ export function ReviewsSection() {
                     />
                   </div>
                   <div className="text-left">
-                    <p className="font-semibold text-[#2d2d2d] text-sm">{review.author}</p>
-                    <p className="text-xs text-[#6d6d6d]">{review.date}</p>
+                    <p className="font-semibold text-[#1A1410] text-sm">{review.author}</p>
+                    <p className="text-xs text-[#6B4C35]">{review.date}</p>
                   </div>
                 </div>
               </div>
@@ -112,7 +112,7 @@ export function ReviewsSection() {
 
           <button
             onClick={nextReview}
-            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center text-[#2d2d2d] hover:opacity-70 transition-opacity"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center text-[#1A1410] hover:opacity-70 transition-opacity"
           >
             <ChevronRight className="w-8 h-8" />
           </button>

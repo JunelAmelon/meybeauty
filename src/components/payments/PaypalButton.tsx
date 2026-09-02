@@ -150,8 +150,7 @@ export default function PaypalButton({
     <div className={className}>
       <div ref={containerRef} className={disabled ? 'pointer-events-none opacity-60' : undefined} />
       {disabled && <p className="text-xs text-gray-400 mt-2">PayPal désactivé</p>}
-      {loading && !disabled && <p className="text-xs text-gray-500 mt-2">Chargement PayPal...</p>}
-      {error && <p className="text-xs text-red-600 mt-2">{error}</p>}
+      {loading && !disabled && !error && <p className="text-xs text-gray-500 mt-2">Chargement PayPal...</p>}
     </div>
   );
 }

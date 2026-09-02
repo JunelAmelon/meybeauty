@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useLocale } from 'next-intl';
-import { collection, db, getDocs } from '@mishki/firebase';
+import { collection, db, getDocs } from '@meybeauty/firebase';
 import type { Timestamp } from 'firebase/firestore';
 import { InvoiceData, InvoiceLocale } from '@/lib/invoice/types';
 import { useAuth } from '../context/AuthContext';
@@ -56,11 +56,11 @@ export type Invoice = {
 };
 
 const sellerInfo = {
-  name: 'MISHKI LAB',
-  addressLines: ['5 Rue du Printemps', '88000 Jeuxey', 'France'],
+  name: 'Mey Beauty',
+  addressLines: ['6 Place des Martyrs de Chateaubriand', '91170 Viry-Chatillon', 'France'],
   siret: '92089652300011',
   ape: '2042Z',
-  email: 'facturation@mishki.com',
+  email: 'facturation@meybeauty.fr',
 };
 
 const toDate = (value?: string | Timestamp | null) => {

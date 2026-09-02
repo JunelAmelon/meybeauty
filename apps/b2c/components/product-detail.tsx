@@ -6,14 +6,14 @@ import { ShoppingCart, Star, Play, Send } from 'lucide-react'
 import { Button } from '@/apps/b2c/components/ui/button'
 import { Input } from '@/apps/b2c/components/ui/input'
 import { Textarea } from '@/apps/b2c/components/ui/textarea'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Header } from '@/apps/b2c/components/header'
 import { Footer } from '@/apps/b2c/components/footer'
 import { NewsletterSection } from '@/apps/b2c/components/newsletter-section'
 import { useCart } from '@/apps/b2c/lib/cart-context'
 import { useTranslations, useLocale } from 'next-intl'
-import { useProduct } from '@/apps/b2c/hooks/useProducts'
-import { addDoc, collection, db, getDocs, query, serverTimestamp, where } from '@mishki/firebase'
+import { useProduct, useProducts } from '@/apps/b2c/hooks/useProducts'
+import { addDoc, collection, db, getDocs, query, serverTimestamp, where } from '@meybeauty/firebase'
 
 // Helper function to calculate delivery date range
 function calculateDeliveryDate(deliveryDays: { min: number; max: number } | undefined, locale: string): string {
@@ -57,6 +57,7 @@ export function ProductDetail({ productId }: { productId: string }) {
   const locale = useLocale()
   const { addToCart } = useCart()
   const [activeTab, setActiveTab] = useState<Tab>('Description')
+  const descriptionRef = useRef<HTMLDivElement>(null)
   const [reviewRating, setReviewRating] = useState(5)
   const [reviewText, setReviewText] = useState('')
   const [reviewName, setReviewName] = useState('')
@@ -69,6 +70,7 @@ export function ProductDetail({ productId }: { productId: string }) {
   const [submittingQuestion, setSubmittingQuestion] = useState(false)
   const [reviewError, setReviewError] = useState<string>('')
   const [questionError, setQuestionError] = useState<string>('')
+  const [deliveryDateText, setDeliveryDateText] = useState<string>('')
 
   const minQty = 1
 
@@ -76,6 +78,18 @@ export function ProductDetail({ productId }: { productId: string }) {
   const [questions, setQuestions] = useState<Question[]>([])
 
   const { product, loading, error } = useProduct(productId)
+  const { products: allProducts } = useProducts()
+
+  const similarProducts = useMemo(() => {
+    if (!product) return []
+    return allProducts
+      .filter((p) => p.category === product.category && p.slug !== product.slug)
+      .slice(0, 4)
+  }, [allProducts, product])
+
+  useEffect(() => {
+    setDeliveryDateText(calculateDeliveryDate(product?.deliveryDays, locale))
+  }, [product, locale])
 
   useEffect(() => {
     let mounted = true
@@ -279,10 +293,10 @@ export function ProductDetail({ productId }: { productId: string }) {
             <Link href="/produits" className="inline-flex items-center gap-2 mb-8 hover:opacity-80 transition-opacity">
               <Image src="/b2c/akar-icons_arrow-back.svg" alt={td('back')} width={32} height={32} />
             </Link>
-            <h2 className="text-[#235730] mb-2" style={{ fontFamily: 'var(--font-caveat)', fontSize: '48px', fontWeight: 400 }}>
+            <h2 className="text-[#523A28] mb-2" style={{ fontFamily: 'var(--font-caveat)', fontSize: '48px', fontWeight: 400 }}>
               {product.name}
             </h2>
-            <div className="w-full h-[1px] bg-[#235730]"></div>
+            <div className="w-full h-[1px] bg-[#523A28]"></div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
@@ -306,17 +320,25 @@ export function ProductDetail({ productId }: { productId: string }) {
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className={`w-4 h-4 ${i < ratingValue ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} />
+                    <Star key={i} className={`w-4 h-4 ${i < ratingValue ? 'fill-[#C4A35A] text-[#C4A35A]' : 'text-gray-300'}`} />
                   ))}
                 </div>
                 <span className="text-sm text-gray-600">{td('reviews', { count: reviewCount })}</span>
-                <span className="text-sm text-[#235730] underline cursor-pointer">{td('questions', { count: questions.length })}</span>
+                <span className="text-sm text-[#523A28] underline cursor-pointer">{td('questions', { count: questions.length })}</span>
               </div>
 
               <p className="text-gray-600">
                 {product.desc}
                 <br />
-                <span className="text-sm text-[#235730] underline cursor-pointer">{td('view_desc')}</span>
+                <span
+                  className="text-sm text-[#523A28] underline cursor-pointer"
+                  onClick={() => {
+                    setActiveTab('Description')
+                    descriptionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }}
+                >
+                  {td('view_desc')}
+                </span>
               </p>
 
               <div className="flex items-baseline gap-3">
@@ -328,7 +350,7 @@ export function ProductDetail({ productId }: { productId: string }) {
 
               <div className="space-y-2">
                 {stock > 0 ? (
-                  <p className="text-sm font-semibold text-[#235730] uppercase">
+                  <p className="text-sm font-semibold text-[#523A28] uppercase">
                     {td('in_stock_with_qty', { count: stock }) || td('in_stock') || 'En stock'}
                   </p>
                 ) : (
@@ -338,23 +360,23 @@ export function ProductDetail({ productId }: { productId: string }) {
                 )}
                 <p className="text-sm text-gray-600">
                   {td('delivery')}<br />
-                  <span className="font-medium">{calculateDeliveryDate(product.deliveryDays, locale)}</span>
+                  <span className="font-medium">{deliveryDateText}</span>
                 </p>
               </div>
 
               {product.loyaltyPoints !== undefined && (
-                <div className="border border-dashed border-[#235730] rounded px-4 py-2 inline-block">
-                  <p className="text-sm text-[#235730]">{td('points', { count: product.loyaltyPoints })}</p>
+                <div className="border border-dashed border-[#523A28] rounded px-4 py-2 inline-block">
+                  <p className="text-sm text-[#523A28]">{td('points', { count: product.loyaltyPoints })}</p>
                 </div>
               )}
 
               {isPickingQty ? (
                 <div className="space-y-3">
-                  <div className="flex items-center w-full max-w-xs border border-[#235730]/40 rounded-sm overflow-hidden mx-auto">
+                  <div className="flex items-center w-full max-w-xs border border-[#523A28]/40 rounded-sm overflow-hidden mx-auto">
                     <button
                       type="button"
                       onClick={() => setQuantity((q) => Math.max(minQty, (q || minQty) - 1))}
-                      className="px-3 py-2 text-[#235730] hover:bg-[#235730]/10"
+                      className="px-3 py-2 text-[#523A28] hover:bg-[#523A28]/10"
                     >
                       -
                     </button>
@@ -368,7 +390,7 @@ export function ProductDetail({ productId }: { productId: string }) {
                     <button
                       type="button"
                       onClick={() => setQuantity((q) => Math.max(minQty, (q || minQty) + 1))}
-                      className="px-3 py-2 text-[#235730] hover:bg-[#235730]/10"
+                      className="px-3 py-2 text-[#523A28] hover:bg-[#523A28]/10"
                     >
                       +
                     </button>
@@ -376,7 +398,7 @@ export function ProductDetail({ productId }: { productId: string }) {
                   <div className="flex gap-3">
                     <Button
                       onClick={handleConfirmAdd}
-                      className="bg-[#235730] hover:bg-[#1d4626] text-white rounded-sm text-base px-6 py-3 h-auto"
+                      className="bg-[#523A28] hover:bg-[#3A2819] text-white rounded-sm text-base px-6 py-3 h-auto"
                     >
                       <ShoppingCart className="w-5 h-5 mr-2" />
                       {td('add_to_cart')}
@@ -384,7 +406,7 @@ export function ProductDetail({ productId }: { productId: string }) {
                     <Button
                       onClick={handleCancelAdd}
                       variant="secondary"
-                      className="bg-white text-[#235730] border border-[#235730] hover:bg-[#235730] hover:text-white rounded-sm text-base px-6 py-3 h-auto"
+                      className="bg-white text-[#523A28] border border-[#523A28] hover:bg-[#523A28] hover:text-white rounded-sm text-base px-6 py-3 h-auto"
                     >
                       {td('cancel') ?? 'Annuler'}
                     </Button>
@@ -392,7 +414,7 @@ export function ProductDetail({ productId }: { productId: string }) {
                   {stockMessage && <p className="text-xs text-red-600">{stockMessage}</p>}
                 </div>
               ) : (
-                <Button onClick={startQuantityPicker} className="w-full bg-[#235730] hover:bg-[#1d4626] text-white rounded-sm text-base px-8 py-6 h-auto">
+                <Button onClick={startQuantityPicker} className="w-full bg-[#523A28] hover:bg-[#3A2819] text-white rounded-sm text-base px-8 py-6 h-auto">
                   <ShoppingCart className="w-5 h-5 mr-2" />
                   {td('add_to_cart')}
                 </Button>
@@ -401,13 +423,13 @@ export function ProductDetail({ productId }: { productId: string }) {
             </div>
           </div>
 
-          <div className="mb-16">
+          <div ref={descriptionRef} className="mb-16 scroll-mt-20">
             <div className="flex flex-wrap gap-0 mb-8 border-b border-gray-200">
               <button
                 onClick={() => setActiveTab('Description')}
                 className={`px-8 py-4 text-sm font-medium transition-all ${activeTab === 'Description'
-                  ? 'bg-[#235730] text-white'
-                  : 'bg-transparent text-gray-600 hover:text-[#235730]'
+                  ? 'bg-[#523A28] text-white'
+                  : 'bg-transparent text-gray-600 hover:text-[#523A28]'
                   }`}
               >
                 {td('tabs.description')}
@@ -415,22 +437,22 @@ export function ProductDetail({ productId }: { productId: string }) {
               <button
                 onClick={() => setActiveTab('Reviews')}
                 className={`px-8 py-4 text-sm font-medium transition-all flex items-center gap-2 ${activeTab === 'Reviews'
-                  ? 'bg-[#235730] text-white'
-                  : 'bg-transparent text-gray-600 hover:text-[#235730]'
+                  ? 'bg-[#523A28] text-white'
+                  : 'bg-transparent text-gray-600 hover:text-[#523A28]'
                   }`}
               >
                 {td('tabs.reviews', { count: reviews.length })}
                 <span className="flex">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className={`w-3 h-3 ${activeTab === 'Reviews' ? 'fill-white text-white' : 'fill-yellow-400 text-yellow-400'}`} />
+                    <Star key={i} className={`w-3 h-3 ${activeTab === 'Reviews' ? 'fill-white text-white' : 'fill-[#C4A35A] text-[#C4A35A]'}`} />
                   ))}
                 </span>
               </button>
               <button
                 onClick={() => setActiveTab('Questions')}
                 className={`px-8 py-4 text-sm font-medium transition-all ${activeTab === 'Questions'
-                  ? 'bg-[#235730] text-white'
-                  : 'bg-transparent text-gray-600 hover:text-[#235730]'
+                  ? 'bg-[#523A28] text-white'
+                  : 'bg-transparent text-gray-600 hover:text-[#523A28]'
                   }`}
               >
                 {td('tabs.questions', { count: questions.length })}
@@ -441,7 +463,7 @@ export function ProductDetail({ productId }: { productId: string }) {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div className="space-y-4">
                   {product.categoryLabel && (
-                    <p className="text-xs uppercase tracking-wide text-[#235730] font-semibold">
+                    <p className="text-xs uppercase tracking-wide text-[#523A28] font-semibold">
                       {product.categoryLabel}
                     </p>
                   )}
@@ -450,13 +472,13 @@ export function ProductDetail({ productId }: { productId: string }) {
                   </p>
                   {product.usage && (
                     <div className="pt-4">
-                      <h4 className="text-sm font-semibold text-[#235730] mb-2">{td('usage_title')}</h4>
+                      <h4 className="text-sm font-semibold text-[#523A28] mb-2">{td('usage_title')}</h4>
                       <p className="text-sm text-gray-600 leading-relaxed text-justify">{product.usage}</p>
                     </div>
                   )}
                   {product.ingredient_base && (
                     <div className="pt-4">
-                      <h4 className="text-sm font-semibold text-[#235730] mb-2">{td('ingredient_title')}</h4>
+                      <h4 className="text-sm font-semibold text-[#523A28] mb-2">{td('ingredient_title')}</h4>
                       <p className="text-sm text-gray-600 leading-relaxed text-justify">{product.ingredient_base}</p>
                     </div>
                   )}
@@ -475,9 +497,9 @@ export function ProductDetail({ productId }: { productId: string }) {
                       </tbody>
                     </table>
                   )}
-                  <div className="relative h-48 bg-[#6B8E5B] rounded-lg overflow-hidden flex items-center justify-center">
+                  <div className="relative h-48 bg-[#6B4C35] rounded-lg overflow-hidden flex items-center justify-center">
                     <div className="text-center text-white">
-                      <div className="text-2xl mb-2" style={{ fontFamily: 'var(--font-caveat)' }}>Mishki</div>
+                      <div className="text-2xl mb-2" style={{ fontFamily: 'var(--font-caveat)' }}>Mey Beauty</div>
                       <p className="text-sm mb-4">{td('video_desc')}</p>
                       <button className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors mx-auto">
                         <Play className="w-6 h-6 text-white fill-white" />
@@ -503,7 +525,7 @@ export function ProductDetail({ productId }: { productId: string }) {
                             onClick={() => setReviewRating(star)}
                             className="focus:outline-none"
                           >
-                            <Star className={`w-6 h-6 ${star <= reviewRating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'} hover:text-yellow-400 transition-colors`} />
+                            <Star className={`w-6 h-6 ${star <= reviewRating ? 'fill-[#C4A35A] text-[#C4A35A]' : 'text-gray-300'} hover:text-[#C4A35A] transition-colors`} />
                           </button>
                         ))}
                       </div>
@@ -522,7 +544,7 @@ export function ProductDetail({ productId }: { productId: string }) {
                     />
                     <Button
                       type="submit"
-                      className="bg-[#235730] hover:bg-[#1d4626] text-white disabled:opacity-60"
+                      className="bg-[#523A28] hover:bg-[#3A2819] text-white disabled:opacity-60"
                       disabled={submittingReview}
                     >
                       <Send className="w-4 h-4 mr-2" />
@@ -538,7 +560,7 @@ export function ProductDetail({ productId }: { productId: string }) {
                     <div key={review.id} className="bg-white p-6 rounded-lg shadow-sm">
                       <div className="flex items-center gap-2 mb-2">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'}`} />
+                          <Star key={i} className={`w-4 h-4 ${i < review.rating ? 'fill-[#C4A35A] text-[#C4A35A]' : 'text-gray-300'}`} />
                         ))}
                       </div>
                       <p className="text-gray-600 mb-3">{review.text}</p>
@@ -571,7 +593,7 @@ export function ProductDetail({ productId }: { productId: string }) {
                     />
                     <Button
                       type="submit"
-                      className="bg-[#235730] hover:bg-[#1d4626] text-white disabled:opacity-60"
+                      className="bg-[#523A28] hover:bg-[#3A2819] text-white disabled:opacity-60"
                       disabled={submittingQuestion}
                     >
                       <Send className="w-4 h-4 mr-2" />
@@ -602,10 +624,11 @@ export function ProductDetail({ productId }: { productId: string }) {
             )}
           </div>
 
+          {/* Image Section */}
           <div className="mb-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden">
-                <Image src="/b2c/femme-mishki.png" alt="Femme utilisant un produit Mishki " fill className="object-cover" />
+                <Image src="/b2c/femme-mey-beauty.png" alt="Femme utilisant un produit Mey Beauty" fill className="object-cover" />
               </div>
               <div className="relative h-[300px] md:h-[400px] rounded-lg overflow-hidden">
                 <Image src="/b2c/huile.png" alt="Huile naturelle" fill className="object-cover" />
@@ -617,6 +640,34 @@ export function ProductDetail({ productId }: { productId: string }) {
               </div>
             </div>
           </div>
+
+          {/* Similar Products */}
+          {similarProducts.length > 0 && (
+            <div className="mb-16">
+              <h3 className="text-[#523A28] mb-2" style={{ fontFamily: 'var(--font-caveat)', fontSize: '32px', fontWeight: 400 }}>
+                {td('similar_products') || 'Produits similaires'}
+              </h3>
+              <div className="w-full h-[1px] bg-[#523A28] mb-8"></div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {similarProducts.map((p) => (
+                  <Link key={p.slug} href={`/produits/${p.slug}`} className="group">
+                    <div className="relative h-56 mb-3 cursor-pointer">
+                      <Image
+                        src={p.image}
+                        alt={p.name}
+                        fill
+                        className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </div>
+                    <h4 className="text-sm font-semibold text-[#523A28] line-clamp-2 mb-1" style={{ fontFamily: 'var(--font-lato)' }}>
+                      {p.name}
+                    </h4>
+                    <p className="text-sm text-[#523A28] font-semibold">{p.price} {td('currency')}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         <NewsletterSection />

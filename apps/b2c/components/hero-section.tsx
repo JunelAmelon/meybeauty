@@ -1,4 +1,3 @@
-import { Button } from "@/apps/b2c/components/ui/button"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { useTranslations } from "next-intl"
@@ -21,7 +20,7 @@ export function HeroSection() {
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to left, rgba(35, 87, 48, 0) 0%, rgba(35, 87, 48, 0.9) 80%)',
+            background: 'linear-gradient(to left, rgba(82, 58, 40, 0) 0%, rgba(82, 58, 40, 0.9) 80%)',
           }}
         />
       </div>
@@ -42,11 +41,9 @@ export function HeroSection() {
           </p>
 
           <div className="pt-4 sm:pt-4">
-            <Link href="/produits">
-              <Button className="bg-white text-[#235730] hover:bg-white/90 text-base sm:text-base px-8 sm:px-8 py-6 sm:py-6 rounded-sm font-medium flex items-center gap-2">
-                {t('cta')}
-                <ArrowRight className="w-5 h-5 sm:w-5 sm:h-5" />
-              </Button>
+            <Link href="/produits" className="inline-flex items-center justify-center gap-2 bg-white text-[#523A28] hover:bg-white/90 text-base px-6 py-3 rounded-sm font-medium transition-colors whitespace-nowrap">
+              {t('cta')}
+              <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>

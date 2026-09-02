@@ -125,7 +125,7 @@ export default function Panier() {
           <button
             onClick={() => router.push('/pro/catalogue')}
             className="p-2 rounded-lg hover:bg-white/10 transition-colors"
-            style={{ color: '#235730' }}
+            style={{ color: '#523A28' }}
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
@@ -144,9 +144,9 @@ export default function Panier() {
           <button
             onClick={() => router.push('/pro/catalogue')}
             className="px-6 py-3 text-white rounded-lg transition-colors inline-flex items-center gap-2"
-            style={{ backgroundColor: '#235730' }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1a4023')}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#235730')}
+            style={{ backgroundColor: '#523A28' }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#3A2819')}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#523A28')}
           >
             <Package className="w-5 h-5" />
             {t('empty.btn_browse')}
@@ -165,7 +165,7 @@ export default function Panier() {
           <button
             onClick={() => router.push('/pro/catalogue')}
             className="p-2 rounded-lg hover:bg-white/10 transition-colors"
-            style={{ color: '#235730' }}
+            style={{ color: '#523A28' }}
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
@@ -249,7 +249,7 @@ export default function Panier() {
                           <button
                             onClick={() => applyQuantity(item.id, item.quantite - 1)}
                             className="p-2 hover:bg-gray-50 transition-colors rounded-l-lg"
-                            style={{ color: '#235730' }}
+                            style={{ color: '#523A28' }}
                             disabled={item.quantite <= minQty}
                           >
                             <Minus className="w-4 h-4" />
@@ -260,7 +260,7 @@ export default function Panier() {
                           <button
                             onClick={() => applyQuantity(item.id, item.quantite + 1)}
                             className="p-2 hover:bg-gray-50 transition-colors rounded-r-lg"
-                            style={{ color: '#235730' }}
+                            style={{ color: '#523A28' }}
                           >
                             <Plus className="w-4 h-4" />
                           </button>
@@ -295,7 +295,7 @@ export default function Panier() {
             <h3 className="text-gray-900 mb-2">{t('summary.title')}</h3>
             {user?.remise ? (
               <p className="text-sm text-gray-700 mb-2">
-                Remise pro appliquée : <span className="font-semibold text-[#235730]">{user.remise}%</span>
+                Remise pro appliquée : <span className="font-semibold text-[#523A28]">{user.remise}%</span>
               </p>
             ) : null}
 
@@ -331,9 +331,9 @@ export default function Panier() {
             <button
               onClick={goToPaymentPage}
               className="w-full py-3 rounded-lg text-white transition-colors flex items-center justify-center gap-2 mb-3"
-              style={{ backgroundColor: '#235730' }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#1a4023')}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#235730')}
+              style={{ backgroundColor: '#523A28' }}
+              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#3A2819')}
+              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#523A28')}
             >
               <CreditCard className="w-5 h-5" />
               {t('summary.btn_validate')}
@@ -349,7 +349,7 @@ export default function Panier() {
 
             <div className="mt-6 pt-6 border-t border-gray-200">
               <div className="flex items-start gap-3 text-sm text-gray-600">
-                <Check className="w-5 h-5 flex-shrink-0" style={{ color: '#235730' }} />
+                <Check className="w-5 h-5 flex-shrink-0" style={{ color: '#523A28' }} />
                 <div>
                   <p className="mb-1">{t('summary.info_free_delivery')}</p>
                   <p className="mb-1">{t('summary.info_secure_payment')}</p>

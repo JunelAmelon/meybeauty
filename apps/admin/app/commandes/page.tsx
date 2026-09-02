@@ -1,16 +1,17 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
-import { Search, Eye, Download, Loader2 } from 'lucide-react';
+import { Search, Eye, Download, Trash2, Loader2 } from 'lucide-react';
 import { useAdminOrders } from '@/apps/admin/hooks/useAdminOrders';
 import { useTranslations } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
 
 const statusMap: Record<string, { labelKey: string; color: string }> = {
   payee: { labelKey: 'statuses.paid', color: 'bg-green-100 text-green-700' },
   en_attente: { labelKey: 'statuses.pending', color: 'bg-yellow-100 text-yellow-700' },
   retard: { labelKey: 'statuses.late', color: 'bg-red-100 text-red-700' },
-  livree: { labelKey: 'statuses.delivered', color: 'bg-blue-100 text-blue-700' },
+  livree: { labelKey: 'statuses.delivered', color: 'bg-[#523A28]/10 text-[#523A28]' },
   annulee: { labelKey: 'statuses.cancelled', color: 'bg-gray-100 text-gray-700' },
 };
 
@@ -18,9 +19,15 @@ export default function Commandes() {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('Tous');
   const [currentPage, setCurrentPage] = useState(1);
-  const { orders, loading, error } = useAdminOrders();
+  const { orders, loading, error, deleteOrder } = useAdminOrders();
   const t = useTranslations('admin.orders');
   const itemsPerPage = 5;
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const q = searchParams.get('q');
+    if (q) setSearchTerm(q);
+  }, [searchParams]);
 
   const filteredOrders = useMemo(() => {
     return orders.filter((order) => {
@@ -51,7 +58,7 @@ export default function Commandes() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <Loader2 className="w-8 h-8 text-[#235730] animate-spin" />
+        <Loader2 className="w-8 h-8 text-[#523A28] animate-spin" />
       </div>
     );
   }
@@ -84,7 +91,7 @@ export default function Commandes() {
                 placeholder={t('search.placeholder')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235730]"
+                className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] text-gray-900 bg-white"
               />
             </div>
           </div>
@@ -93,7 +100,7 @@ export default function Commandes() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#235730]"
+            className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#523A28] text-gray-900 bg-white"
           >
             <option value="Tous">{t('filters.allStatuses')}</option>
             {Object.values(statusMap).map(s => (
@@ -170,7 +177,7 @@ export default function Commandes() {
                       {formatPrice(order.amount, order.currency)}
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`px-2 py-1 text-[10px] font-bold uppercase rounded-md ${order.source === 'b2b' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'
+                      <span className={`px-2 py-1 text-[10px] font-bold uppercase rounded-md ${order.source === 'b2b' ? 'bg-purple-100 text-purple-700' : 'bg-[#523A28]/10 text-[#523A28]'
                         }`}>
                         {order.source}
                       </span>
@@ -187,12 +194,22 @@ export default function Commandes() {
                       <div className="flex items-center gap-2">
                         <Link
                           href={`/admin/commandes/${order.id}`}
-                          className="p-2 text-gray-600 hover:text-[#235730] hover:bg-gray-100 rounded-lg transition-colors"
+                          className="p-2 text-gray-600 hover:text-[#523A28] hover:bg-gray-100 rounded-lg transition-colors"
                         >
                           <Eye className="w-4 h-4" />
                         </Link>
-                        <button className="p-2 text-gray-600 hover:text-[#235730] hover:bg-gray-100 rounded-lg transition-colors">
+                        <button className="p-2 text-gray-600 hover:text-[#523A28] hover:bg-gray-100 rounded-lg transition-colors">
                           <Download className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => {
+                            if (window.confirm(`Supprimer la commande ${order.id} ?`)) {
+                              deleteOrder(order.id);
+                            }
+                          }}
+                          className="p-2 text-red-600 hover:text-white hover:bg-red-600 rounded-lg transition-colors"
+                        >
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </td>

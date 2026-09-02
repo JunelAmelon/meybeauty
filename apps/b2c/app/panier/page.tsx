@@ -10,7 +10,7 @@ import { Header } from '@/apps/b2c/components/header'
 import { Footer } from '@/apps/b2c/components/footer'
 import { NewsletterSection } from '@/apps/b2c/components/newsletter-section'
 import { useCart } from '@/apps/b2c/lib/cart-context'
-import { auth } from '@mishki/firebase'
+import { auth } from '@meybeauty/firebase'
 import { useEffect, useMemo, useState } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 
@@ -63,9 +63,9 @@ export default function CartPage() {
               />
             </Link>
             <div className="flex items-center gap-3">
-              <ShoppingBag className="w-8 h-8 text-[#235730]" />
+              <ShoppingBag className="w-8 h-8 text-[#523A28]" />
               <h2
-                className="text-[#235730]"
+                className="text-[#523A28]"
                 style={{
                   fontFamily: 'var(--font-caveat)',
                   fontSize: '48px',
@@ -75,7 +75,7 @@ export default function CartPage() {
                 {t('title')}
               </h2>
             </div>
-            <div className="w-full h-[1px] bg-[#235730] mt-2"></div>
+            <div className="w-full h-[1px] bg-[#523A28] mt-2"></div>
           </div>
 
           <div className="max-w-3xl mx-auto">
@@ -95,13 +95,13 @@ export default function CartPage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold text-[#2d2d2d]">{item.name}</h3>
-                    <p className="text-[#235730] font-bold">{formatMoney.format(item.price)}</p>
+                    <p className="text-[#523A28] font-bold">{formatMoney.format(item.price)}</p>
                     <div className="mt-2 flex items-center gap-3">
                       <div className="flex items-center border border-gray-200 rounded-sm overflow-hidden">
                         <button
                           type="button"
                           onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
-                          className="px-3 py-2 text-[#235730] hover:bg-[#235730]/10"
+                          className="px-3 py-2 text-[#523A28] hover:bg-[#523A28]/10"
                         >
                           <Minus className="w-4 h-4" />
                         </button>
@@ -111,7 +111,7 @@ export default function CartPage() {
                         <button
                           type="button"
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="px-3 py-2 text-[#235730] hover:bg-[#235730]/10"
+                          className="px-3 py-2 text-[#523A28] hover:bg-[#523A28]/10"
                         >
                           <Plus className="w-4 h-4" />
                         </button>
@@ -131,7 +131,7 @@ export default function CartPage() {
                     </Button>
                     <Button
                       onClick={() => goToCheckout([item])}
-                      className="bg-[#235730] hover:bg-[#1d4626] text-white rounded-sm text-sm px-6 w-full"
+                      className="bg-[#523A28] hover:bg-[#3A2819] text-white rounded-sm text-sm px-6 w-full"
                     >
                       {t('buy')}
                     </Button>
@@ -147,7 +147,7 @@ export default function CartPage() {
                 </p>
                 <Button
                   onClick={() => goToCheckout(items)}
-                  className="bg-[#235730] hover:bg-[#1d4626] text-white rounded-sm text-base px-8 py-3 h-auto"
+                  className="bg-[#523A28] hover:bg-[#3A2819] text-white rounded-sm text-base px-8 py-3 h-auto"
                 >
                   <ShoppingBag className="w-5 h-5 mr-2" />
                   {t('checkout')}
@@ -156,11 +156,11 @@ export default function CartPage() {
             ) : (
               <div className="text-center py-12">
                 <p className="text-gray-500 mb-4">{t('empty')}</p>
-                <Link href="/produits">
-                  <Button className="bg-[#235730] hover:bg-[#1d4626] text-white rounded-sm">
+                <Button asChild className="bg-[#523A28] hover:bg-[#3A2819] text-white rounded-sm">
+                  <Link href="/produits">
                     {t('discover')}
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             )}
           </div>

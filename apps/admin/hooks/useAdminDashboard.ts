@@ -11,7 +11,7 @@ import {
     where,
     type QuerySnapshot,
     type DocumentData,
-} from '@mishki/firebase';
+} from '@meybeauty/firebase';
 
 export interface DashboardOrder {
     id: string;
