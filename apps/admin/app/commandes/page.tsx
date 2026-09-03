@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
-import { Search, Eye, Download, Trash2, Loader2 } from 'lucide-react';
+import { Search, Eye, Trash2, Loader2 } from 'lucide-react';
 import { useAdminOrders } from '@/apps/admin/hooks/useAdminOrders';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
@@ -198,9 +198,6 @@ export default function Commandes() {
                         >
                           <Eye className="w-4 h-4" />
                         </Link>
-                        <button className="p-2 text-gray-600 hover:text-[#523A28] hover:bg-gray-100 rounded-lg transition-colors">
-                          <Download className="w-4 h-4" />
-                        </button>
                         <button
                           onClick={() => {
                             if (window.confirm(`Supprimer la commande ${order.id} ?`)) {
