@@ -286,7 +286,7 @@ export function ProductDetail({ productId }: { productId: string }) {
   return (
     <div className="container mx-auto px-6 py-8 md:py-12">
       <div className="mb-10">
-        <Link href="/catalogue" className="inline-flex items-center gap-2 mb-8 hover:opacity-80 transition-opacity">
+        <Link href="/pro/catalogue" className="inline-flex items-center gap-2 mb-8 hover:opacity-80 transition-opacity">
           <Image src="/b2c/akar-icons_arrow-back.svg" alt={td('back')} width={32} height={32} />
         </Link>
         <h2 className="text-[#523A28] mb-2" style={{ fontFamily: 'var(--font-caveat)', fontSize: '48px', fontWeight: 400 }}>
@@ -642,7 +642,7 @@ export function ProductDetail({ productId }: { productId: string }) {
             {similarProducts.map((p) => {
               const simPrixRemise = calculateRemise(p.prixHT);
               return (
-                <Link key={p.id} href={`/catalogue/${p.reference}`} className="group">
+                <Link key={p.id} href={`/pro/catalogue/${p.reference}`} className="group">
                   <div className="relative h-56 mb-3 cursor-pointer">
                     <Image
                       src={p.image}

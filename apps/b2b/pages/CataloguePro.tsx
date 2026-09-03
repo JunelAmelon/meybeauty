@@ -296,7 +296,7 @@ export default function CataloguePro() {
                 className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-all group flex flex-col"
                 style={{ minHeight: '580px' }}
               >
-                <Link href={`/catalogue/${product.reference}`} className="block">
+                <Link href={`/pro/catalogue/${product.reference}`} className="block">
                 <div className="relative h-64 bg-gray-100 overflow-hidden flex-shrink-0">
                   <Image
                     src={product.image}
@@ -456,7 +456,7 @@ export default function CataloguePro() {
                   return (
                     <tr key={product.id} className="hover:bg-gray-50">
                       <td className="px-3 md:px-6 py-4">
-                        <Link href={`/catalogue/${product.reference}`} className="flex items-center gap-3">
+                        <Link href={`/pro/catalogue/${product.reference}`} className="flex items-center gap-3">
                           <Image
                             src={product.image}
                             alt={product.nom}

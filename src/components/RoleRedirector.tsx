@@ -12,10 +12,17 @@ export default function RoleRedirector() {
         try {
           const snap = await getDoc(doc(db, 'users', user.uid));
           const role = snap.exists() ? (snap.data().role as string | undefined) : undefined;
-          if (role === 'b2b' && !window.location.pathname.startsWith('/pro')) {
+          const path = window.location.pathname;
+          if (role === 'admin' && !path.startsWith('/admin')) {
+            router.replace('/admin');
+          }
+          if (role === 'b2b' && !path.startsWith('/pro')) {
             router.replace('/pro');
           }
-          if (role !== 'b2b' && window.location.pathname.startsWith('/pro')) {
+          if (role !== 'admin' && path.startsWith('/admin')) {
+            router.replace('/');
+          }
+          if (role !== 'b2b' && path.startsWith('/pro')) {
             router.replace('/');
           }
         } catch {}
