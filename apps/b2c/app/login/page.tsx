@@ -27,12 +27,26 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Si déjà connecté, associer le panier et rediriger sans repasser par le formulaire
+  // Si déjà connecté, associer le panier et rediriger selon le rôle
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setCartOwner(user.uid)
+    const unsub = onAuthStateChanged(auth, async (user) => {
+      if (!user) return
+      setCartOwner(user.uid)
+      try {
+        const snap = await getDoc(doc(db, 'users', user.uid))
+        const role = snap.exists() ? (snap.data().role as string | undefined) : undefined
+        // Ne rediriger vers /admin ou /pro que si le rôle correspond
+        if (redirect.startsWith('/admin') && role !== 'admin') {
+          router.replace('/')
+          return
+        }
+        if (redirect.startsWith('/pro') && role !== 'b2b') {
+          router.replace('/')
+          return
+        }
         router.replace(redirect)
+      } catch {
+        router.replace('/')
       }
     })
     return () => unsub()
@@ -54,6 +68,9 @@ export default function LoginPage() {
         target = '/admin'
       } else if (role === 'b2b') {
         target = '/pro'
+      } else if (redirect.startsWith('/admin') || redirect.startsWith('/pro')) {
+        // L'utilisateur n'a pas le rôle pour accéder à la cible → page d'accueil
+        target = '/'
       }
 
       router.push(target)
