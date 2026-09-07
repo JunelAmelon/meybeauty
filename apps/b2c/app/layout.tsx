@@ -30,8 +30,8 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: 'Mey Beauty - Institut de beauté à Viry-Châtillon',
-  description: 'Mey Beauty, institut de beauté à Viry-Châtillon (91). Soins du visage, minceur, épilation, beauté du regard, onglerie et spray tan.',
+  title: 'Mey Beauty - Cosmétiques d\'exception pour une peau éclatante',
+  description: 'Découvrez l\'univers Mey Beauty : des soins expertaux qui allient actifs premium et formules avancées pour nourrir votre peau, sublimer votre routine et éveiller vos sens.',
 };
 
 export default async function RootLayout({

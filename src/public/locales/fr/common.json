@@ -1092,8 +1092,8 @@
         },
         "home": {
             "hero": {
-                "title": "Révélez votre beauté naturelle avec Mey Beauty, soins d'exception et technologies de pointe pour une peau éclatante.",
-                "desc": "Plongez au cœur de Mey Beauty, institut de beauté raffiné à Viry-Châtillon. Nos soins experts allient technologies de pointe et actifs premium pour révéler l'éclat de votre peau, sublimer votre silhouette et vous offrir une expérience sensorielle unique. Beauté, expertise et élégance, à chaque geste de votre routine.",
+                "title": "Révélez votre beauté naturelle avec Mey Beauty, des cosmétiques d'exception pour une peau éclatante.",
+                "desc": "Découvrez l'univers Mey Beauty : des soins expertaux qui allient actifs premium et formules avancées pour nourrir votre peau, sublimer votre routine et éveiller vos sens. Beauté, expertise et élégance, à chaque geste de votre rituel.",
                 "cta": "Découvrir nos produits"
             },
             "products": {
@@ -1122,7 +1122,7 @@
         },
         "shop": {
             "title": "Nos Produits",
-            "subtitle": "Découvrez nos soins experts et technologies de pointe pour une peau éclatante",
+            "subtitle": "Découvrez nos soins experts et formules avancées pour une peau éclatante",
             "loading": "Chargement...",
             "categories_heading": "Catégories",
             "categories": {
