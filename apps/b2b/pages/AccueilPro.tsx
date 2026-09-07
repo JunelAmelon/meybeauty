@@ -7,7 +7,6 @@ import {
   Package,
   TrendingUp,
   ShoppingCart,
-  RotateCcw,
   Download,
   FileText,
   Bell,
@@ -80,7 +79,7 @@ export default function AccueilPro() {
       )}
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
         {stats &&
           [
             {
@@ -100,12 +99,6 @@ export default function AccueilPro() {
               value: stats.stockCount.toString(),
               change: '',
               icon: Package,
-            },
-            {
-              label: t('stats.active_refills'),
-              value: stats.activeRefills.toString(),
-              change: t('stats.active'),
-              icon: RotateCcw,
             },
           ].map((stat, index) => (
             <div
@@ -232,27 +225,6 @@ export default function AccueilPro() {
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* Reassort Widget */}
-          <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-6 border border-orange-200">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#523A28' }}>
-                <RotateCcw className="w-5 h-5 text-white" />
-              </div>
-              <h3 className="text-gray-900">{t('reassort.title')}</h3>
-            </div>
-            <p className="text-sm text-gray-600 mb-4">
-              {t('reassort.desc', { count: 4 })}
-            </p>
-            <Link
-              href="/reassort"
-              className="w-full px-4 py-2 bg-white rounded-lg hover:bg-gray-50 transition-colors text-sm flex items-center justify-center gap-2"
-              style={{ color: '#523A28' }}
-            >
-              {t('reassort.manage')}
-              <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
 
           {/* Downloads Widget */}
