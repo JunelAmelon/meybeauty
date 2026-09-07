@@ -22,24 +22,24 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
   const cartItemsCount = items.length;
 
   return (
-    <header className="border-b border-gray-200 px-4 md:px-6 py-3 md:py-4" style={{ backgroundColor: '#523A28' }}>
+    <header className="border-b border-[#523A28]/10 px-4 md:px-6 py-3 md:py-4 bg-white">
       <div className="flex items-center justify-between">
         {/* Mobile Menu Button + Welcome */}
         <div className="flex items-center gap-3 flex-1 min-w-0">
           {/* Mobile Menu Toggle */}
           <button
             onClick={onToggleSidebar}
-            className="lg:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+            className="lg:hidden p-2 text-[#523A28] hover:bg-[#523A28]/10 rounded-lg transition-colors"
           >
             <Menu className="w-5 h-5" />
           </button>
 
           {/* Welcome Text */}
           {/* <div className="flex-1 min-w-0 max-w-[180px] sm:max-w-[260px]">
-            <h2 className="text-white truncate text-xs md:text-sm font-normal leading-tight max-w-full">
+            <h2 className="text-[#523A28] truncate text-xs md:text-sm font-normal leading-tight max-w-full">
               {t('welcome', { name: user?.prenom ?? '' })}
             </h2>
-            <p className="text-xs text-white/80 truncate hidden sm:block max-w-full">
+            <p className="text-xs text-[#523A28]/70 truncate hidden sm:block max-w-full">
               {user?.societe || ''}
             </p>
           </div> */}
@@ -47,7 +47,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
 
         <div className="flex items-center gap-2 md:gap-4">
           {/* Notifications */}
-          <button className="relative p-2 text-white/80 hover:text-white rounded-lg hover:bg-white/10 transition-colors">
+          <button className="relative p-2 text-[#523A28]/80 hover:text-[#523A28] rounded-lg hover:bg-[#523A28]/10 transition-colors">
             <Bell className="w-5 h-5" />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
           </button>
@@ -55,11 +55,11 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
           {/* Cart */}
           <button
             onClick={() => router.push('/pro/panier')}
-            className="relative p-2 text-white/80 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
+            className="relative p-2 text-[#523A28]/80 hover:text-[#523A28] rounded-lg hover:bg-[#523A28]/10 transition-colors"
           >
             <ShoppingCart className="w-5 h-5" />
             {cartItemsCount > 0 && (
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#523A28] text-white text-xs rounded-full flex items-center justify-center">
                 {cartItemsCount}
               </span>
             )}
@@ -69,18 +69,18 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
           <div className="relative">
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
-              className="flex items-center gap-2 md:gap-3 px-2 md:px-3 py-2 rounded-lg hover:bg-white/10 transition-colors"
+              className="flex items-center gap-2 md:gap-3 px-2 md:px-3 py-2 rounded-lg hover:bg-[#523A28]/10 transition-colors"
             >
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                <User className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 bg-[#523A28]/15 rounded-full flex items-center justify-center">
+                <User className="w-4 h-4 text-[#523A28]" />
               </div>
               <div className="text-left hidden md:block">
-                <p className="text-sm text-white">
+                <p className="text-sm text-[#523A28]">
                   {user?.prenom} {user?.nom}
                 </p>
-                <p className="text-xs text-white/80">{t('discount', { count: user?.remise || 0 })}</p>
+                <p className="text-xs text-[#523A28]/70">{t('discount', { count: user?.remise || 0 })}</p>
               </div>
-              <ChevronDown className="w-4 h-4 text-white/80 hidden sm:block" />
+              <ChevronDown className="w-4 h-4 text-[#523A28]/70 hidden sm:block" />
             </button>
 
             {showUserMenu && (

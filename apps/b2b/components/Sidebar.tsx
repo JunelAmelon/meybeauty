@@ -61,20 +61,20 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         }}
       >
         {/* Header with Logo */}
-        <div className="p-3 sm:p-4 border-b border-gray-200 flex items-center justify-between bg-[#523A28]">
+        <div className="p-3 sm:p-4 border-b border-gray-200 flex items-center justify-between bg-white">
           <div className="flex-1 flex items-center justify-center">
             <Image
               src="/b2b/images/logo-mey-beauty.png"
               alt="Mey Beauty B2B"
               width={110}
               height={36}
-              className="object-contain brightness-0 invert"
+              className="object-contain"
             />
           </div>
           {/* Close button for mobile */}
           <button
             onClick={onClose}
-            className="lg:hidden p-2 text-white/80 hover:text-white rounded-lg hover:bg-white/10 transition-colors absolute right-4"
+            className="lg:hidden p-2 text-[#523A28]/80 hover:text-[#523A28] rounded-lg hover:bg-[#523A28]/10 transition-colors absolute right-4"
             aria-label="Fermer le menu"
           >
             <X className="w-5 h-5" />
