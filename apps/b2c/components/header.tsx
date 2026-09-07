@@ -54,38 +54,38 @@ export function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#523A28]/95 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-sm border-b border-[#523A28]/10">
       <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Sheet>
               <SheetTrigger asChild>
-                <button className="md:hidden text-white hover:opacity-80 transition-opacity">
+                <button className="md:hidden text-[#523A28] hover:opacity-70 transition-opacity">
                   <Menu className="w-6 h-6" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="left" className="bg-[#523A28] border-[#523A28]">
+              <SheetContent side="left" className="bg-white border-[#523A28]/10">
                 <div className="flex flex-col gap-6 mt-8">
-                  <div className="pb-4 border-b border-white/20">
-                    <form onSubmit={(e) => handleSearch(e, mobileSearchQuery, true)} className="w-full flex items-center gap-3 text-white">
+                  <div className="pb-4 border-b border-[#523A28]/10">
+                    <form onSubmit={(e) => handleSearch(e, mobileSearchQuery, true)} className="w-full flex items-center gap-3 text-[#523A28]">
                       <Search className="w-5 h-5 shrink-0" />
                       <input
                         type="text"
                         value={mobileSearchQuery}
                         onChange={(e) => setMobileSearchQuery(e.target.value)}
                         placeholder={t('search')}
-                        className="flex-1 bg-transparent text-white text-lg placeholder:text-white/60 focus:outline-none"
+                        className="flex-1 bg-transparent text-[#523A28] text-lg placeholder:text-[#523A28]/50 focus:outline-none"
                       />
                     </form>
                   </div>
                   <nav className="flex flex-col gap-6">
-                    <Link href="/produits" className="text-white text-lg hover:opacity-80 transition-opacity">
+                    <Link href="/produits" className="text-[#523A28] text-lg hover:opacity-70 transition-opacity">
                       {t('nav.products')}
                     </Link>
-                    <Link href="/blog" className="text-white text-lg hover:opacity-80 transition-opacity">
+                    <Link href="/blog" className="text-[#523A28] text-lg hover:opacity-70 transition-opacity">
                       {t('nav.blog')}
                     </Link>
-                    <Link href="/rituels" className="text-white text-lg hover:opacity-80 transition-opacity">
+                    <Link href="/rituels" className="text-[#523A28] text-lg hover:opacity-70 transition-opacity">
                       {t('nav.rituals')}
                     </Link>
                   </nav>
@@ -94,13 +94,13 @@ export function Header() {
             </Sheet>
 
             <nav className="hidden md:flex items-center gap-8">
-              <Link href="/produits" className="text-white text-sm hover:opacity-80 transition-opacity">
+              <Link href="/produits" className="text-[#523A28] text-sm hover:opacity-70 transition-opacity">
                 {t('nav.products')}
               </Link>
-              <Link href="/blog" className="text-white text-sm hover:opacity-80 transition-opacity">
+              <Link href="/blog" className="text-[#523A28] text-sm hover:opacity-70 transition-opacity">
                 {t('nav.blog')}
               </Link>
-              <Link href="/rituels" className="text-white text-sm hover:opacity-80 transition-opacity">
+              <Link href="/rituels" className="text-[#523A28] text-sm hover:opacity-70 transition-opacity">
                 {t('nav.rituals')}
               </Link>
             </nav>
@@ -112,7 +112,7 @@ export function Header() {
               alt="Mey Beauty"
               width={160}
               height={53}
-              className="h-12 sm:h-14 md:h-16 w-auto brightness-0 invert"
+              className="h-12 sm:h-14 md:h-16 w-auto"
             />
           </Link>
 
@@ -126,12 +126,12 @@ export function Header() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder={t('search')}
-                    className="w-48 bg-white/10 border border-white/20 rounded-md px-3 py-1.5 text-sm text-white placeholder:text-white/60 focus:outline-none focus:border-white/40"
+                    className="w-48 bg-[#523A28]/5 border border-[#523A28]/20 rounded-md px-3 py-1.5 text-sm text-[#523A28] placeholder:text-[#523A28]/50 focus:outline-none focus:border-[#523A28]/40"
                   />
                   <button
                     type="button"
                     onClick={() => { setSearchOpen(false); setSearchQuery('') }}
-                    className="text-white hover:opacity-80 transition-opacity"
+                    className="text-[#523A28] hover:opacity-70 transition-opacity"
                   >
                     <X className="w-4 h-4" />
                   </button>
@@ -139,16 +139,16 @@ export function Header() {
               ) : (
                 <button
                   onClick={() => setSearchOpen(true)}
-                  className="text-white hover:opacity-80 transition-opacity"
+                  className="text-[#523A28] hover:opacity-70 transition-opacity"
                 >
                   <Search className="w-5 h-5" />
                 </button>
               )}
             </div>
-            <Link href="/panier" className="text-white hover:opacity-80 transition-opacity relative">
+            <Link href="/panier" className="text-[#523A28] hover:opacity-70 transition-opacity relative">
               <ShoppingCart className="w-5 h-5" />
               {itemCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-white text-[#523A28] text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-[#523A28] text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
                   {itemCount > 99 ? '99+' : itemCount}
                 </span>
               )}
@@ -156,19 +156,19 @@ export function Header() {
 
             {!user ? (
               <>
-                <Button asChild variant="ghost" className="hidden md:flex text-white text-sm hover:bg-white/10">
+                <Button asChild variant="ghost" className="hidden md:flex text-[#523A28] text-sm hover:bg-[#523A28]/10">
                   <Link href="/login">
                     {t('auth.login_register')}
                   </Link>
                 </Button>
-                <Link href="/login" className="md:hidden text-white hover:opacity-80 transition-opacity">
+                <Link href="/login" className="md:hidden text-[#523A28] hover:opacity-70 transition-opacity">
                   <User className="w-5 h-5" />
                 </Link>
               </>
             ) : (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button className="flex items-center gap-2 text-white hover:opacity-90 transition-opacity rounded-md px-2 py-1">
+                  <button className="flex items-center gap-2 text-[#523A28] hover:opacity-70 transition-opacity rounded-md px-2 py-1">
                     <UserCircle2 className="w-5 h-5" />
                     <span className="hidden sm:inline text-sm">{userLabel}</span>
                   </button>
