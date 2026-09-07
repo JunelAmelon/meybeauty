@@ -55,14 +55,14 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
   };
 
   return (
-    <header className="border-b border-gray-200 px-6 py-4" style={{ backgroundColor: '#523A28' }}>
+    <header className="border-b border-[#523A28]/10 px-6 py-4 bg-white">
       <div className="flex items-center justify-between">
         {/* Left Section */}
         <div className="flex items-center gap-4 flex-1">
           {/* Mobile Menu Toggle */}
           <button
             onClick={onToggleSidebar}
-            className="lg:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+            className="lg:hidden p-2 text-[#523A28] hover:bg-[#523A28]/10 rounded-lg transition-colors"
           >
             <Menu className="w-5 h-5" />
           </button>
@@ -70,14 +70,14 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
           {/* Search Bar */}
           <div className="hidden md:flex items-center flex-1 max-w-md">
             <form onSubmit={handleSearch} className="relative w-full">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60 pointer-events-none" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#523A28]/50 pointer-events-none" />
               <input
                 ref={searchRef}
                 type="text"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
                 placeholder={t('search')}
-                className="w-full pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/20 text-sm"
+                className="w-full pl-10 pr-4 py-2 bg-[#523A28]/5 border border-[#523A28]/20 rounded-lg text-[#523A28] placeholder-[#523A28]/50 focus:outline-none focus:ring-2 focus:ring-[#523A28]/30 focus:bg-[#523A28]/10 text-sm"
               />
             </form>
           </div>
@@ -89,7 +89,7 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
           <div className="relative">
             <button
               onClick={() => setShowNotifications(!showNotifications)}
-              className="relative p-2 text-white/80 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
+              className="relative p-2 text-[#523A28]/80 hover:text-[#523A28] rounded-lg hover:bg-[#523A28]/10 transition-colors"
             >
               <Bell className="w-5 h-5" />
               {notifications.length > 0 && (
@@ -142,16 +142,16 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
           <div className="relative">
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
-              className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/10 transition-colors"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#523A28]/10 transition-colors"
             >
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                <User className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 bg-[#523A28]/15 rounded-full flex items-center justify-center">
+                <User className="w-4 h-4 text-[#523A28]" />
               </div>
               <div className="text-left hidden md:block">
-                <p className="text-sm text-white">{t('admin')}</p>
-                <p className="text-xs text-white/80">{t('administrator')}</p>
+                <p className="text-sm text-[#523A28]">{t('admin')}</p>
+                <p className="text-xs text-[#523A28]/70">{t('administrator')}</p>
               </div>
-              <ChevronDown className="w-4 h-4 text-white/80 hidden sm:block" />
+              <ChevronDown className="w-4 h-4 text-[#523A28]/70 hidden sm:block" />
             </button>
 
             {showUserMenu && (
