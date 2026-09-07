@@ -11,7 +11,6 @@ import {
   Zap,
   FileText,
   Download,
-  RotateCcw,
   Receipt,
   FileCheck,
   X,
@@ -24,7 +23,7 @@ const navItems = [
   { to: '/pro/commande-rapide', icon: Zap, labelKey: 'quick_order' },
   { to: '/pro/protocoles', icon: FileText, labelKey: 'protocoles' },
   { to: '/pro/telechargements', icon: Download, labelKey: 'downloads' },
-  { to: '/pro/reassort', icon: RotateCcw, labelKey: 'auto_reassort' },
+  // { to: '/pro/reassort', icon: RotateCcw, labelKey: 'auto_reassort' },
   { to: '/pro/factures', icon: Receipt, labelKey: 'invoices' },
   { to: '/pro/devis', icon: FileCheck, labelKey: 'quotes' },
 ];

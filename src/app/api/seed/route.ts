@@ -1426,7 +1426,7 @@ function buildBlogPosts(): BlogPost[] {
 
 async function createAdminUser() {
   const adminEmail = 'admin@meybeauty.fr';
-  const adminPassword = 'Mey Beauty@1234';
+  const adminPassword = 'meybeauty1234';
 
   if (!adminAuth || !adminDb) {
     throw new Error('Admin Auth or Admin DB not configured');
@@ -1435,8 +1435,10 @@ async function createAdminUser() {
   try {
     // Check if user already exists in Auth
     let userRecord;
+    let existed = false;
     try {
       userRecord = await adminAuth.getUserByEmail(adminEmail);
+      existed = true;
       console.log('Admin user already exists in Auth');
     } catch (e: unknown) {
       if (typeof e === 'object' && e !== null && 'code' in e && e.code === 'auth/user-not-found') {
@@ -1450,6 +1452,12 @@ async function createAdminUser() {
       } else {
         throw e;
       }
+    }
+
+    // Force le mot de passe à jour même si l'utilisateur existait déjà
+    if (existed) {
+      await adminAuth.updateUser(userRecord.uid, { password: adminPassword });
+      console.log('Admin password updated in Auth');
     }
 
     // Ensure profile exists in Firestore with admin role
@@ -1499,6 +1507,7 @@ export async function POST() {
     const downloads = buildDownloadsB2B();
 
     // Products (B2C & B2B shared collection)
+    // { merge: true } : ne crée le document que s'il n'existe pas, n'écrase jamais les modifs manuelles
     const products = buildProducts();
     for (const prod of products) {
       const ref = db.collection('products').doc(prod.slug);
@@ -1513,7 +1522,7 @@ export async function POST() {
         usage: prod.translations.fr.usage || "",
         ingredient_base: prod.translations.fr.ingredient_base || "",
         deliveryDays: { min: 4, max: 10 }
-      });
+      }, { merge: true });
     }
 
     // Blog posts
@@ -1529,7 +1538,7 @@ export async function POST() {
         author: post.author,
         defaultLocale: 'fr',
         translations: post.translations,
-      });
+      }, { merge: true });
     }
 
     // Rituals
@@ -1575,7 +1584,7 @@ export async function POST() {
         notes: rituel.notes,
         defaultLocale: 'fr',
         translations: rituel.translations,
-      });
+      }, { merge: true });
     }
 
     // B2B Fiches techniques
@@ -1596,7 +1605,7 @@ export async function POST() {
         avis_experts: fiche.avis_experts,
         defaultLocale: 'fr',
         translations: fiche.translations,
-      });
+      }, { merge: true });
     }
 
     // B2B Téléchargements (assets)
@@ -1611,7 +1620,7 @@ export async function POST() {
         url: asset.url,
         defaultLocale: asset.defaultLocale || 'fr',
         translations: asset.translations,
-      });
+      }, { merge: true });
     }
 
     await batch.commit();
